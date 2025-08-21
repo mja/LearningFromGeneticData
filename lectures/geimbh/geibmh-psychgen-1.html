@@ -230,6 +230,72 @@ Division of Psychiatry<br>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="genetics-of-continuous-traits" class="slide level2">
+<h2>Genetics of continuous traits</h2>
+
+<img data-src="assets/Galton-Regression-PlateIX.png" class="r-stretch"><aside class="notes">
+<p>Separately, Francis Galton (1822–1911), was studying the inheritance of continuous or metric phenotypes. He noticed the parents who were tall tended to have children that were slightly shorter than themselves (and vice versa). This was termed “regression to the mean” from which the name of the statistical method “regression” is derived.</p>
+<blockquote>
+<p>“In their search for universal hereditary laws, Galton and Pearson were driven by the linear model and the normal distribution because the associated parameters had scientific meaning for them that went beyond mere description.” - Wachsmuth, A., Wilkinson, L., &amp; Dallal, G. E. (2003). <a href="https://dx.doi.org/10.1198/0003130031874">Galton’s Bend</a>. The American Statistician, 57(3), 190–192. doi:10.1198/0003130031874</p>
+</blockquote>
+<p>For more on Galton’s legacy, see <a href="https://adelphigenetics.org/history/">https://adelphigenetics.org/history/</a></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="reconciling-categorical-continuous-genetics-quantitative-genetics" class="slide level2">
+<h2>Reconciling categorical + continuous genetics = quantitative genetics</h2>
+
+<img data-src="assets/Fisher-Supposition.png" class="r-stretch"><aside class="notes">
+<p>Ronald Fisher reconciled the inheritance of continuous and categorical phenotypes by showing that a continuous phenotype could be made from the inheritance of a large number (dozens, hundreds, or thousands) categorical genes. The term “variance” comes from Fisher’s discoveries.</p>
+<ul>
+<li>Fisher, R. A. (1918). <a href="https://dx.doi.org/10.1017/S0080456800012163">XV.—The correlation between relatives on the supposition of Mendelian inheritance</a>. <em>Transactions of the Royal Society of Edinburgh</em>. doi:10.1017/S0080456800012163</li>
+<li>Charlesworth and Edwards (2018). <a href="https://doi.org/10.1111/j.1740-9713.2018.01170.x">A century of variance</a>. <em>Significance</em> 15(4). doi:10.1111/j.1740-9713.2018.01170.x</li>
+<li>Bodmer et al (2021) <a href="https://dx.doi.org/10.1038/s41437-020-00394-6">The outstanding scientist, R.A. Fisher: his views on eugenics and race</a>. <em>Heredity</em> doi:10.1038/s41437-020-00394-6</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="polygenic-traits-are-quantitative-traits" class="slide level2">
+<h2>Polygenic traits are quantitative traits</h2>
+<p>Adding up effects from a large number of genetic effects to make a continuous phenotype is related to the Central Limit Theorem.</p>
+
+<img data-src="geibmh-psychgen-1_files/figure-revealjs/polygenic_quantitative-1.png" width="960" class="r-stretch"><aside class="notes">
+<blockquote>
+<p>“R. A. Fisher’s 1918 paper, ‘The correlation between relatives on the supposition of Mendelian inheritance’, resolved the often bitter conflict between biometricians and Mendelians, which raged for a decade following the rediscovery of Mendel’s work. Fisher showed that a complex quantitative trait could be explained by Mendelian inheritance if several genes affect the trait.”Because he crossed true-breeding plants, Mendel’s experiments showed that a single locus with two alleles of equal frequency results in three genotypes (see the figure, part a). If the allelic effects are additive, the three genotypes produce three phenotypes; in the case of Mendel’s qualitative traits, the allelic effects showed complete dominance, so only two phenotypes were observed. However, assuming equal and additive effects, 2 genes yield 9 genotypes and 5 phenotypes (part b) and 3 genes yield 27 genotypes and 7 phenotypes (part c). With unequal and non-additive allelic effects and some environmental influence, three genes would result in a normal bell-shaped curve of continuous variation (part d). This logic assumes common alleles; rare alleles will skew the distribution. Genome-wide association research suggests that many more than three genes affect most traits, which underscores the expectation that polygenic traits are quantitative traits.”</p>
+</blockquote>
+<ul>
+<li>Plomin, R., Haworth, C. &amp; Davis, O. <a href="https://dx.doi.org/10.1038/nrg2670">Common disorders are quantitative traits</a>. <em>Nat Rev Genet</em> <strong>10</strong>, 872-878 (2009). doi:10.1038/nrg2670</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 </section></section>
     </div>
@@ -447,6 +513,44 @@ Division of Psychiatry<br>
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
