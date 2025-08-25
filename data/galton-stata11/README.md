@@ -1,0 +1,1 @@
+Francis Galton, 2017, "Galton height data", https://doi.org/10.7910/DVN/T0HSJ1, Harvard Dataverse, V1, UNF:6:2ty+0YgqR2a66FlvjCuPkQ== [fileUNF]
