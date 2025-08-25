@@ -114,7 +114,76 @@ For more on Galton’s legacy, see <https://adelphigenetics.org/history/>
 
 ## Reconciling categorical + continuous genetics = quantitative genetics
 
-![](assets/Fisher-Supposition.png)
+``` r
+require(ggplot2)
+```
+
+    Loading required package: ggplot2
+
+``` r
+require(dplyr)
+```
+
+    Loading required package: dplyr
+
+
+    Attaching package: 'dplyr'
+
+    The following objects are masked from 'package:stats':
+
+        filter, lag
+
+    The following objects are masked from 'package:base':
+
+        intersect, setdiff, setequal, union
+
+``` r
+require(stringr)
+```
+
+    Loading required package: stringr
+
+``` r
+# calculate expected genotype frequency for number of increasing alleles
+# use the density of the binomial distribution, for alleles = 0 up to 2 * number of loci. 
+# assume each allele has the same frequency of 50% (for simplicity)
+n_allele_freq <- function(n_loci) {
+  alleles <- seq(from = 0, to = 2*n_loci)
+  freq <- dbinom(alleles, size = 2*n_loci, prob = 0.5)
+  data.frame(alleles, freq, loci = n_loci)
+}
+
+number_of_loci <- c(1, 2, 3, 10)
+loci_freq <- bind_rows(lapply(number_of_loci, n_allele_freq))
+
+loci_labeller <- function(string) {
+  n_loci <- as.numeric(string)
+  if_else(
+    n_loci == 1, 
+    true = "1 locus",
+    false = str_c(string, "loci", sep = " "))
+}
+plot_loci <- function(loci_freq) {
+  ggplot(loci_freq, aes(x = alleles, y = freq)) + geom_col() +
+  facet_grid(
+    . ~ loci,
+    scales = "free_x",
+    space = "free_x",
+    labeller = labeller(loci = loci_labeller)
+  ) +
+  scale_x_continuous("Number of phenotype increasing alleles") +
+  scale_y_continuous("Genotype frequency") +
+  theme_linedraw()
+}
+
+plot_loci(
+  filter(loci_freq, loci == 1)
+)
+```
+
+![](geibmh-psychgen-1_files/figure-commonmark/polygenic_quantitative-1.png)
+
+<!-- ![](assets/Fisher-Supposition.png) -->
 
 <div class="notes">
 
@@ -143,50 +212,10 @@ Adding up effects from a large number of genetic effects to make a
 continuous phenotype is related to the Central Limit Theorem.
 
 ``` r
-require(ggplot2)
+plot_loci(loci_freq)
 ```
 
-    Loading required package: ggplot2
-
-``` r
-require(dplyr)
-```
-
-    Loading required package: dplyr
-
-
-    Attaching package: 'dplyr'
-
-    The following objects are masked from 'package:stats':
-
-        filter, lag
-
-    The following objects are masked from 'package:base':
-
-        intersect, setdiff, setequal, union
-
-``` r
-# calculate expected genotype frequency for number of increasing alleles
-n_allele_freq <- function(n) {
-  alleles <- seq(from = 0, to = 2*n)
-  freq <- dbinom(alleles, size = 2*n, prob = 0.5)
-  return(data.frame(alleles, freq, loci = n))
-}
-
-number_of_loci <- c(1, 2, 3, 10)
-loci_freq <- bind_rows(lapply(number_of_loci, n_allele_freq))
-
-ggplot(loci_freq, aes(x = alleles, y = freq)) + geom_col() +
-facet_grid(
-  . ~ loci,
-  scales = "free_x",
-  space = "free_x"
-) +
-scale_x_continuous("Number of phenotype increasing alleles") +
-scale_y_continuous("Genotype frequency")
-```
-
-![](geibmh-psychgen-1_files/figure-commonmark/polygenic_quantitative-1.png)
+![](geibmh-psychgen-1_files/figure-commonmark/polygenic_quantitative_10-1.png)
 
 <div class="notes">
 
@@ -216,3 +245,22 @@ scale_y_continuous("Genotype frequency")
   872-878 (2009). doi:10.1038/nrg2670
 
 </div>
+
+# Biometrics
+
+## What are the sources of family resemblance? How do we quantify them numerically?
+
+## Heritability
+
+Proportion of similarity in phenotypes that can be attributed to
+similarity in genotypes. **Model:** Phenotype (P) = Genotype (G) +
+Environment (E)  
+**Variance decomposition** $$var(P) = var(𝐺) + var(𝐸)$$ **Proportion of
+variance** $$h^2 = \frac{var(𝐺)}{var(𝑃)}$$
+
+- Tenesa, A., Haley, C. [The heritability of human disease: estimation,
+  uses and abuses](https://dx.doi.org/10.1038/nrg3377). *Nat Rev Genet*
+  **14**, 139–149 (2013). doi:10.1038/nrg3377
+- Visscher, P., Hill, W. & Wray, N. [Heritability in the genomics era —
+  concepts and misconceptions](https://dx.doi.org/10.1038/nrg2322). *Nat
+  Rev Genet* **9**, 255–266 (2008). doi:10.1038/nrg2322

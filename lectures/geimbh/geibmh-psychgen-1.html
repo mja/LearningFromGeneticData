@@ -255,7 +255,8 @@ Division of Psychiatry<br>
 <section id="reconciling-categorical-continuous-genetics-quantitative-genetics" class="slide level2">
 <h2>Reconciling categorical + continuous genetics = quantitative genetics</h2>
 
-<img data-src="assets/Fisher-Supposition.png" class="r-stretch"><aside class="notes">
+<!-- ![](assets/Fisher-Supposition.png) -->
+<img data-src="geibmh-psychgen-1_files/figure-revealjs/polygenic_quantitative-1.png" width="960" class="r-stretch"><aside class="notes">
 <p>Ronald Fisher reconciled the inheritance of continuous and categorical phenotypes by showing that a continuous phenotype could be made from the inheritance of a large number (dozens, hundreds, or thousands) categorical genes. The term “variance” comes from Fisher’s discoveries.</p>
 <ul>
 <li>Fisher, R. A. (1918). <a href="https://dx.doi.org/10.1017/S0080456800012163">XV.—The correlation between relatives on the supposition of Mendelian inheritance</a>. <em>Transactions of the Royal Society of Edinburgh</em>. doi:10.1017/S0080456800012163</li>
@@ -278,7 +279,7 @@ Division of Psychiatry<br>
 <h2>Polygenic traits are quantitative traits</h2>
 <p>Adding up effects from a large number of genetic effects to make a continuous phenotype is related to the Central Limit Theorem.</p>
 
-<img data-src="geibmh-psychgen-1_files/figure-revealjs/polygenic_quantitative-1.png" width="960" class="r-stretch"><aside class="notes">
+<img data-src="geibmh-psychgen-1_files/figure-revealjs/polygenic_quantitative_10-1.png" width="960" class="r-stretch"><aside class="notes">
 <blockquote>
 <p>“R. A. Fisher’s 1918 paper, ‘The correlation between relatives on the supposition of Mendelian inheritance’, resolved the often bitter conflict between biometricians and Mendelians, which raged for a decade following the rediscovery of Mendel’s work. Fisher showed that a complex quantitative trait could be explained by Mendelian inheritance if several genes affect the trait.”Because he crossed true-breeding plants, Mendel’s experiments showed that a single locus with two alleles of equal frequency results in three genotypes (see the figure, part a). If the allelic effects are additive, the three genotypes produce three phenotypes; in the case of Mendel’s qualitative traits, the allelic effects showed complete dominance, so only two phenotypes were observed. However, assuming equal and additive effects, 2 genes yield 9 genotypes and 5 phenotypes (part b) and 3 genes yield 27 genotypes and 7 phenotypes (part c). With unequal and non-additive allelic effects and some environmental influence, three genes would result in a normal bell-shaped curve of continuous variation (part d). This logic assumes common alleles; rare alleles will skew the distribution. Genome-wide association research suggests that many more than three genes affect most traits, which underscores the expectation that polygenic traits are quantitative traits.”</p>
 </blockquote>
@@ -296,6 +297,53 @@ Division of Psychiatry<br>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section>
+<section id="biometrics" class="title-slide slide level1 center">
+<h1>Biometrics</h1>
+
+</section>
+<section id="what-are-the-sources-of-family-resemblance-how-do-we-quantify-them-numerically" class="slide level2">
+<h2>What are the sources of family resemblance? How do we quantify them numerically?</h2>
+</section>
+<section id="heritability" class="slide level2">
+<h2>Heritability</h2>
+<p>Proportion of similarity in phenotypes that can be attributed to similarity in genotypes.</p>
+<p><strong>Model:</strong> Phenotype (P) = Genotype (G) + Environment (E)<br>
+<strong>Variance decomposition</strong> <span class="math display">\[var(P) = var(𝐺) + var(𝐸)\]</span> <strong>Proportion of variance</strong> <span class="math display">\[h^2 = \frac{var(𝐺)}{var(𝑃)}\]</span></p>
+<aside class="notes">
+<ul>
+<li>Tenesa, A., Haley, C. <a href="https://dx.doi.org/10.1038/nrg3377">The heritability of human disease: estimation, uses and abuses</a>. <em>Nat Rev Genet</em> <strong>14</strong>, 139–149 (2013). doi:10.1038/nrg3377</li>
+<li>Visscher, P., Hill, W. &amp; Wray, N. <a href="https://dx.doi.org/10.1038/nrg2322">Heritability in the genomics era — concepts and misconceptions</a>. <em>Nat Rev Genet</em> <strong>9</strong>, 255–266 (2008). doi:10.1038/nrg2322</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-to-estimate-heritability-from-data" class="slide level2">
+<h2>How to estimate heritability from data</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="geibmh-psychgen-1_files/figure-revealjs/height_parent_offspring-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<p>Plot of child (offspring) height versus the average of their parents’ heights. What is a statistic that can be used to summarise the relationship between these two variables?</p>
+</div></div>
 
 </section></section>
     </div>

@@ -83,6 +83,7 @@ For more on Galton's legacy, see [https://adelphigenetics.org/history/](https://
 ```{r polygenic_quantitative}
 require(ggplot2)
 require(dplyr)
+require(stringr)
 
 # calculate expected genotype frequency for number of increasing alleles
 # use the density of the binomial distribution, for alleles = 0 up to 2 * number of loci. 
@@ -135,7 +136,7 @@ Ronald Fisher reconciled the inheritance of continuous and categorical phenotype
 Adding up effects from a large number of genetic effects to make a continuous phenotype is related to the Central Limit Theorem.
 
 ```{r polygenic_quantitative_10}
-plot_loci(loci_freq, loci == 1)
+plot_loci(loci_freq)
 ```
 
 :::{.notes}
@@ -144,3 +145,72 @@ plot_loci(loci_freq, loci == 1)
 
 - Plomin, R., Haworth, C. & Davis, O. [Common disorders are quantitative traits](https://dx.doi.org/10.1038/nrg2670). *Nat Rev Genet* **10**, 872-878 (2009). doi:10.1038/nrg2670
 :::
+
+# Biometrics
+
+## What are the sources of family resemblance? How do we quantify them numerically?
+
+## Heritability
+
+Proportion of similarity in phenotypes that can be attributed to similarity in genotypes. 
+
+**Model:** Phenotype (P) = Genotype (G) + Environment (E)  
+**Variance decomposition**
+$$var(P) = var(𝐺) + var(𝐸)$$
+**Proportion of variance**
+$$h^2 = \frac{var(𝐺)}{var(𝑃)}$$
+
+:::{.notes}
+- Tenesa, A., Haley, C. [The heritability of human disease: estimation, uses and abuses](https://dx.doi.org/10.1038/nrg3377). _Nat Rev Genet_ **14**, 139–149 (2013). doi:10.1038/nrg3377
+- Visscher, P., Hill, W. & Wray, N. [Heritability in the genomics era — concepts and misconceptions](https://dx.doi.org/10.1038/nrg2322). _Nat Rev Genet_ **9**, 255–266 (2008). doi:10.1038/nrg2322
+:::
+
+## How to estimate heritability from data
+
+```{r}
+#| label: height
+#| echo: false
+require(readr)
+require(dplyr)
+require(ggplot2)
+
+height_data <- read_tsv(here::here("data/galton-stata11/galton-stata11.tab"))
+
+# filter to one offspring per family
+# convert to cm
+# average parental height
+height_singletons <- height_data |>
+  mutate(
+    father_cm = father * 2.54,
+    mother_cm = mother * 2.54,
+    child_cm = height * 2.54
+  ) |>
+  mutate(parents_cm = (father_cm + mother_cm) / 2) |>
+  group_by(family) |>
+  slice_head(n = 1)
+```
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r}
+#| label: height_parent_offspring
+#| fig-width: 5
+#| fig-height: 5
+require(ggplot2)
+
+ggplot(height_singletons, aes(x = parents_cm, y = child_cm)) +
+  geom_point() +
+  scale_x_continuous("Parental height [avg.] (cm)") +
+  scale_y_continuous("Child height (cm)")
+```
+:::
+
+::: {.column width="40%"}
+Plot of child (offspring) height versus the average of their parents' heights. What is a statistic that can be used to summarise the relationship between these two variables?
+:::
+
+::::
+
+
+
