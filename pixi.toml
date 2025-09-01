@@ -1,0 +1,22 @@
+[workspace]
+authors = ["Mark James Adams <mark.adams@ed.ac.uk>"]
+channels = ["conda-forge"]
+name = "LearningFromGeneticData"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+sympy = ">=1.14.0,<2"
+r-dplyr = ">=1.1.4,<2"
+r-ggplot2 = ">=3.5.2,<4"
+r-stringr = ">=1.5.1,<2"
+r-base = ">=4.4.3,<4.5"
+jupyter = ">=1.1.1,<2"
+quarto = ">=1.7.33,<2"
+r-knitr = ">=1.50,<2"
+r-markdown = ">=2.0,<3"
+r-readr = ">=2.1.5,<3"
+r-here = ">=1.0.1,<2"
+r-jsonlite = ">=2.0.0,<3"
