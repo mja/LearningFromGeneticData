@@ -212,5 +212,122 @@ Plot of child (offspring) height versus the average of their parents' heights. W
 
 ::::
 
+## How to estimate heritability from data
 
+:::: {.columns}
 
+::: {.column width="60%"}
+```{r}
+#| label: height_parent_offspring_regress
+#| fig-width: 5
+#| fig-height: 5
+require(ggplot2)
+
+height_parent_offspring_regress_g <- ggplot(height_singletons, aes(x = parents_cm, y = child_cm)) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x, se = FALSE) +
+  scale_x_continuous("Parental height [avg.] (cm)") +
+  scale_y_continuous("Child height (cm)")
+height_parent_offspring_regress_g
+```
+:::
+
+::: {.column width="40%" .fragment}
+$\beta = \frac{\mathrm{cov}(A, B)}{\mathrm{var}(A)}$
+
+Estimate the beta coefficient (slope) for a simple regression from the covariance between predictor ($A$) and outcome ($B$) variable divided by the variance of the predictor ($A$).
+:::
+
+::::
+
+## Simple model of genetic and environmental effects
+
+$$
+P = G + E
+$$
+
+The phenotype value $P$ is influenced by a genetic effect $G$ and and environmental effect $E$. 
+
+:::{.notes}
+For simplicity assume that $P$ is an individual's deviation from the average phenotype in the population.
+:::
+
+## Simple model of genomics
+
+$$
+G = d + s
+$$
+
+Each individual has two copies of the genome, one inherited from each parent. 
+
+:::{.notes}
+Here we label the genome from the mother $d$ and the genome from the father $s$. These are the transmitted genetic effects. 
+:::
+
+## Simple model of inheritance
+
+![](assets/genetic-model.svg)
+
+:::{.notes}
+Each parent also has a copy of the genome which they do not pass on to their child, labelled $d^\prime$ for the mother and $s^\prime$ for the father. These are the non-transmitted genetic effects.
+:::
+
+## Simple model of genetics, environment, and inheritance
+
+Phenotype ($P$) value is the sum of the two genetic values plus an environmental value ($e$).
+
+- Mother's phenotype: $P_d = d + d^\prime + e_d$
+- Father's phenotype: $P_s = s + s^\prime + e_s$
+- Child's phenotype: $P_o = d + s + e_o$
+
+## Regression equation
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r}
+#| label: height_parent_offspring_regress2
+#| fig-width: 5
+#| fig-height: 5
+height_parent_offspring_regress_g
+```
+:::
+
+::: {.column width="40%"}
+
+$\beta = \frac{\mathrm{cov}(A, B)}{\mathrm{var}(A)}$
+
+- $A$ = average of parents' phenotypes
+- $B$ = offspring phenotype
+
+Therefore, $\beta = \frac{\mathrm{cov}(\frac{P_d + P_s}{2}, P_o)}{\mathrm{var}(\frac{P_d + P_s}{2})}$
+:::
+
+::::
+
+## Parent–offspring covariance
+
+$$
+\mathrm{cov}(\frac{P_d + P_s}{2}, P_o)
+$$
+
+$$
+= \mathrm{cov}(\frac{d + d^\prime + e_d + s + s^\prime + e_s}{2}, d + s + e_o)
+$$
+
+## Parent-offspring covariance
+
+Expand the terms. Recall that:
+
+$$
+\mathrm{cov}(A+X,B+Y) = \\
+\mathrm{cov}(A,B) + \mathrm{cov}(A,Y) + \mathrm{cov}(X,B) + \mathrm{cov}(X,Y)
+$$ 
+Thus we can do a pairwise expansion to:
+$$
+= \mathrm{cov}(\frac{d}{2} + \frac{d^\prime}{2} + \frac{e_d}{2} + \frac{s}{2} + \frac{s^\prime}{2} + \frac{e_s}{2}, d + s + e_o)
+$$
+$$
+= \mathrm{cov}(\frac{d}{2}, d) + \mathrm{cov}(\frac{d^\prime}{2}, d) + \dotsm+ \mathrm{cov}(\frac{e_s}{2}, e_o)$$
+	
+## Simplifications and assumptions
