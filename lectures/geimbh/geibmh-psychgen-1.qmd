@@ -7,6 +7,9 @@ format:
     self-contained-math: true
   pdf: default
   gfm: default
+execute:
+  warning: false
+  message: false
 --- 
 
 Mark Adams  
@@ -83,6 +86,7 @@ For more on Galton's legacy, see [https://adelphigenetics.org/history/](https://
 ## Reconciling categorical + continuous genetics = quantitative genetics
 
 ```{r polygenic_quantitative}
+#| echo: false
 require(ggplot2)
 require(dplyr)
 require(stringr)
@@ -138,6 +142,7 @@ Ronald Fisher reconciled the inheritance of continuous and categorical phenotype
 Adding up effects from a large number of genetic effects to make a continuous phenotype is related to the Central Limit Theorem.
 
 ```{r polygenic_quantitative_10}
+#| echo: false
 plot_loci(loci_freq)
 ```
 
@@ -199,6 +204,7 @@ height_singletons <- height_data |>
 #| label: height_parent_offspring
 #| fig-width: 5
 #| fig-height: 5
+#| echo: false
 require(ggplot2)
 
 ggplot(height_singletons, aes(x = parents_cm, y = child_cm)) +
@@ -223,6 +229,7 @@ Plot of child (offspring) height versus the average of their parents' heights. W
 #| label: height_parent_offspring_regress
 #| fig-width: 5
 #| fig-height: 5
+#| echo: false
 require(ggplot2)
 
 height_parent_offspring_regress_g <- ggplot(height_singletons, aes(x = parents_cm, y = child_cm)) +
@@ -291,6 +298,7 @@ Phenotype ($P$) value is the sum of the two genetic values plus an environmental
 #| label: height_parent_offspring_regress2
 #| fig-width: 5
 #| fig-height: 5
+#| echo: false
 height_parent_offspring_regress_g
 ```
 :::
