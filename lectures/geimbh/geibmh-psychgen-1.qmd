@@ -341,3 +341,31 @@ $$
 = \mathrm{cov}(\frac{d}{2}, d) + \mathrm{cov}(\frac{d^\prime}{2}, d) + \dotsm+ \mathrm{cov}(\frac{e_s}{2}, e_o)$$
 	
 ## Simplifications and assumptions
+
+Covariance between a genetic effect and itself
+$$
+\mathrm{cov}(\frac{d}{2}, d), \mathrm{cov}(\frac{s}{2}, s)
+$$
+
+Covariance between genetic effects from the same parent
+$$
+\mathrm{cov}(\frac{d^\prime}{2}, d), \mathrm{cov}(\frac{s^\prime}{2}, s)
+$$
+
+Covariance between genetic effects from different parents
+$$
+\mathrm{cov}(\frac{d^\prime}{2}, s), \mathrm{cov}(\frac{s^\prime}{2}, d)
+$$
+
+## Simplifications and assumptions
+
+Covariance between parent and offspring environment effects
+$$
+\mathrm{cov}(\frac{e_d}{2}, e_o), \mathrm{cov}(\frac{e_s}{2}, e_o)
+$$
+
+Covariance between parental genetic and offspring environmental effects
+$$
+\mathrm{cov}(\frac{d}{2}, e_o), \mathrm{cov}(\frac{s}{2}, e_o)
+$$
+
