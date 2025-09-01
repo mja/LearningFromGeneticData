@@ -2,7 +2,9 @@
 title: Genetics of common complex psychiatric disorders
 author: Mark Adams
 format: 
-  revealjs: default
+  revealjs:
+    embed-resources: true
+    self-contained-math: true
   pdf: default
   gfm: default
 --- 
