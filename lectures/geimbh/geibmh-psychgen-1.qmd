@@ -163,9 +163,9 @@ Proportion of similarity in phenotypes that can be attributed to similarity in g
 
 **Model:** Phenotype (P) = Genotype (G) + Environment (E)  
 **Variance decomposition**
-$$var(P) = var(𝐺) + var(𝐸)$$
+$$\mathrm{var}(P) = \mathrm{var}(𝐺) + \mathrm{var}(𝐸)$$
 **Proportion of variance**
-$$h^2 = \frac{var(𝐺)}{var(𝑃)}$$
+$$h^2 = \frac{\mathrm{var}(𝐺)}{\mathrm{var}(𝑃)}$$
 
 :::{.notes}
 - Tenesa, A., Haley, C. [The heritability of human disease: estimation, uses and abuses](https://dx.doi.org/10.1038/nrg3377). _Nat Rev Genet_ **14**, 139–149 (2013). doi:10.1038/nrg3377
@@ -340,32 +340,160 @@ $$
 $$
 = \mathrm{cov}(\frac{d}{2}, d) + \mathrm{cov}(\frac{d^\prime}{2}, d) + \dotsm+ \mathrm{cov}(\frac{e_s}{2}, e_o)$$
 	
-## Simplifications and assumptions
+## Simplifications
+
+Some terms can be simplified.
 
 Covariance between a genetic effect and itself
 $$
 \mathrm{cov}(\frac{d}{2}, d), \mathrm{cov}(\frac{s}{2}, s)
 $$
 
-Covariance between genetic effects from the same parent
+Simplifies to:
+
+$$
+\mathrm{cov}(\frac{d}{2}, d) = \frac{1}{2}\mathrm{cov}(d, d) = \frac{1}{2}\mathrm{var}(d)
+$$
+$$
+\mathrm{cov}(\frac{s}{2}, s) = \frac{1}{2}\mathrm{cov}(s, s) = \frac{1}{2}\mathrm{var}(s)
+$$
+
+## Assumptions
+
+For some terms we might make an assumption that they are equal to 0.
+
+*Covariance between genetic effects from the same parent*
 $$
 \mathrm{cov}(\frac{d^\prime}{2}, d), \mathrm{cov}(\frac{s^\prime}{2}, s)
 $$
 
-Covariance between genetic effects from different parents
+:::{.notes}
+If there is inbreeding (individual does not have ancestors that are closely related) or assortative mating in the grandparental generation, then genetic effects from the same parent would be expected to have a non-zero covariance.
+:::
+
+*Covariance between genetic effects from different parents*
 $$
 \mathrm{cov}(\frac{d^\prime}{2}, s), \mathrm{cov}(\frac{s^\prime}{2}, d)
 $$
 
-## Simplifications and assumptions
+:::{.notes}
+If there is assortative mating between the parents, then these effects would be expected to covary
+:::
+
+##
 
 Covariance between parent and offspring environment effects
 $$
 \mathrm{cov}(\frac{e_d}{2}, e_o), \mathrm{cov}(\frac{e_s}{2}, e_o)
 $$
 
+:::{.notes}
+If aspects of the parental environment are transmitted as well or if parents and offspring tend to encounter similar environments, then these effects are expected to covary.
+:::
+
 Covariance between parental genetic and offspring environmental effects
 $$
 \mathrm{cov}(\frac{d}{2}, e_o), \mathrm{cov}(\frac{s}{2}, e_o)
 $$
 
+:::{.notes}
+If parental genetic effects shape the environment of the offspring (referred to as indirect genetic effects), then these effects are expected to covary as well.
+:::
+
+##
+
+Thus if we assume there is no
+
+- inbreeding
+- assortative mating
+- indirect genetic effects
+- environmental transmission
+
+then the parent–offspring covariance simplifies to
+
+$$
+\mathrm{cov}(\frac{P_d + P_s}{2}, P_o) = \frac{\mathrm{var}(d) + \mathrm{var}(s)}{2}
+$$
+
+## Parent variance
+
+The denominator in the regression equation was
+$$
+\mathrm{var}(\frac{P_d + P_s}{2})
+$$
+
+##
+
+Using the identity
+$$
+\mathrm{var}(aX + bY) = a^2\mathrm{var}(X) + b^2\mathrm{var}(Y) + 2ab\mathrm{cov}(X, Y)
+$$
+the variance of the average parental phenotypes is:
+$$
+\mathrm{var}(\frac{P_d + P_s}{2}) = \mathrm{var}(\frac{1}{2}P_d + \frac{1}{2} P_s) \\
+= \left(\frac{1}{2}\right)^2\mathrm{var}(P_d) + \left(\frac{1}{2}\right)^2\mathrm{var}(P_s) + 2 \cdot \frac{1}{2} \cdot \frac{1}{2} \mathrm{cov}(P_d, P_s) \\
+= \frac{1}{4}\mathrm{var}(P_d) + \frac{1}{4}\mathrm{var}(P_s) + \frac{1}{2} \mathrm{cov}(P_d, P_s)
+$$
+
+##
+
+If we assume as above that there is no covariation between parental effects ($\mathrm{cov}(P_d, P_s) = 0$), this simplifies to
+
+$$
+= \frac{\mathrm{var}(P_d) + \mathrm{var}(P_s)}{4}
+$$
+
+##
+
+Thus the regression equation is:
+
+$$
+\beta = \frac{\mathrm{cov}(\frac{P_d + P_s}{2}, P_o)}{\mathrm{var}(\frac{P_d + P_s}{2})} \\
+= \frac{\frac{\mathrm{var}(d) + \mathrm{var}(s)}{2}}{\frac{\mathrm{var}(P_d) + \mathrm{var}(P_s)}{4}} \\
+= 2\frac{\mathrm{var}(d) + \mathrm{var}(s)}{\mathrm{var}(P_d) + \mathrm{var}(P_s)}
+$$
+
+##
+
+Previously we defined
+
+$$
+G = d + s
+$$
+thus
+$$
+\mathrm{var}(G) = \mathrm{var}(d) + \mathrm{var}(s)
+$$
+and assume variances in parental phenotypes are equal
+$$
+\mathrm{var}(P_d) = \mathrm{var}(P_s) = \mathrm{var}(P)
+$$
+
+##
+
+Then substitute into the regression equation
+
+$$
+\beta = 2\frac{\mathrm{var}(d) + \mathrm{var}(s)}{\mathrm{var}(P_d) + \mathrm{var}(P_s)} \\
+= 2 \frac{\mathrm{var}(G)}{\mathrm{var}(P) + \mathrm{var}(P)} \\
+= 2 \frac{\mathrm{var}(G)}{2 \mathrm{var}(P)} \\
+= \frac{\mathrm{var}(G)}{\mathrm{var}(P)} \\
+= h^2
+$$
+
+:::{.notes}
+In other words, the beta coefficient from the regression of offspring phenotype on average parent phenotype yields an estimate of the heritability!
+:::
+
+## Height data
+
+```{r}
+#| label: height_cov_var
+#| echo: false
+height_parent_child_cov <- round(with(height_singletons, cov(parents_cm, child_cm)), 2)
+height_parent_var <- round(with(height_singletons, var(parents_cm)), 2)
+```
+
+- $\mathrm{cov}(\frac{P_d + P_s}{2}, P_o) =$  `r height_parent_child_cov`
+- $\mathrm{var}(\frac{P_d + P_s}{2}) =$  `r height_parent_var`
+- $\hat{h}^2 =$  `r height_parent_child_cov` / `r height_parent_var` = `r round(height_parent_child_cov / height_parent_var, 2)`
