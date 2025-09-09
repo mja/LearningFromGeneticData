@@ -430,8 +430,12 @@ $$
 $$
 the variance of the average parental phenotypes is:
 $$
-\mathrm{var}(\frac{P_d + P_s}{2}) = \mathrm{var}(\frac{1}{2}P_d + \frac{1}{2} P_s) \\
-= \left(\frac{1}{2}\right)^2\mathrm{var}(P_d) + \left(\frac{1}{2}\right)^2\mathrm{var}(P_s) + 2 \cdot \frac{1}{2} \cdot \frac{1}{2} \mathrm{cov}(P_d, P_s) \\
+\mathrm{var}(\frac{P_d + P_s}{2}) = \mathrm{var}(\frac{1}{2}P_d + \frac{1}{2} P_s)
+$$
+$$
+= \left(\frac{1}{2}\right)^2\mathrm{var}(P_d) + \left(\frac{1}{2}\right)^2\mathrm{var}(P_s) + 2 \cdot \frac{1}{2} \cdot \frac{1}{2} \mathrm{cov}(P_d, P_s)
+$$
+$$
 = \frac{1}{4}\mathrm{var}(P_d) + \frac{1}{4}\mathrm{var}(P_s) + \frac{1}{2} \mathrm{cov}(P_d, P_s)
 $$
 
@@ -487,6 +491,10 @@ In other words, the beta coefficient from the regression of offspring phenotype 
 
 ## Height data
 
+:::{.notes}
+Using the height data, we can calculate the mid-parent–offspring covariance and mid-parent variance and then use that as an estimate for the heritability.
+:::
+
 ```{r}
 #| label: height_cov_var
 #| echo: false
@@ -497,3 +505,36 @@ height_parent_var <- round(with(height_singletons, var(parents_cm)), 2)
 - $\mathrm{cov}(\frac{P_d + P_s}{2}, P_o) =$  `r height_parent_child_cov`
 - $\mathrm{var}(\frac{P_d + P_s}{2}) =$  `r height_parent_var`
 - $\hat{h}^2 =$  `r height_parent_child_cov` / `r height_parent_var` = `r round(height_parent_child_cov / height_parent_var, 2)`
+
+##
+
+Parent and offspring phenotypes become more highly correlated as heritability increases. 
+
+```{r}
+#| label: parent_offspring_h2_sim
+#| echo: false
+require(ggplot2)
+require(dplyr)
+
+# simulate data with different heritabilities
+n_sim <- 500
+parents <- rnorm(n_sim, mean = 0, sd = 1)
+children_h201 <- 0.1 * parents + rnorm(n_sim, mean=0, sqrt(1 - 0.1))
+children_h209 <- 0.9 * parents + rnorm(n_sim, mean=0, sqrt(1 - 0.9))
+
+sim01 <- data.frame(parents = parents, children = children_h201, h2 = "h^2 = 0.1")
+sim09 <- data.frame(parents = parents, children = children_h209, h2 = "h^2 = 0.9")
+
+ggplot(bind_rows(sim01, sim09), aes(x = parents, y = children)) +
+  geom_point() +
+  stat_smooth(method = lm, formula = y ~ x, se = FALSE) +
+  facet_grid(cols = vars(h2)) +
+  scale_x_continuous("mid-parent phenotyic value") +
+  scale_y_continuous("offspring phenotypic value") +
+  theme_classic()
+
+```
+
+:::{.notes}
+- Wray, N. & Visscher, P. (2008) [Estimating trait heritability](https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/). Nature Education 1(1):29
+:::
