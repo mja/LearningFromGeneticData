@@ -558,7 +558,10 @@ Wray, N. & Visscher, P. (2008) [Estimating trait heritability](https://www.natur
 
 :::{.column}
 
+
+::: {.content-visible unless-format="pdf"}
 ![](assets/underground.png)
+:::
 
 :::
 
