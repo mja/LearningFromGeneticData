@@ -1,0 +1,11 @@
+Relationship,Relatedness,Relative Risk,l95,u95
+Parent,0.5,9.43,8.26,10.8
+Offspring,0.5,10.3,8.76,12.2
+Full siblings,0.5,8.55,7.61,9.6
+Half-siblings,0.5,2.52,1.56,4.05
+Nephews/nieces,0.25,2.71,2.22,3.31
+Grandchildren,0.25,2.95,1.81,4.81
+Uncles/aunts,0.25,3.04,2.39,3.87
+Grandparents,0.25,3.8,2.75,5.26
+First cousin,0.125,2.29,1.71,3.07
+Partner,0,8.61,6.77,10.9

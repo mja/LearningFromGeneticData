@@ -1,0 +1,3 @@
+Data from: Fernandez-Pujals AM, Adams MJ, Thomson P, McKechanie AG, Blackwood DHR, et al. (2015) Epidemiology and Heritability of Major Depressive Disorder, Stratified by Age of Onset, Sex, and Illness Course in Generation Scotland: Scottish Family Health Study (GS:SFHS). PLOS ONE 10(11): e0142197. doi[10.1371/journal.pone.0142197](https://doi.org/10.1371/journal.pone.0142197).
+
+Correlation between depression scores of different family dyads were calculated from a large set of families in Scotland. Depression was assessed using the Structured Clinical Interview for DSM-IV Non-Patient Version (SCID).

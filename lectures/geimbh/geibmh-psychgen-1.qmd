@@ -339,7 +339,8 @@ $$
 $$
 $$
 = \mathrm{cov}(\frac{d}{2}, d) + \mathrm{cov}(\frac{d^\prime}{2}, d) + \dotsm+ \mathrm{cov}(\frac{e_s}{2}, e_o)$$
-	
+$$
+
 ## Simplifications
 
 Some terms can be simplified.
@@ -402,14 +403,7 @@ If parental genetic effects shape the environment of the offspring (referred to 
 
 ##
 
-Thus if we assume there is no
-
-- inbreeding
-- assortative mating
-- indirect genetic effects
-- environmental transmission
-
-then the parent–offspring covariance simplifies to
+Using those assumptions the parent–offspring covariance simplifies to
 
 $$
 \mathrm{cov}(\frac{P_d + P_s}{2}, P_o) = \frac{\mathrm{var}(d) + \mathrm{var}(s)}{2}
@@ -516,25 +510,147 @@ Parent and offspring phenotypes become more highly correlated as heritability in
 require(ggplot2)
 require(dplyr)
 
+set.seed(751889)
+
 # simulate data with different heritabilities
 n_sim <- 500
-parents <- rnorm(n_sim, mean = 0, sd = 1)
-children_h201 <- 0.1 * parents + rnorm(n_sim, mean=0, sqrt(1 - 0.1))
-children_h209 <- 0.9 * parents + rnorm(n_sim, mean=0, sqrt(1 - 0.9))
+# if phenotypic variance is 1, variance of average parents is 0.5
+parents <- rnorm(n_sim, mean = 0, sd = sqrt(0.5))
+h2 <- list(0.1, 0.5, 0.9)
 
-sim01 <- data.frame(parents = parents, children = children_h201, h2 = "h^2 = 0.1")
-sim09 <- data.frame(parents = parents, children = children_h209, h2 = "h^2 = 0.9")
+sims <- lapply(
+  h2,
+  function(h2) {
+      # simulate children from mid-parent, plus segregation and environment
+      # variance
+      children <- h2 * parents + rnorm(n_sim, mean = 0, sd = sqrt(1 - h2/2))
+      data.frame(parents = parents, children = children, h2 = paste("h^2 =", h2))
+  }
+)
 
-ggplot(bind_rows(sim01, sim09), aes(x = parents, y = children)) +
+ggplot(bind_rows(sims), aes(x = parents, y = children)) +
   geom_point() +
   stat_smooth(method = lm, formula = y ~ x, se = FALSE) +
   facet_grid(cols = vars(h2)) +
   scale_x_continuous("mid-parent phenotyic value") +
   scale_y_continuous("offspring phenotypic value") +
   theme_classic()
+```
+
+
+
+:::{.notes}
+
+Wray, N. & Visscher, P. (2008) [Estimating trait heritability](https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/). Nature Education 1(1):29
+
+:::
+
+
+##
+
+:::: {.columns}
+
+:::{.column}
+
+**Mini review: What assumptions have we made when estimating $h^2$?**
+
+:::
+
+:::{.column}
+
+![](assets/underground.png)
+
+:::
+
+::::
+
+:::{.notes}
+- Parents' environments are not similar: $\mathrm{cov}(e_d, e_s) = 0$
+- No assortative mating: $\mathrm{cov}(d, s) = 0$
+- Parents do not transmit their environments: $\mathrm{cov}(e_o, e_d) = 0$, $\mathrm{cov}(e_o, e_s) = 0$
+- No gene-environment correlation: $\mathrm{cov}(d, e_d) = 0$, $\mathrm{cov}(s, e_s) = 0$
+- No genetic nature: $\mathrm{cov}(d, e_o) = 0$, $\mathrm{cov}(s, e_o) = 0$
+- No inbreeding: $\mathrm{cov}(d, d^\prime) = 0$, $\mathrm{cov}(s, s^\prime) = 0$
+- Genetic effects are additive: $Y = a + a^\prime + e$
+- Genetic influence is the same for both sexes: $\mathrm{var}(d + d^\prime) =  var(s + s^\prime)$
+:::
+
+## Generalising to other relatives
+
+Heritability can also be estimated from resemblance between different types of related pairs. The general equation is:
+
+$$
+h^2 = \frac{b}{r}
+$$
+
+- $b$ = regression coefficient
+- $r$ = coefficient of additive variance ("relatedness")
+
+## Example data: depression scores
+
+Correlation of depression scores for different pairs of relatives
+
+```{r}
+#| label: amf_depression
+#| echo: false
+require(readr)
+require(dplyr)
+require(ggplot2)
+require(ggrepel)
+require(here)
+
+depression_dyads <- read_csv(here::here("data/fernandez-pujals-depression/fernandez-pujals-depression.csv"))
+
+ggplot(depression_dyads, aes(x =r, y = b, label = `Relationship dyad`)) +
+  geom_point() +
+  geom_label_repel() +
+  scale_x_continuous(breaks=c(0, 0.125, 0.25, 0.5))
+```
+
+:::{.notes}
+
+Fernandez-Pujals AM et al. (2015) Epidemiology and Heritability of Major Depressive Disorder, Stratified by Age of Onset, Sex, and Illness Course in Generation Scotland: Scottish Family Health Study (GS:SFHS). *PLOS ONE* 10(11): e0142197. doi:[10.1371/journal.pone.0142197](https://dx.doi.org/10.1371/journal.pone.0142197)
+
+:::
+
+## Recurrance risk to relatives
+
+$$
+\lambda_\mathrm{R} = \frac{P(\mathrm{affected} | \mathrm{relative affected})}{P(\mathrm{affected in population})} = \frac{K_\mathrm{R}}{K}
+$$
+
+:::{.notes}
+Represents how much more likely to are to be affected by a disorder given that a relative is affected, compared to someone from the general population.
+:::
+
+## 
+
+Example:
+
+- $K_\mathrm{sib} = P(\mathrm{affected} | \mathrm{sibling affected}) = 0.09$
+- $K = P(\mathrm{affected in population}) = 0.02$
+- $\frac{K_\mathrm{sib}}{K} = \frac{0.09}{0.02} = 4.5$
+
+## Recurrance risk for schizophrenia
+
+```{r}
+#| label: scz_rr
+#| echo: false
+require(readr)
+require(ggplot2)
+
+scz_rr <- read_csv(here::here("data/lichtenstein-scz/lichtenstein-scz.csv"))
+
+ggplot(scz_rr, aes(x = factor(Relationship, levels = rev(Relationship)), y = `Relative Risk`, ymin = l95, ymax = u95)) +
+  geom_pointrange() +
+  scale_x_discrete("") +
+  coord_flip() +
+  theme_classic()
 
 ```
 
 :::{.notes}
-- Wray, N. & Visscher, P. (2008) [Estimating trait heritability](https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/). Nature Education 1(1):29
+
+Lichtenstein, P. et al. Recurrence risks for schizophrenia in a Swedish National Cohort. Psychol. Med. 36, 1417–1425 (2006). doi:[10.1017/s0033291706008385](https://dx.doi.org/10.1017/s0033291706008385)
+  
 :::
