@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="344" version="1.2">
+  <defs>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#d1b8b8"/>
+      <stop offset="1" stop-color="#af7373"/>
+    </linearGradient>
+    <linearGradient id="b">
+      <stop offset="0" stop-color="#af7272"/>
+      <stop offset="1" stop-color="#e1caca"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="i" x1="82.196281" x2="89.35231" y1="198.69635" y2="205.0786" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#b" id="j" x1="85.700127" x2="82.196281" y1="203.42194" y2="198.69635" gradientUnits="userSpaceOnUse"/>
+  </defs>
+  <g font-family="DejaVu Sans" font-size="26" font-weight="400" text-anchor="middle">
+    <text xml:space="preserve" x="120.50265" y="23.84049" style="text-align:center;line-height:100%;-inkscape-font-specification:DejaVu Sans"><tspan x="124.10814" y="23.84049">Identical</tspan><tspan x="120.50265" y="49.840492">(Monozygotic)</tspan></text>
+    <text xml:space="preserve" x="354.33609" y="23.831921" style="text-align:center;line-height:100%;-inkscape-font-specification:DejaVu Sans" transform="scale(1.00544 .99459)"><tspan x="357.94156" y="23.831921">Fraternal</tspan><tspan x="357.94156" y="49.831921">(Dizygotic)</tspan></text>
+  </g>
+  <text xml:space="preserve" x="9.712822" y="79.741096" font-family="DejaVu Sans" font-size="20" font-weight="400" style="text-align:start;line-height:100%;-inkscape-font-specification:DejaVu Sans" transform="scale(1.01729 .983)"><tspan x="9.712822" y="79.741096" font-size="18" style="text-align:start;line-height:100%;-inkscape-font-specification:DejaVu Sans">Sperm</tspan></text>
+  <path id="c" fill="none" stroke="#000" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" stroke-width="1.27849841" d="M73.177867 73.919661h40.909063"/>
+  <text xml:space="preserve" x="26.18433" y="107.78526" font-family="DejaVu Sans" font-size="20" font-weight="400" style="text-align:start;line-height:100%;-inkscape-font-specification:DejaVu Sans"><tspan x="26.18433" y="107.78526" font-size="18" style="text-align:start;line-height:100%;-inkscape-font-specification:DejaVu Sans">Egg</tspan></text>
+  <use xlink:href="#c" width="500" height="344" transform="matrix(.86551 0 0 1 .50121812 28.914568)"/>
+  <g font-family="DejaVu Sans" font-size="22" font-weight="400">
+    <text xml:space="preserve" x="20.426594" y="339.95093" style="text-align:start;line-height:100%;-inkscape-font-specification:DejaVu Sans" transform="scale(1.01119 .98894)"><tspan x="20.426594" y="339.95093" style="text-align:start;line-height:100%;-inkscape-font-specification:DejaVu Sans">(Shared placenta)</tspan></text>
+    <text xml:space="preserve" x="240.47755" y="340.26501" style="text-align:start;line-height:100%;-inkscape-font-specification:DejaVu Sans" transform="scale(1.01147 .98866)"><tspan x="240.47755" y="340.26501" style="text-align:start;line-height:100%;-inkscape-font-specification:DejaVu Sans">(Separate placentas)</tspan></text>
+  </g>
+  <use xlink:href="#d" width="500" height="344" transform="translate(-186.69068 -.00390625)"/>
+  <use xlink:href="#e" width="500" height="344" transform="rotate(30 203.02178155 -164.80720395)"/>
+  <use xlink:href="#e" width="500" height="344" transform="rotate(-30 224.35618778 532.06254103)"/>
+  <use xlink:href="#f" width="500" height="344" transform="translate(-225.69645 -.0279536)"/>
+  <use xlink:href="#f" width="500" height="344" transform="translate(-147.04585 -.0279536)"/>
+  <g id="k">
+    <g id="d" transform="translate(174.57143 27.131783)">
+      <path fill="#b97c7c" d="M151.41667 69.249997a18.75 18.750001 0 1 1-37.5 0 18.75 18.750001 0 1 1 37.5 0z"/>
+      <path fill="#6a3f3f" d="M138.00346 56.176165a5.33679 5.5440434 0 1 1-10.67358 0 5.33679 5.5440434 0 1 1 10.67358 0z"/>
+      <path fill="none" stroke="#6a3f3f" stroke-width="1.29999995" d="M131.531 31.564767c6.28993 4.836603-2.9328 8.464498 1.24352 19.689119"/>
+      <path id="h" fill="#721646" fill-opacity="1" stroke="none" d="M131.03919 91h3.48837v36h-3.48837V91zm1.63283 39.48863c-1.26964-2.20379-2.34156-4.49004-3.73754-6.64153l-5.88702-6.34728c3.10309.65694 6.17812 1.39571 9.1507 2.35411 1.62599.15907 3.18156-.78969 4.78948-1.0641 1.74363-.45307 3.50922-.90898 5.29825-1.21232-2.06473 2.48002-4.35846 4.85574-6.27609 7.40332-1.11259 1.83593-2.22519 3.67187-3.33778 5.5078z"/>
+      <path fill="#cdcdcd" d="M158.66667 157.5a24 25.5 0 1 1-48 0 24 25.5 0 1 1 48 0z" transform="matrix(1.02068 0 0 .9775 -4.7846909 2.3757664)"/>
+      <g id="g">
+        <path fill="#b97c7c" d="M154.69133 156.50389a11.187125 19.615066 0 0 1-22.37425 0 11.187125 19.615066 0 1 1 22.37425 0z"/>
+        <path fill="#6a3f3f" d="M148.04894 156.84504a5.4187626 5.2875399 0 1 1-10.83752 0 5.4187626 5.2875399 0 1 1 10.83752 0z"/>
+      </g>
+      <use xlink:href="#g" width="500" height="344" transform="matrix(-1 0 0 1 265.32327 0)"/>
+    </g>
+    <use xlink:href="#h" id="e" width="500" height="344" transform="matrix(.4924 0 0 .52406 241.40625 165.28957)"/>
+    <g id="f">
+      <path fill="url(#i)" d="M93.450192 198.69635a11.253911 9.9718199 0 1 1-22.507822 0 11.253911 9.9718199 0 1 1 22.507822 0z" transform="matrix(2.58228 0 0 3.55714 94.61377 -433.240877)"/>
+      <path fill="url(#j)" d="M93.450192 198.69635a11.253911 9.9718199 0 1 1-22.507822 0 11.253911 9.9718199 0 1 1 22.507822 0z" transform="matrix(2.48101 0 0 3.41429 103.22235 -404.855687)"/>
+    </g>
+  </g>
+  <use xlink:href="#k" width="500" height="344" transform="translate(106.03006)"/>
+</svg>

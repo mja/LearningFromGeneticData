@@ -293,7 +293,10 @@ Phenotype ($P$) value is the sum of the two genetic values plus an environmental
 
 :::: {.columns}
 
+
+
 ::: {.column width="60%"}
+::: {.content-visible unless-format="pdf"}
 ```{r}
 #| label: height_parent_offspring_regress2
 #| fig-width: 5
@@ -301,6 +304,7 @@ Phenotype ($P$) value is the sum of the two genetic values plus an environmental
 #| echo: false
 height_parent_offspring_regress_g
 ```
+:::
 :::
 
 ::: {.column width="40%"}
@@ -600,7 +604,6 @@ require(readr)
 require(dplyr)
 require(ggplot2)
 require(ggrepel)
-require(here)
 
 depression_dyads <- read_csv(here::here("data/fernandez-pujals-depression/fernandez-pujals-depression.csv"))
 
@@ -647,13 +650,99 @@ scz_rr <- read_csv(here::here("data/lichtenstein-scz/lichtenstein-scz.csv"))
 ggplot(scz_rr, aes(x = factor(Relationship, levels = rev(Relationship)), y = `Relative Risk`, ymin = l95, ymax = u95)) +
   geom_pointrange() +
   scale_x_discrete("") +
-  coord_flip() +
+  scale_y_continuous(breaks = 1:12) +
+  coord_flip(ylim = c(1, 12)) +
   theme_classic()
 
 ```
 
 :::{.notes}
+Recurrance risk to relatives for schizophrenia in Sweden, which has a baseline risk of $K = 0.047$%.
 
 Lichtenstein, P. et al. Recurrence risks for schizophrenia in a Swedish National Cohort. Psychol. Med. 36, 1417–1425 (2006). doi:[10.1017/s0033291706008385](https://dx.doi.org/10.1017/s0033291706008385)
   
 :::
+
+## Recurrance risk and heritability
+
+- Code $\mathrm{unaffected} = 0, \mathrm{unaffected} = 1$
+- If population prevalence is $K$, then phenotypic variance is $K(1-K)$ (Bernoulli distribution)
+
+##
+
+- $Y$ = score of individual (proband)
+- $Y_\mathrm{R}$ = score of relative of proband
+- Expectation: $E[Y] = E[Y_\mathrm{R}] = K$
+- $K_\mathrm{R} = E[Y_\mathrm{R} | Y = 1]$
+- Probability that both $Y$ and $Y_\mathrm{R}$ = 1: $E[YY_\mathrm{R}] = K \times K_\mathrm{R}$
+
+$$
+\mathrm{cov}(Y, Y_\mathrm{R}) = E[YY_\mathrm{R}] - E[Y] E[Y_\mathrm{R}] \\
+= K \times K_\mathrm{R} - K^2 \\
+$$
+
+:::{.notes}
+
+- James, J. W. Frequency in relatives for an all-or-none trait. Ann. Hum. Genet. 35, 47–49 (1971). doi:[10.1111/j.1469-1809.1956.tb01377.x](https://doi.org/10.1111/j.1469-1809.1956.tb01377.x)
+- Risch N. Linkage strategies for genetically complex traits. I. Multilocus models. Am J Hum Genet. 1990 Feb;46(2):222-8. PMID: 2301392
+
+:::
+  
+## 
+
+::: {.content-visible unless-format="pdf"}
+$$
+\mathrm{cov}(Y, Y_\mathrm{R}) = E[YY_\mathrm{R}] - E[Y] E[Y_\mathrm{R}]
+$$
+:::
+
+$$
+= K \times K_\mathrm{R} - K^2 \\
+= K(K_\mathrm{R} - K) \\
+= K^2 (\frac{K_\mathrm{R}}{K} - 1) \\
+= K^2 (\lambda_\mathrm{R} - 1)
+$$
+
+## Heritability estimate
+
+$$
+h^2 = \frac{\mathrm{cov}_\mathrm{R}}{rV_\mathrm{P}} \\
+= \frac{K^2 (\lambda_\mathrm{R} - 1)}{rK(1-K)} \\
+= \frac{K (\lambda_\mathrm{R} - 1)}{r(1-K)} \\
+$$
+
+## Estimating environmental effects
+
+Contrast pairs of relatives that have comparable environmental similarity but different genetic similarity.
+
+![](assets/Identical-fraternal-sperm-egg.svg)
+
+- Monozygotic (MZ) twins $r = 1.0$
+- Dizygotic (DZ) twins $r = 0.5$
+
+:::{.notes}
+[Zygote development figure](https://commons.wikimedia.org/wiki/File:Identical-fraternal-sperm-egg.svg) CC-BY-SA Trikly.
+:::
+
+## Twin correlations
+
+MZ twins: $t(\mathrm{MZ}) = h^2 + c^2$
+
+DZ twins: $t(\mathrm{DZ}) = \frac{1}{2}h^2 + c^2$  
+
+##
+
+### Solve for genetic similarity ($h^2$)
+
+$$t(\mathrm{MZ}) = h^2 + [t(\mathrm{DZ}) - \frac{1}{2}h^2]$$
+$$\frac{1}{2}h^2 = t(\mathrm{MZ}) - t(\mathrm{DZ})$$
+$$h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})]$$
+
+##
+
+### Solve for shared environment similarity ($c^2$)
+
+$$t(\mathrm{MZ}) = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] + c^2$$
+$$t(\mathrm{MZ}) = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] = c^2$$
+$$c^2 = t(\mathrm{MZ}) - 2t(\mathrm{MZ}) + 2t(\mathrm{DZ})$$
+$$c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ})$$
