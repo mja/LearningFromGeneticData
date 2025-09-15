@@ -734,15 +734,77 @@ DZ twins: $t(\mathrm{DZ}) = \frac{1}{2}h^2 + c^2$
 
 ### Solve for genetic similarity ($h^2$)
 
-$$t(\mathrm{MZ}) = h^2 + [t(\mathrm{DZ}) - \frac{1}{2}h^2]$$
-$$\frac{1}{2}h^2 = t(\mathrm{MZ}) - t(\mathrm{DZ})$$
-$$h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})]$$
+Start with the MZ twin equation:
+
+$$
+t(\mathrm{MZ}) = h^2 + c^2
+$$
+
+Take the DZ twin correlation and solve for $c^2$
+
+$$
+t(\mathrm{DZ}) = \frac{1}{2}h^2 + c^2 \\
+c^2 = t(\mathrm{DZ}) - \frac{1}{2}h^2
+$$
 
 ##
 
-### Solve for shared environment similarity ($c^2$)
+Substitute $c^2$ into the MZ equation
 
-$$t(\mathrm{MZ}) = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] + c^2$$
-$$t(\mathrm{MZ}) = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] = c^2$$
-$$c^2 = t(\mathrm{MZ}) - 2t(\mathrm{MZ}) + 2t(\mathrm{DZ})$$
-$$c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ})$$
+$$
+t(\mathrm{MZ}) = h^2 + \underbrace{c^2} \\
+t(\mathrm{MZ}) = h^2 + [t(\mathrm{DZ}) - \frac{1}{2}h^2]
+$$
+
+##
+
+Solve for $h^2$
+
+$$
+t(\mathrm{MZ}) = h^2 + t(\mathrm{DZ}) - \frac{1}{2}h^2 \\
+t(\mathrm{MZ}) = t(\mathrm{DZ}) + h^2 - \frac{1}{2}h^2 \\
+t(\mathrm{MZ}) = t(\mathrm{DZ}) + \frac{1}{2}h^2 \\
+\frac{1}{2}h^2 = t(\mathrm{MZ}) - t(\mathrm{DZ}) \\
+h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})]
+$$
+
+##
+
+Substitute $h^2$ into MZ equation and solve for shared environment similarity ($c^2$)
+
+$$
+t(\mathrm{MZ}) = \underbrace{h^2} + c^2 \\
+t(\mathrm{MZ}) = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] + c^2 \\
+t(\mathrm{MZ}) - 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] = c^2 \\
+c^2 = t(\mathrm{MZ}) - 2t(\mathrm{MZ}) + 2t(\mathrm{DZ}) \\
+c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ})
+$$
+
+## 
+
+Therefore from MZ and DZ twin correlations we can estimate:
+
+$$
+h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] \\
+c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ})
+$$
+
+```{r}
+#| label: twins_cor
+#| echo: false
+require(tibble)
+require(ggplot2)
+
+twins_ac = tribble(
+  ~Twin, ~Effect, ~Similarity,
+  "MZ", "A", 0.5,
+  "MZ", "C", 0.25,
+  "DZ", "A", 0.25,
+  "DZ", "C", 0.25
+)
+
+ggplot(twins_ac, aes(x = Twin, y = Similarity, fill = Effect)) +
+  geom_col() +
+  theme_minimal() +
+  scale_y_continuous(breaks=c(0, 0.25, 0.5, 0.75))
+```
