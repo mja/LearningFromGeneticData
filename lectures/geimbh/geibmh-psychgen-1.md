@@ -114,73 +114,6 @@ For more on Galton’s legacy, see <https://adelphigenetics.org/history/>
 
 ## Reconciling categorical + continuous genetics = quantitative genetics
 
-``` r
-require(ggplot2)
-```
-
-    Loading required package: ggplot2
-
-``` r
-require(dplyr)
-```
-
-    Loading required package: dplyr
-
-
-    Attaching package: 'dplyr'
-
-    The following objects are masked from 'package:stats':
-
-        filter, lag
-
-    The following objects are masked from 'package:base':
-
-        intersect, setdiff, setequal, union
-
-``` r
-require(stringr)
-```
-
-    Loading required package: stringr
-
-``` r
-# calculate expected genotype frequency for number of increasing alleles
-# use the density of the binomial distribution, for alleles = 0 up to 2 * number of loci. 
-# assume each allele has the same frequency of 50% (for simplicity)
-n_allele_freq <- function(n_loci) {
-  alleles <- seq(from = 0, to = 2*n_loci)
-  freq <- dbinom(alleles, size = 2*n_loci, prob = 0.5)
-  data.frame(alleles, freq, loci = n_loci)
-}
-
-number_of_loci <- c(1, 2, 3, 10)
-loci_freq <- bind_rows(lapply(number_of_loci, n_allele_freq))
-
-loci_labeller <- function(string) {
-  n_loci <- as.numeric(string)
-  if_else(
-    n_loci == 1, 
-    true = "1 locus",
-    false = str_c(string, "loci", sep = " "))
-}
-plot_loci <- function(loci_freq) {
-  ggplot(loci_freq, aes(x = alleles, y = freq)) + geom_col() +
-  facet_grid(
-    . ~ loci,
-    scales = "free_x",
-    space = "free_x",
-    labeller = labeller(loci = loci_labeller)
-  ) +
-  scale_x_continuous("Number of phenotype increasing alleles") +
-  scale_y_continuous("Genotype frequency") +
-  theme_linedraw()
-}
-
-plot_loci(
-  filter(loci_freq, loci == 1)
-)
-```
-
 ![](geibmh-psychgen-1_files/figure-commonmark/polygenic_quantitative-1.png)
 
 <!-- ![](assets/Fisher-Supposition.png) -->
@@ -210,10 +143,6 @@ categorical genes. The term “variance” comes from Fisher’s discoveries.
 
 Adding up effects from a large number of genetic effects to make a
 continuous phenotype is related to the Central Limit Theorem.
-
-``` r
-plot_loci(loci_freq)
-```
 
 ![](geibmh-psychgen-1_files/figure-commonmark/polygenic_quantitative_10-1.png)
 
@@ -253,10 +182,14 @@ plot_loci(loci_freq)
 ## Heritability
 
 Proportion of similarity in phenotypes that can be attributed to
-similarity in genotypes. **Model:** Phenotype (P) = Genotype (G) +
-Environment (E)  
-**Variance decomposition** $$var(P) = var(𝐺) + var(𝐸)$$ **Proportion of
-variance** $$h^2 = \frac{var(𝐺)}{var(𝑃)}$$
+similarity in genotypes.
+
+**Model:** Phenotype (P) = Genotype (G) + Environment (E)  
+**Variance decomposition**
+$$\mathrm{var}(P) = \mathrm{var}(𝐺) + \mathrm{var}(𝐸)$$ **Proportion of
+variance** $$h^2 = \frac{\mathrm{var}(𝐺)}{\mathrm{var}(𝑃)}$$
+
+<div class="notes">
 
 - Tenesa, A., Haley, C. [The heritability of human disease: estimation,
   uses and abuses](https://dx.doi.org/10.1038/nrg3377). *Nat Rev Genet*
@@ -264,3 +197,582 @@ variance** $$h^2 = \frac{var(𝐺)}{var(𝑃)}$$
 - Visscher, P., Hill, W. & Wray, N. [Heritability in the genomics era —
   concepts and misconceptions](https://dx.doi.org/10.1038/nrg2322). *Nat
   Rev Genet* **9**, 255–266 (2008). doi:10.1038/nrg2322
+
+</div>
+
+## How to estimate heritability from data
+
+<div class="columns">
+
+<div class="column" width="60%">
+
+![](geibmh-psychgen-1_files/figure-commonmark/height_parent_offspring-1.png)
+
+</div>
+
+<div class="column" width="40%">
+
+Plot of child (offspring) height versus the average of their parents’
+heights. What is a statistic that can be used to summarise the
+relationship between these two variables?
+
+</div>
+
+</div>
+
+## How to estimate heritability from data
+
+<div class="columns">
+
+<div class="column" width="60%">
+
+![](geibmh-psychgen-1_files/figure-commonmark/height_parent_offspring_regress-1.png)
+
+</div>
+
+<div class="column fragment" width="40%">
+
+$\beta = \frac{\mathrm{cov}(A, B)}{\mathrm{var}(A)}$
+
+Estimate the beta coefficient (slope) for a simple regression from the
+covariance between predictor ($A$) and outcome ($B$) variable divided by
+the variance of the predictor ($A$).
+
+</div>
+
+</div>
+
+## Simple model of genetic and environmental effects
+
+$$
+P = G + E
+$$
+
+The phenotype value $P$ is influenced by a genetic effect $G$ and and
+environmental effect $E$.
+
+<div class="notes">
+
+For simplicity assume that $P$ is an individual’s deviation from the
+average phenotype in the population.
+
+</div>
+
+## Simple model of genomics
+
+$$
+G = d + s
+$$
+
+Each individual has two copies of the genome, one inherited from each
+parent.
+
+<div class="notes">
+
+Here we label the genome from the mother $d$ and the genome from the
+father $s$. These are the transmitted genetic effects.
+
+</div>
+
+## Simple model of inheritance
+
+![](assets/genetic-model.svg)
+
+<div class="notes">
+
+Each parent also has a copy of the genome which they do not pass on to
+their child, labelled $d^\prime$ for the mother and $s^\prime$ for the
+father. These are the non-transmitted genetic effects.
+
+</div>
+
+## Simple model of genetics, environment, and inheritance
+
+Phenotype ($P$) value is the sum of the two genetic values plus an
+environmental value ($e$).
+
+- Mother’s phenotype: $P_d = d + d^\prime + e_d$
+- Father’s phenotype: $P_s = s + s^\prime + e_s$
+- Child’s phenotype: $P_o = d + s + e_o$
+
+## Regression equation
+
+<div class="columns">
+
+<div class="column" width="60%">
+
+![](geibmh-psychgen-1_files/figure-commonmark/height_parent_offspring_regress2-1.png)
+
+</div>
+
+<div class="column" width="40%">
+
+$\beta = \frac{\mathrm{cov}(A, B)}{\mathrm{var}(A)}$
+
+- $A$ = average of parents’ phenotypes
+- $B$ = offspring phenotype
+
+Therefore,
+$\beta = \frac{\mathrm{cov}(\frac{P_d + P_s}{2}, P_o)}{\mathrm{var}(\frac{P_d + P_s}{2})}$
+
+</div>
+
+</div>
+
+## Parent–offspring covariance
+
+$$
+\mathrm{cov}(\frac{P_d + P_s}{2}, P_o)
+$$
+
+$$
+= \mathrm{cov}(\frac{d + d^\prime + e_d + s + s^\prime + e_s}{2}, d + s + e_o)
+$$
+
+## Parent-offspring covariance
+
+Expand the terms. Recall that:
+
+$$
+\mathrm{cov}(A+X,B+Y) = \\
+\mathrm{cov}(A,B) + \mathrm{cov}(A,Y) + \mathrm{cov}(X,B) + \mathrm{cov}(X,Y)
+$$ Thus we can do a pairwise expansion to: $$
+= \mathrm{cov}(\frac{d}{2} + \frac{d^\prime}{2} + \frac{e_d}{2} + \frac{s}{2} + \frac{s^\prime}{2} + \frac{e_s}{2}, d + s + e_o)
+$$ $$
+= \mathrm{cov}(\frac{d}{2}, d) + \mathrm{cov}(\frac{d^\prime}{2}, d) + \dotsm+ \mathrm{cov}(\frac{e_s}{2}, e_o)$$
+\$\$
+
+## Simplifications
+
+Some terms can be simplified.
+
+Covariance between a genetic effect and itself $$
+\mathrm{cov}(\frac{d}{2}, d), \mathrm{cov}(\frac{s}{2}, s)
+$$
+
+Simplifies to:
+
+$$
+\mathrm{cov}(\frac{d}{2}, d) = \frac{1}{2}\mathrm{cov}(d, d) = \frac{1}{2}\mathrm{var}(d)
+$$ $$
+\mathrm{cov}(\frac{s}{2}, s) = \frac{1}{2}\mathrm{cov}(s, s) = \frac{1}{2}\mathrm{var}(s)
+$$
+
+## Assumptions
+
+For some terms we might make an assumption that they are equal to 0.
+
+*Covariance between genetic effects from the same parent* $$
+\mathrm{cov}(\frac{d^\prime}{2}, d), \mathrm{cov}(\frac{s^\prime}{2}, s)
+$$
+
+<div class="notes">
+
+If there is inbreeding (individual does not have ancestors that are
+closely related) or assortative mating in the grandparental generation,
+then genetic effects from the same parent would be expected to have a
+non-zero covariance.
+
+</div>
+
+*Covariance between genetic effects from different parents* $$
+\mathrm{cov}(\frac{d^\prime}{2}, s), \mathrm{cov}(\frac{s^\prime}{2}, d)
+$$
+
+<div class="notes">
+
+If there is assortative mating between the parents, then these effects
+would be expected to covary
+
+</div>
+
+## 
+
+Covariance between parent and offspring environment effects $$
+\mathrm{cov}(\frac{e_d}{2}, e_o), \mathrm{cov}(\frac{e_s}{2}, e_o)
+$$
+
+<div class="notes">
+
+If aspects of the parental environment are transmitted as well or if
+parents and offspring tend to encounter similar environments, then these
+effects are expected to covary.
+
+</div>
+
+Covariance between parental genetic and offspring environmental effects
+$$
+\mathrm{cov}(\frac{d}{2}, e_o), \mathrm{cov}(\frac{s}{2}, e_o)
+$$
+
+<div class="notes">
+
+If parental genetic effects shape the environment of the offspring
+(referred to as indirect genetic effects), then these effects are
+expected to covary as well.
+
+</div>
+
+## 
+
+Using those assumptions the parent–offspring covariance simplifies to
+
+$$
+\mathrm{cov}(\frac{P_d + P_s}{2}, P_o) = \frac{\mathrm{var}(d) + \mathrm{var}(s)}{2}
+$$
+
+## Parent variance
+
+The denominator in the regression equation was $$
+\mathrm{var}(\frac{P_d + P_s}{2})
+$$
+
+## 
+
+Using the identity $$
+\mathrm{var}(aX + bY) = a^2\mathrm{var}(X) + b^2\mathrm{var}(Y) + 2ab\mathrm{cov}(X, Y)
+$$ the variance of the average parental phenotypes is: $$
+\mathrm{var}(\frac{P_d + P_s}{2}) = \mathrm{var}(\frac{1}{2}P_d + \frac{1}{2} P_s)
+$$ $$
+= \left(\frac{1}{2}\right)^2\mathrm{var}(P_d) + \left(\frac{1}{2}\right)^2\mathrm{var}(P_s) + 2 \cdot \frac{1}{2} \cdot \frac{1}{2} \mathrm{cov}(P_d, P_s)
+$$ $$
+= \frac{1}{4}\mathrm{var}(P_d) + \frac{1}{4}\mathrm{var}(P_s) + \frac{1}{2} \mathrm{cov}(P_d, P_s)
+$$
+
+## 
+
+If we assume as above that there is no covariation between parental
+effects ($\mathrm{cov}(P_d, P_s) = 0$), this simplifies to
+
+$$
+= \frac{\mathrm{var}(P_d) + \mathrm{var}(P_s)}{4}
+$$
+
+## 
+
+Thus the regression equation is:
+
+$$
+\beta = \frac{\mathrm{cov}(\frac{P_d + P_s}{2}, P_o)}{\mathrm{var}(\frac{P_d + P_s}{2})} \\
+= \frac{\frac{\mathrm{var}(d) + \mathrm{var}(s)}{2}}{\frac{\mathrm{var}(P_d) + \mathrm{var}(P_s)}{4}} \\
+= 2\frac{\mathrm{var}(d) + \mathrm{var}(s)}{\mathrm{var}(P_d) + \mathrm{var}(P_s)}
+$$
+
+## 
+
+Previously we defined
+
+$$
+G = d + s
+$$ thus $$
+\mathrm{var}(G) = \mathrm{var}(d) + \mathrm{var}(s)
+$$ and assume variances in parental phenotypes are equal $$
+\mathrm{var}(P_d) = \mathrm{var}(P_s) = \mathrm{var}(P)
+$$
+
+## 
+
+Then substitute into the regression equation
+
+$$
+\beta = 2\frac{\mathrm{var}(d) + \mathrm{var}(s)}{\mathrm{var}(P_d) + \mathrm{var}(P_s)} \\
+= 2 \frac{\mathrm{var}(G)}{\mathrm{var}(P) + \mathrm{var}(P)} \\
+= 2 \frac{\mathrm{var}(G)}{2 \mathrm{var}(P)} \\
+= \frac{\mathrm{var}(G)}{\mathrm{var}(P)} \\
+= h^2
+$$
+
+<div class="notes">
+
+In other words, the beta coefficient from the regression of offspring
+phenotype on average parent phenotype yields an estimate of the
+heritability!
+
+</div>
+
+## Height data
+
+<div class="notes">
+
+Using the height data, we can calculate the mid-parent–offspring
+covariance and mid-parent variance and then use that as an estimate for
+the heritability.
+
+</div>
+
+- $\mathrm{cov}(\frac{P_d + P_s}{2}, P_o) =$ 12.57
+- $\mathrm{var}(\frac{P_d + P_s}{2}) =$ 22.04
+- $\hat{h}^2 =$ 12.57 / 22.04 = 0.57
+
+## 
+
+Parent and offspring phenotypes become more highly correlated as
+heritability increases.
+
+![](geibmh-psychgen-1_files/figure-commonmark/parent_offspring_h2_sim-1.png)
+
+<div class="notes">
+
+Wray, N. & Visscher, P. (2008) [Estimating trait
+heritability](https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/).
+Nature Education 1(1):29
+
+</div>
+
+## 
+
+<div class="columns">
+
+<div class="column">
+
+**Mini review: What assumptions have we made when estimating $h^2$?**
+
+</div>
+
+<div class="column">
+
+![](assets/underground.png)
+
+</div>
+
+</div>
+
+<div class="notes">
+
+- Parents’ environments are not similar: $\mathrm{cov}(e_d, e_s) = 0$
+- No assortative mating: $\mathrm{cov}(d, s) = 0$
+- Parents do not transmit their environments:
+  $\mathrm{cov}(e_o, e_d) = 0$, $\mathrm{cov}(e_o, e_s) = 0$
+- No gene-environment correlation: $\mathrm{cov}(d, e_d) = 0$,
+  $\mathrm{cov}(s, e_s) = 0$
+- No genetic nature: $\mathrm{cov}(d, e_o) = 0$,
+  $\mathrm{cov}(s, e_o) = 0$
+- No inbreeding: $\mathrm{cov}(d, d^\prime) = 0$,
+  $\mathrm{cov}(s, s^\prime) = 0$
+- Genetic effects are additive: $Y = a + a^\prime + e$
+- Genetic influence is the same for both sexes:
+  $\mathrm{var}(d + d^\prime) =  var(s + s^\prime)$
+
+</div>
+
+## Generalising to other relatives
+
+Heritability can also be estimated from resemblance between different
+types of related pairs. The general equation is:
+
+$$
+h^2 = \frac{b}{r}
+$$
+
+- $b$ = regression coefficient
+- $r$ = coefficient of additive variance (“relatedness”)
+
+## Example data: depression scores
+
+Correlation of depression scores for different pairs of relatives
+
+![](geibmh-psychgen-1_files/figure-commonmark/amf_depression-1.png)
+
+<div class="notes">
+
+Fernandez-Pujals AM et al. (2015) Epidemiology and Heritability of Major
+Depressive Disorder, Stratified by Age of Onset, Sex, and Illness Course
+in Generation Scotland: Scottish Family Health Study (GS:SFHS). *PLOS
+ONE* 10(11): e0142197.
+doi:[10.1371/journal.pone.0142197](https://dx.doi.org/10.1371/journal.pone.0142197)
+
+</div>
+
+## Recurrance risk to relatives
+
+$$
+\lambda_\mathrm{R} = \frac{P(\mathrm{affected} | \mathrm{relative affected})}{P(\mathrm{affected in population})} = \frac{K_\mathrm{R}}{K}
+$$
+
+<div class="notes">
+
+Represents how much more likely to are to be affected by a disorder
+given that a relative is affected, compared to someone from the general
+population.
+
+</div>
+
+## 
+
+Example:
+
+- $K_\mathrm{sib} = P(\mathrm{affected} | \mathrm{sibling affected}) = 0.09$
+- $K = P(\mathrm{affected in population}) = 0.02$
+- $\frac{K_\mathrm{sib}}{K} = \frac{0.09}{0.02} = 4.5$
+
+## Recurrance risk for schizophrenia
+
+![](geibmh-psychgen-1_files/figure-commonmark/scz_rr-1.png)
+
+<div class="notes">
+
+Recurrance risk to relatives for schizophrenia in Sweden, which has a
+baseline risk of $K = 0.047$%.
+
+Lichtenstein, P. et al. Recurrence risks for schizophrenia in a Swedish
+National Cohort. Psychol. Med. 36, 1417–1425 (2006).
+doi:[10.1017/s0033291706008385](https://dx.doi.org/10.1017/s0033291706008385)
+
+</div>
+
+## Recurrance risk and heritability
+
+- Code $\mathrm{unaffected} = 0, \mathrm{unaffected} = 1$
+- If population prevalence is $K$, then phenotypic variance is $K(1-K)$
+  (Bernoulli distribution)
+
+## 
+
+- $Y$ = score of individual (proband)
+- $Y_\mathrm{R}$ = score of relative of proband
+- Expectation: $E[Y] = E[Y_\mathrm{R}] = K$
+- $K_\mathrm{R} = E[Y_\mathrm{R} | Y = 1]$
+- Probability that both $Y$ and $Y_\mathrm{R}$ = 1:
+  $E[YY_\mathrm{R}] = K \times K_\mathrm{R}$
+
+$$
+\mathrm{cov}(Y, Y_\mathrm{R}) = E[YY_\mathrm{R}] - E[Y] E[Y_\mathrm{R}] \\
+= K \times K_\mathrm{R} - K^2 \\
+$$
+
+<div class="notes">
+
+- James, J. W. Frequency in relatives for an all-or-none trait. Ann.
+  Hum. Genet. 35, 47–49 (1971).
+  doi:[10.1111/j.1469-1809.1956.tb01377.x](https://doi.org/10.1111/j.1469-1809.1956.tb01377.x)
+- Risch N. Linkage strategies for genetically complex traits. I.
+  Multilocus models. Am J Hum Genet. 1990 Feb;46(2):222-8. PMID: 2301392
+
+</div>
+
+## 
+
+$$
+\mathrm{cov}(Y, Y_\mathrm{R}) = E[YY_\mathrm{R}] - E[Y] E[Y_\mathrm{R}]
+$$
+
+$$
+= K \times K_\mathrm{R} - K^2 \\
+= K(K_\mathrm{R} - K) \\
+= K^2 (\frac{K_\mathrm{R}}{K} - 1) \\
+= K^2 (\lambda_\mathrm{R} - 1)
+$$
+
+## Heritability estimate
+
+$$
+h^2 = \frac{\mathrm{cov}_\mathrm{R}}{rV_\mathrm{P}} \\
+= \frac{K^2 (\lambda_\mathrm{R} - 1)}{rK(1-K)} \\
+= \frac{K (\lambda_\mathrm{R} - 1)}{r(1-K)} \\
+$$
+
+## Estimating environmental effects
+
+Contrast pairs of relatives that have comparable environmental
+similarity but different genetic similarity.
+
+![](assets/Identical-fraternal-sperm-egg.svg)
+
+- Monozygotic (MZ) twins $r = 1.0$
+- Dizygotic (DZ) twins $r = 0.5$
+
+<div class="notes">
+
+[Zygote development
+figure](https://commons.wikimedia.org/wiki/File:Identical-fraternal-sperm-egg.svg)
+CC-BY-SA Trikly.
+
+</div>
+
+## Twin correlations
+
+MZ twins: $t(\mathrm{MZ}) = h^2 + c^2$
+
+DZ twins: $t(\mathrm{DZ}) = \frac{1}{2}h^2 + c^2$
+
+## 
+
+### Solve for genetic similarity ($h^2$)
+
+Start with the MZ twin equation:
+
+$$
+t(\mathrm{MZ}) = h^2 + c^2
+$$
+
+Take the DZ twin correlation and solve for $c^2$
+
+$$
+t(\mathrm{DZ}) = \frac{1}{2}h^2 + c^2 \\
+c^2 = t(\mathrm{DZ}) - \frac{1}{2}h^2
+$$
+
+## 
+
+Substitute $c^2$ into the MZ equation
+
+$$
+t(\mathrm{MZ}) = h^2 + \underbrace{c^2} \\
+t(\mathrm{MZ}) = h^2 + [t(\mathrm{DZ}) - \frac{1}{2}h^2]
+$$
+
+## 
+
+Solve for $h^2$
+
+$$
+t(\mathrm{MZ}) = h^2 + t(\mathrm{DZ}) - \frac{1}{2}h^2 \\
+t(\mathrm{MZ}) = t(\mathrm{DZ}) + h^2 - \frac{1}{2}h^2 \\
+t(\mathrm{MZ}) = t(\mathrm{DZ}) + \frac{1}{2}h^2 \\
+\frac{1}{2}h^2 = t(\mathrm{MZ}) - t(\mathrm{DZ}) \\
+h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})]
+$$
+
+## 
+
+Substitute $h^2$ into MZ equation and solve for shared environment
+similarity ($c^2$)
+
+$$
+t(\mathrm{MZ}) = \underbrace{h^2} + c^2 \\
+t(\mathrm{MZ}) = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] + c^2 \\
+t(\mathrm{MZ}) - 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] = c^2 \\
+c^2 = t(\mathrm{MZ}) - 2t(\mathrm{MZ}) + 2t(\mathrm{DZ}) \\
+c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ})
+$$
+
+## 
+
+Therefore from MZ and DZ twin correlations we can estimate:
+
+$$
+h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] \\
+c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ}) \\
+e^2 = 1 - h^2 - c^2
+$$
+
+![](geibmh-psychgen-1_files/figure-commonmark/twins_cor-1.png)
+
+## What do we know about psychiatric genetics from twins studies
+
+![](geibmh-psychgen-1_files/figure-commonmark/match-class-1.png)
+
+<div class="notes">
+
+Polderman TJC et al.  [Meta-Analysis of the Heritability of Human Traits
+based on Fifty Years of Twin
+Studies](https://dx.doi.org/10.1038/ng.3285) *Nature Genetics*
+doi:10.1038/ng.3285
+
+</div>
+
+## Meta-analysis of twin heritability
+
+[`match.ctglab.nl`](https://match.ctglab.nl)
+
+![](geibmh-psychgen-1_files/figure-commonmark/match-meta-1.png)

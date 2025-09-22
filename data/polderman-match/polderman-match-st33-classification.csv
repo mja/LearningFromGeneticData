@@ -1,0 +1,329 @@
+﻿# Supplementary Table 33: Structure of assigned trait classifications
+DOMAIN,ICD10/ICF CHAPTER level,ICD10/ICF SUBCHAPTER level,Ntraits
+Activities,"Community, Social and Civic Life",Community Life,1
+Activities,"Community, Social and Civic Life",Recreation and Leisure,30
+Activities,Self-Care,Looking After One's Health,161
+Aging,Functions of the Skin and Related Structures,Functions of Hair,2
+Aging,Mobility,Household Tasks,1
+Aging,Mobility,Walking and Moving,32
+Aging,Skin and Related Structures,Physical Appearance,2
+Cardiovascular,"Congenital Malformations, Deformations and Chromosomal Abnormalities",Other Congenital Malformations of Heart,1
+Cardiovascular,Diseases of the Circulatory System,Acute Myocardial Infarction,1
+Cardiovascular,Diseases of the Circulatory System,Angina Pectoris,1
+Cardiovascular,Diseases of the Circulatory System,Aortic Aneurysm and Dissection,1
+Cardiovascular,Diseases of the Circulatory System,Atrial Fibrillation and Flutter,1
+Cardiovascular,Diseases of the Circulatory System,Cerebrovascular Diseases,1
+Cardiovascular,Diseases of the Circulatory System,Chronic Ischaemic Heart Disease,8
+Cardiovascular,Diseases of the Circulatory System,Essential (Primary) Hypertension,8
+Cardiovascular,Diseases of the Circulatory System,Other Peripheral Vascular Diseases,6
+Cardiovascular,Diseases of the Circulatory System,Other Venous Embolism and Thrombosis,1
+Cardiovascular,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Blood Pressure Functions,368
+Cardiovascular,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Blood Vessel Functions,4
+Cardiovascular,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Exercise Tolerance Functions,10
+Cardiovascular,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Heart Functions,314
+Cardiovascular,"Structures of the Cardiovascular, Immunological and Respiratory Systems",Structure of Cardiovascular System,29
+Cell,Cell,Cell Cycle,3
+Cell,Cell,Cell Growth,2
+Cell,Cell,Immunological System Functions,1
+Cell,Function of Dna,Expression,7
+Cell,Function of Dna,Gene Expression,22
+Cell,Function of Dna,Receptor Binding,4
+Cell,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Immunological System Functions,6
+Cell,Structure of Dna,Methylation,24
+Cell,Structure of Dna,Mtdna,2
+Cell,Structure of Dna,Sister Chromatid Exchange,3
+Cell,Structure of Dna,Structure of Dna,33
+Cell,Structure of Dna,Telomeres,10
+Cell,Structure of Dna,X-Inactivation,8
+Cognitive,Communication,Producing Drawings and Photographs,3
+Cognitive,Mental and Behavioural Disorders,Mild Mental Retardation,13
+Cognitive,Mental and Behavioural Disorders,Specific Developmental Disorders of Scholastic Skills,3
+Cognitive,Mental Functions,Attention Functions,62
+Cognitive,Mental Functions,Calculation Functions,75
+Cognitive,Mental Functions,Energy and Drive Functions,13
+Cognitive,Mental Functions,Experience of Self and Time Functions,39
+Cognitive,Mental Functions,Global Mental Functions,2
+Cognitive,Mental Functions,Global Psychosocial Functions,10
+Cognitive,Mental Functions,Higher-Level Cognitive Functions,660
+Cognitive,Mental Functions,Intellectual Functions,18
+Cognitive,Mental Functions,Memory Functions,195
+Cognitive,Mental Functions,Mental Functions of Language,310
+Cognitive,Mental Functions,"Mental Functions, Unspecified",15
+Cognitive,Mental Functions,Perceptual Functions,27
+Cognitive,Mental Functions,Psychomotor Functions,62
+Connective tissue,Diseases of the Musculoskeletal System and Connective Tissue,Other Rheumatoid Arthritis,6
+Connective tissue,Diseases of the Musculoskeletal System and Connective Tissue,"Other Soft Tissue Disorders, Not Elsewhere Classified",2
+Dermatological,Diseases of the Skin and Subcutaneous Tissue,Acne,2
+Dermatological,Diseases of the Skin and Subcutaneous Tissue,Atopic Dermatitis,19
+Dermatological,Diseases of the Skin and Subcutaneous Tissue,Hypertrichosis,1
+Dermatological,Diseases of the Skin and Subcutaneous Tissue,Other Acute Skin Changes Due to Ultraviolet Radiation,1
+Dermatological,Diseases of the Skin and Subcutaneous Tissue,Other Specified Disorders of Skin and Subcutaneous Tissue In Diseases Classified Elsewhere,1
+Dermatological,Diseases of the Skin and Subcutaneous Tissue,Psoriasis,5
+Dermatological,Diseases of the Skin and Subcutaneous Tissue,Urticaria,1
+Dermatological,Functions of the Skin and Related Structures,Functions of Hair,6
+Dermatological,Functions of the Skin and Related Structures,Other Functions of the Skin,25
+Dermatological,Functions of the Skin and Related Structures,Protective Functions of the Skin,5
+Dermatological,Skin and Related Structures,Structure of Areas of Skin,111
+Dermatological,Skin and Related Structures,Structure of Hair,4
+Developmental,Certain Conditions Originating In the Perinatal Period,"Disorders Related to Short Gestation and Low Birth Weight, Not Elsewhere Classified",1
+Developmental,Certain Conditions Originating In the Perinatal Period,Slow Fetal Growth and Fetal Malnutrition,8
+Developmental,Certain Conditions Originating In the Perinatal Period,Unclassified,1
+Developmental,"Congenital Malformations, Deformations and Chromosomal Abnormalities",Hypospadias,2
+"Ear, Nose, Throat","Congenital Malformations, Deformations and Chromosomal Abnormalities",Cleft Lip,8
+"Ear, Nose, Throat",Diseases of the Digestive System,Dentofacial Anomalies [Including Malocclusion],46
+"Ear, Nose, Throat",Diseases of the Ear and Mastoid Process,Nonsuppurative Otitis Media,30
+"Ear, Nose, Throat",Sensory Functions and Pain,Hearing Functions,31
+"Ear, Nose, Throat",Sensory Functions and Pain,Smell Function,28
+"Ear, Nose, Throat",Structures Involved In Voice and Speech,Structure of Mouth,217
+"Ear, Nose, Throat",Symptoms and Signs Involving Speech and Voice,Voice Disturbances,1
+"Ear, Nose, Throat","Symptoms, Signs and Abnormal Clinical and Laboratory Findings, Not Elsewhere Classified",Other Symptoms and Signs Involving the Digestive System and Abdomen,2
+"Ear, Nose, Throat","The Eye, Ear and Related Structures",Structure of External Ear,2
+"Ear, Nose, Throat",Voice and Speech Functions,Voice Functions,6
+Endocrine,"Endocrine, Nutritional and Metabolic Diseases",Cystic Fibrosis,10
+Endocrine,"Endocrine, Nutritional and Metabolic Diseases",Diabetes Mellitus,5
+Endocrine,"Endocrine, Nutritional and Metabolic Diseases",Type 1 Diabetes Mellitus,12
+Endocrine,"Endocrine, Nutritional and Metabolic Diseases",Type 2 Diabetes Mellitus,14
+Endocrine,"Endocrine, Nutritional and Metabolic Diseases",Other Nontoxic Goitre,3
+Endocrine,"Endocrine, Nutritional and Metabolic Diseases",Ovarian Dysfunction,2
+Endocrine,"Endocrine, Nutritional and Metabolic Diseases",Thyroiditis,3
+Endocrine,"Endocrine, Nutritional and Metabolic Diseases",Thyrotoxicosis,3
+Endocrine,"Functions of the Digestive, Metabolic and Endocrine Systems",Endocrine Gland Functions,324
+Endocrine,"Functions of the Digestive, Metabolic and Endocrine Systems","Water, Mineral and Electrolyte Balance Functions",22
+Endocrine,"Pregnancy, Childbirth and the Puerperium",Diabetes Mellitus In Pregnancy,1
+Environment,Factors Influencing Health Status and Contact with Health Services,"Acquired Absence of Organs, Not Elsewhere Classified",4
+Environment,Factors Influencing Health Status and Contact with Health Services,Problems Related to Life-Management Difficulty,3
+Environment,"Injury, Poisoning and Certain Other Consequences of External Causes",Superficial Injuries Involving Multiple Body Regions,9
+Environment,Interpersonal Interactions and Relationships,Basic Interpersonal Interactions,6
+Environment,Interpersonal Interactions and Relationships,Informal Social Relationships,15
+Environment,Major Life Areas,Education,31
+Environment,Major Life Areas,Informal Social Relationships,1
+Environment,Major Life Areas,Intimate Relationships,2
+Environment,Major Life Areas,Potential Health Hazards Related to Socioeconomic and Psychosocial Circumstances,152
+Environment,Major Life Areas,Problems Related to Negative Life Events In Childhood,32
+Environment,Major Life Areas,Problems Related to Upbringing,160
+Environment,Major Life Areas,School Education,11
+Environment,Major Life Areas,Work and Employment,4
+Environment,Medication Effects,Diazepam Effects,6
+Environment,Natural Environment and Human-Made Changes to Environment,Population,5
+Environment,Products and Technology,Assets,8
+Environment,Unclassified,Unclassified,2
+Environment,Work and Employment,"Acquiring, Keeping and Terminating A Job",30
+Environment,Work and Employment,Maintaining A Job,5
+Environment,Work and Employment,Work and Employment,1
+Gastrointestinal,"Congenital Malformations, Deformations and Chromosomal Abnormalities",Other Congenital Malformations of Upper Alimentary Tract,1
+Gastrointestinal,Diseases of the Digestive System,Acute Appendicitis,2
+Gastrointestinal,Diseases of the Digestive System,Crohn Disease [Regional Enteritis],4
+Gastrointestinal,Diseases of the Digestive System,Dental Caries,17
+Gastrointestinal,Diseases of the Digestive System,"Diseases of Oral Cavity, Salivary Glands and Jaws",71
+Gastrointestinal,Diseases of the Digestive System,Diseases of Pulp and Periapical Tissues,17
+Gastrointestinal,Diseases of the Digestive System,Dyspepsia,1
+Gastrointestinal,Diseases of the Digestive System,Fibrosis and Cirrhosis of Liver,1
+Gastrointestinal,Diseases of the Digestive System,Gastro-Oesophageal Reflux Disease,4
+Gastrointestinal,Diseases of the Digestive System,Inguinal Hernia,1
+Gastrointestinal,Diseases of the Digestive System,Intestinal Malabsorption,2
+Gastrointestinal,Diseases of the Digestive System,Irritable Bowel Syndrome,8
+Gastrointestinal,Diseases of the Digestive System,Other Diseases of Digestive System,2
+Gastrointestinal,Diseases of the Digestive System,Other Diseases of Oesophagus,2
+Gastrointestinal,Diseases of the Digestive System,Other Disorders of Teeth and Supporting Structures,2
+Gastrointestinal,Diseases of the Digestive System,Paralytic Ileus and Intestinal Obstruction Without Hernia,2
+Gastrointestinal,Diseases of the Digestive System,Ulcerative Colitis,4
+Gastrointestinal,"Structures Related to the Digestive, Metabolic and Endocrine Systems",Structure of Endocrine Glands,1
+Gastrointestinal,"Symptoms, Signs and Abnormal Clinical and Laboratory Findings, Not Elsewhere Classified","Hepatomegaly and Splenomegaly, Not Elsewhere Classified",2
+Hematological,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Haematological System Functions,108
+Hematological,"Symptoms, Signs and Abnormal Clinical and Laboratory Findings, Not Elsewhere Classified","Findings of Drugs and Other Substances, Not Normally Found In Blood",2
+Immunological,Diseases of the Blood and Blood-Forming Organs and Certain Disorders Involving the Immune Mechanism,Sarcoidosis,2
+Immunological,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Immunological System Functions,340
+Immunological,"Injury, Poisoning and Certain Other Consequences of External Causes","Allergy, Unspecified",17
+Immunological,"Injury, Poisoning and Certain Other Consequences of External Causes",Effects of Other External Causes,6
+Infection,Certain Conditions Originating In the Perinatal Period,Bacterial Sepsis of Newborn,2
+Infection,Certain Infectious and Parasitic Diseases,Cytomegaloviral Disease,1
+Infection,Certain Infectious and Parasitic Diseases,Infectious Mononucleosis,1
+Infection,Certain Infectious and Parasitic Diseases,Other Specified Infectious Agents As the Cause of Diseases Classified to Other Chapters,1
+Infection,Certain Infectious and Parasitic Diseases,Other Spirochaetal Infections,2
+Infection,Certain Infectious and Parasitic Diseases,Viral Agents As the Cause of Diseases Classified to Other Chapters,1
+Metabolic,"Functions of the Digestive, Metabolic and Endocrine Systems",General Metabolic Functions,826
+Metabolic,"Functions of the Digestive, Metabolic and Endocrine Systems","Water, Mineral and Electrolyte Balance Functions",116
+Metabolic,"Functions of the Digestive, Metabolic and Endocrine Systems",Weight Maintenance Functions,808
+Mortality,Mortality,All-Cause Mortality,35
+Mortality,Mortality,Mortality From Heart Disease,5
+Mortality,Mortality,Mortality From Infections,1
+Muscular,Diseases of the Musculoskeletal System and Connective Tissue,Ankylosing Spondylitis,1
+Muscular,Neuromusculoskeletal and Movement-Related Functions,Additional Musculoskeletal Structures Related to Movement,2
+Muscular,Neuromusculoskeletal and Movement-Related Functions,Control of Voluntary Movement Functions,6
+Muscular,Neuromusculoskeletal and Movement-Related Functions,Mobility of Joint Functions,11
+Muscular,Neuromusculoskeletal and Movement-Related Functions,Muscle Functions,31
+Muscular,Neuromusculoskeletal and Movement-Related Functions,Muscle Power Functions,98
+Neoplasms,Benign Neoplasms,"Haemangioma and Lymphangioma, Any Site",1
+Neoplasms,Benign Neoplasms,Leiomyoma of Uterus,12
+Neoplasms,Malignant Neoplasms,Mailignant Neoplasms of Male Genital Organs,2
+Neoplasms,Malignant Neoplasms,Malignant Melanoma of Skin,1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Bladder,1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Bronchus and Lung,1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Cervix Uteri,3
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Corpus Uteri,2
+Neoplasms,Malignant Neoplasms,"Malignant Neoplasm of Kidney, Except Renal Pelvis",1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Ovary,1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Pancreas,1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Prostate,6
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Stomach,1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasm of Thyroid Gland,3
+Neoplasms,Malignant Neoplasms,Malignant Neoplasms,2
+Neoplasms,Malignant Neoplasms,Malignant Neoplasms of Digestive Organs,1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasms of Male Genital Organs,1
+Neoplasms,Malignant Neoplasms,Malignant Neoplasms of the Breast,8
+Neoplasms,Malignant Neoplasms,Multiple Myeloma and Malignant Plasma Cell Neoplasms,2
+Neoplasms,Malignant Neoplasms,Other and Unspecified Types of Non-Hodgkin Lymphoma,1
+Neoplasms,Malignant Neoplasms,Other Malignant Neoplasms of Skin,3
+Neurological,Diseases of the Nervous System,Epilepsy,28
+Neurological,Diseases of the Nervous System,Migraine,30
+Neurological,Diseases of the Nervous System,Mononeuropathies of Upper Limb,1
+Neurological,Diseases of the Nervous System,Multiple Sclerosis,4
+Neurological,Diseases of the Nervous System,Other Extrapyramidal and Movement Disorders,4
+Neurological,Diseases of the Nervous System,Other Headache Syndromes,4
+Neurological,Diseases of the Nervous System,Parkinson Disease,8
+Neurological,Diseases of the Nervous System,Sleep Disorders,48
+Neurological,Diseases of the Nervous System,Spinal Muscular Atrophy and Related Syndromes,2
+Neurological,Diseases of the Nervous System,Vascular Syndromes of Brain In Cerebrovascular Diseases,3
+Neurological,Functions of the Nervous System,Function of Brain,1366
+Neurological,Sensory Functions and Pain,Sensation of Pain,28
+Neurological,Sensory Functions and Pain,Taste Function,32
+Neurological,Sensory Functions and Pain,Vestibular Functions,10
+Neurological,Structures of the Nervous System,Structure of Brain,1777
+Neurological,Structures of the Nervous System,"Structure of the Nervous System, Unspecified",6
+Neurological,"Symptoms, Signs and Abnormal Clinical and Laboratory Findings, Not Elsewhere Classified","Convulsions, Not Elsewhere Classified",19
+Neurological,"Symptoms, Signs and Abnormal Clinical and Laboratory Findings, Not Elsewhere Classified",Syncope and Collapse,1
+Nutritional,Self-Care,Food,425
+Ophthalmological,Diseases of the Eye and Adnexa,Disorders of Refraction and Accommodation,18
+Ophthalmological,Diseases of the Eye and Adnexa,Glaucoma,2
+Ophthalmological,Diseases of the Eye and Adnexa,Other Disorders of Cornea,2
+Ophthalmological,Diseases of the Eye and Adnexa,Other Retinal Disorders,1
+Ophthalmological,Diseases of the Eye and Adnexa,Other Strabismus,4
+Ophthalmological,Diseases of the Eye and Adnexa,Senile Cataract,3
+Ophthalmological,Diseases of the Eye and Adnexa,Visual Disturbances,1
+Ophthalmological,Sensory Functions and Pain,Seeing Functions,85
+Ophthalmological,"The Eye, Ear and Related Structures",Structure of Eye Socket,1
+Ophthalmological,"The Eye, Ear and Related Structures",Structure of Eyeball,184
+Ophthalmological,"The Eye, Ear and Related Structures",Structures Around Eye,4
+Psychiatric,Mental and Behavioural Disorders,Acute and Transient Psychotic Disorders,4
+Psychiatric,Mental and Behavioural Disorders,Bipolar Affective Disorder,24
+Psychiatric,Mental and Behavioural Disorders,Conduct Disorders,448
+Psychiatric,Mental and Behavioural Disorders,Dementia In Alzheimer Disease,10
+Psychiatric,Mental and Behavioural Disorders,Depressive Episode,306
+Psychiatric,Mental and Behavioural Disorders,Disorders of Social Functioning with Onset Specific to Childhood and Adolescence,3
+Psychiatric,Mental and Behavioural Disorders,Dissocial Personality Disorder,30
+Psychiatric,Mental and Behavioural Disorders,Dissociative [Conversion] Disorders,3
+Psychiatric,Mental and Behavioural Disorders,Eating Disorders,147
+Psychiatric,Mental and Behavioural Disorders,Emotional Disorders with Onset Specific to Childhood,9
+Psychiatric,Mental and Behavioural Disorders,Emotionally Unstable Personality Disorder,45
+Psychiatric,Mental and Behavioural Disorders,Gender Identity Disorders,2
+Psychiatric,Mental and Behavioural Disorders,Habit and Impulse Disorders,15
+Psychiatric,Mental and Behavioural Disorders,Hyperkinetic Disorders,226
+Psychiatric,Mental and Behavioural Disorders,Mental and Behavioural Disorders Due to Multiple Drug Use and Use of Other Psychoactive Substances,103
+Psychiatric,Mental and Behavioural Disorders,Mental and Behavioural Disorders Due to Use of Alcohol,405
+Psychiatric,Mental and Behavioural Disorders,Mental and Behavioural Disorders Due to Use of Cannabinoids,93
+Psychiatric,Mental and Behavioural Disorders,Mental and Behavioural Disorders Due to Use of Cocaine,33
+Psychiatric,Mental and Behavioural Disorders,Mental and Behavioural Disorders Due to Use of Hallucinogens,31
+Psychiatric,Mental and Behavioural Disorders,Mental and Behavioural Disorders Due to Use of Opioids,18
+Psychiatric,Mental and Behavioural Disorders,Mental and Behavioural Disorders Due to Use of Sedatives Or Hypnotics,32
+Psychiatric,Mental and Behavioural Disorders,Mental and Behavioural Disorders Due to Use of Tobacco,260
+Psychiatric,Mental and Behavioural Disorders,Mood [Affective] Disorders,8
+Psychiatric,Mental and Behavioural Disorders,Nonorganic Sleep Disorders,4
+Psychiatric,Mental and Behavioural Disorders,Obsessive-Compulsive Disorder,64
+Psychiatric,Mental and Behavioural Disorders,Other Anxiety Disorders,305
+Psychiatric,Mental and Behavioural Disorders,Other Behavioural and Emotional Disorders with Onset Usually Occurring In Childhood and Adolescence,16
+Psychiatric,Mental and Behavioural Disorders,Other Specified Behavioural and Emotional Disorders with Onset Usually Occurring In Childhood and Adolescence,5
+Psychiatric,Mental and Behavioural Disorders,Pervasive Developmental Disorders,65
+Psychiatric,Mental and Behavioural Disorders,Phobic Anxiety Disorders,135
+Psychiatric,Mental and Behavioural Disorders,Psychological and Behavioural Disorders Associated with Sexual Development and Orientation,21
+Psychiatric,Mental and Behavioural Disorders,"Reaction to Severe Stress, and Adjustment Disorders",33
+Psychiatric,Mental and Behavioural Disorders,Recurrent Depressive Disorder,45
+Psychiatric,Mental and Behavioural Disorders,Schizoaffective Disorders,7
+Psychiatric,Mental and Behavioural Disorders,Schizophrenia,54
+Psychiatric,Mental and Behavioural Disorders,Schizotypal Disorder,26
+Psychiatric,Mental and Behavioural Disorders,Somatoform Disorders,3
+Psychiatric,Mental and Behavioural Disorders,Specific Developmental Disorder of Motor Function,24
+Psychiatric,Mental and Behavioural Disorders,Specific Personality Disorders,216
+Psychiatric,Mental and Behavioural Disorders,Tic Disorders,3
+Psychiatric,Mental and Behavioural Disorders,Unspecified Dementia,4
+Psychiatric,Mental and Behavioural Disorders,Unspecified Disorder of Adult Personality and Behaviour,3
+Psychiatric,Mental and Behavioural Disorders,Unspecified Mental Disorder,4
+Psychiatric,Mental and Behavioural Disorders,Unspecified Nonorganic Psychosis,1
+Psychiatric,Mental and Behavioural Disorders,Vascular Dementia,2
+Psychiatric,Mental Functions,Sleep Functions,109
+Psychiatric,Mental Functions,Temperament and Personality Functions,1774
+Reproduction,"Congenital Malformations, Deformations and Chromosomal Abnormalities",Undescended Testicle,1
+Reproduction,Diseases of the Genitourinary System,Calculus of Kidney and Ureter,1
+Reproduction,Diseases of the Genitourinary System,Endometriosis,2
+Reproduction,Diseases of the Genitourinary System,"Excessive, Frequent and Irregular Menstruation",1
+Reproduction,Diseases of the Genitourinary System,Female Genital Prolapse,1
+Reproduction,Diseases of the Genitourinary System,Hyperplasia of Prostate,16
+Reproduction,Diseases of the Genitourinary System,Male Infertility,1
+Reproduction,Diseases of the Genitourinary System,Obstructive and Reflux Uropathy,2
+Reproduction,Diseases of the Genitourinary System,Other Disorders of Bladder,17
+Reproduction,Diseases of the Genitourinary System,Other Disorders of Urinary System,1
+Reproduction,Diseases of the Genitourinary System,Pain and Other Conditions Associated with Female Genital Organs and Menstrual Cycle,27
+Reproduction,"Endocrine, Nutritional and Metabolic Diseases","Disorders of Puberty, Not Elsewhere Classified",50
+Reproduction,Genitourinary and Reproductive Functions,Menstruation Functions,35
+Reproduction,Genitourinary and Reproductive Functions,Procreation Functions,41
+Reproduction,Genitourinary and Reproductive Functions,Sensations Associated with Genital and Reproductive Functions,7
+Reproduction,Genitourinary and Reproductive Functions,Sexual Functions,31
+Reproduction,Genitourinary and Reproductive Functions,Urination Functions,1
+Reproduction,"Pregnancy, Childbirth and the Puerperium",Gestational [Pregnancy-Induced] Hypertension Without Significant Proteinuria,6
+Reproduction,"Pregnancy, Childbirth and the Puerperium",Labour and Delivery Complicated By Umbilical Cord Complications,5
+Reproduction,"Pregnancy, Childbirth and the Puerperium",Other Obstructed Labour,4
+Reproduction,"Pregnancy, Childbirth and the Puerperium",Preterm Labour and Delivery,2
+Reproduction,"Pregnancy, Childbirth and the Puerperium",Spontaneous Abortion,1
+Reproduction,Structures Related to the Genitourinary and Reproductive Systems,Structure of Reproductive System,18
+Reproduction,Structures Related to the Genitourinary and Reproductive Systems,Structure of Uterus,2
+Reproduction,Structures Related to the Genitourinary and Reproductive Systems,Urinary Bladder,7
+Reproduction,"Symptoms, Signs and Abnormal Clinical and Laboratory Findings, Not Elsewhere Classified",Other Symptoms and Signs Involving the Urinary System,3
+Respiratory,Certain Conditions Originating In the Perinatal Period,Birth Asphyxia,1
+Respiratory,Certain Conditions Originating In the Perinatal Period,Chronic Respiratory Disease Originating In the Perinatal Period,8
+Respiratory,Certain Conditions Originating In the Perinatal Period,Intracranial Nontraumatic Haemorrhage of Fetus and Newborn,1
+Respiratory,Certain Conditions Originating In the Perinatal Period,Necrotizing Enterocolitis of Fetus and Newborn,1
+Respiratory,Certain Conditions Originating In the Perinatal Period,Respiratory Distress of Newborn,1
+Respiratory,Diseases of the Respiratory System,Adult Respiratory Distress Syndrome,1
+Respiratory,Diseases of the Respiratory System,Asthma,71
+Respiratory,Diseases of the Respiratory System,Chronic Diseases of Tonsils and Adenoids,2
+Respiratory,Diseases of the Respiratory System,Other Chronic Obstructive Pulmonary Disease,2
+Respiratory,Diseases of the Respiratory System,Unspecified Chronic Bronchitis,2
+Respiratory,Diseases of the Respiratory System,Vasomotor and Allergic Rhinitis,8
+Respiratory,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Exercise Tolerance Functions,123
+Respiratory,"Functions of the Cardiovascular, Haematological, Immunological and Respiratory Systems",Respiration Functions,31
+Skeletal,"Congenital Malformations, Deformations and Chromosomal Abnormalities",Congenital Deformities of Feet,1
+Skeletal,"Congenital Malformations, Deformations and Chromosomal Abnormalities",Other Congenital Malformations of Skull and Face Bones,2
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Arthrosis of First Carpometacarpal Joint,2
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Coxarthrosis [Arthrosis of Hip],13
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Dorsalgia,77
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Dorsopathies,3
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Gonarthrosis [Arthrosis of Knee],3
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Gout,4
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Kyphosis and Lordosis,1
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Osteoporosis In Diseases Classified Elsewhere,9
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Other Arthrosis,29
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Other Intervertebral Disc Disorders,2
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Other Systemic Involvement of Connective Tissue,1
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Scoliosis,2
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Shoulder Lesions,2
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Spinal Osteochondrosis,1
+Skeletal,Diseases of the Musculoskeletal System and Connective Tissue,Systemic Sclerosis,1
+Skeletal,Neuromusculoskeletal and Movement-Related Functions,Functions of the Joints and Bones,2
+Skeletal,Structures Related to Movement,Height,297
+Skeletal,Structures Related to Movement,Physical Appearance,3
+Skeletal,Structures Related to Movement,Structure of Head and Neck Region,162
+Skeletal,Structures Related to Movement,Structure of Lower Extremity,31
+Skeletal,Structures Related to Movement,Structure of Pelvic Region,39
+Skeletal,Structures Related to Movement,Structure of Shoulder Region,2
+Skeletal,Structures Related to Movement,Structure of Trunk,137
+Skeletal,Structures Related to Movement,Structure of Upper Extremity,69
+Social Interactions,"Community, Social and Civic Life",Community Life,2
+Social Interactions,Interpersonal Interactions and Relationships,Basic Interpersonal Interactions,32
+Social Interactions,Interpersonal Interactions and Relationships,Complex Interpersonal Interactions,15
+Social Interactions,Interpersonal Interactions and Relationships,Family Relationships,93
+Social Interactions,Interpersonal Interactions and Relationships,Formal Relationships,1
+Social Interactions,Interpersonal Interactions and Relationships,Informal Social Relationships,56
+Social Interactions,Interpersonal Interactions and Relationships,Intimate Relationships,32
+Social values,Attitudes,Individual Attitudes of Strangers,62
+Social values,Attitudes,Societal Attitudes,45
+Social values,"Community, Social and Civic Life",Religion and Spirituality,63
+,,,17804

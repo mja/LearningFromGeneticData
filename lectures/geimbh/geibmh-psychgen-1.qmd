@@ -786,7 +786,8 @@ Therefore from MZ and DZ twin correlations we can estimate:
 
 $$
 h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] \\
-c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ})
+c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ}) \\
+e^2 = 1 - h^2 - c^2
 $$
 
 ```{r}
@@ -797,14 +798,108 @@ require(ggplot2)
 
 twins_ac = tribble(
   ~Twin, ~Effect, ~Similarity,
-  "MZ", "A", 0.5,
-  "MZ", "C", 0.25,
-  "DZ", "A", 0.25,
-  "DZ", "C", 0.25
+  "MZ", "Genetic", 0.5,
+  "MZ", "Shared Environment", 0.25,
+  "DZ", "Genetic", 0.25,
+  "DZ", "Shared Environment", 0.25
 )
 
 ggplot(twins_ac, aes(x = Twin, y = Similarity, fill = Effect)) +
   geom_col() +
-  theme_minimal() +
-  scale_y_continuous(breaks=c(0, 0.25, 0.5, 0.75))
+  scale_y_continuous(breaks=c(0, 0.25, 0.5, 0.75)) +
+  theme_minimal(base_size = 15) 
 ```
+
+## What do we know about psychiatric genetics from twins studies
+
+```{r}
+#| label: match-class
+#| echo: false
+require(dplyr)
+require(readr)
+require(ggplot2)
+require(forcats)
+
+# data on phenotypes in twins studies
+match_domain_studies <- read_csv(here::here("data/polderman-match/polderman-match-domain-nstudies.csv"))
+
+ggplot(
+  match_domain_studies,
+  aes(
+    x = fct_reorder(`Main Trait domain`, Nstudies),
+    y = Nstudies
+  )) +
+  geom_col() +
+  scale_x_discrete("Main Trait Domain") +
+  scale_y_continuous("Number of studies") +
+  coord_flip() +
+  theme_minimal()
+
+```
+
+:::{.notes}
+Polderman TJC et al.  [Meta-Analysis of the Heritability of Human Traits based on Fifty Years of Twin Studies](https://dx.doi.org/10.1038/ng.3285) _Nature Genetics_ doi:10.1038/ng.3285
+:::
+
+## Meta-analysis of twin heritability
+
+```{r}
+#| label: match-meta
+#| echo: false
+require(dplyr)
+require(readr)
+require(tidyr)
+require(stringr)
+require(ggplot2)
+
+match_meta <- read_csv(here::here("data/polderman-match/polderman-match-st20-meta.csv"), comment = "#")
+
+# get full ACE estimates from wide table.
+# pivot table then filter and rename variables
+match_meta_full <-
+match_meta |>
+  pivot_longer(
+    !`ICD10-ICF Chapter`,
+    names_to = "estimand",
+    values_to = "estimate"
+  ) |>
+  filter(str_detect(estimand, "^[SE_]*[A|C]FULL_all")) |>
+  mutate(estimand = str_remove(estimand, "FULL_all")) |>
+  separate_wider_delim(
+    estimand,
+    delim = "_",
+    names = c("term", "component"),
+    too_few = "align_end"
+  ) |>
+  mutate(term = if_else(is.na(term), true = 'VarProp', false = term)) |>
+  filter(!is.na(estimate)) |>
+  pivot_wider(names_from = term, values_from = estimate)
+
+
+match_meta_full_bmh <- match_meta_full |>
+  filter(
+    `ICD10-ICF Chapter` %in% c(
+        "Attitudes",
+        "Diseases of the Nervous System",
+        "Mental Functions",
+        "Sensory Functions and Pain",
+        "Functions of the Nervous System",
+        "Mental and Behavioural Disorders"
+      )
+    )
+
+ggplot(match_meta_full_bmh, aes(x = component, fill = component, y = VarProp, ymin = VarProp - SE, ymax = VarProp + SE))+
+  geom_col() +
+  geom_errorbar() +
+  scale_x_discrete("Variance proportion") +
+  coord_flip() +
+  facet_grid(row = vars(`ICD10-ICF Chapter`)) +
+  theme_minimal() +
+  theme(strip.text.y = element_text(angle = 0)) 
+```
+
+:::{.notes}
+Mental and behavioural disorders are on average moderately heritable with a smaller but substantial portion attributable to the shared environment.
+
+Data from [`match.ctglab.nl`](https://match.ctglab.nl).
+:::

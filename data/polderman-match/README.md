@@ -1,0 +1,1 @@
+Polderman, T., Benyamin, B., de Leeuw, C. et al. Meta-analysis of the heritability of human traits based on fifty years of twin studies. Nat Genet 47, 702–709 (2015). doi:[10.1038/ng.3285](https://doi.org/10.1038/ng.3285)
