@@ -12,18 +12,12 @@ execute:
   message: false
 --- 
 
+# Part 1: Biometrics
+
 Mark Adams  
 Division of Psychiatry  
 `mark.adams@ed.ac.uk`  
 *Genetics and Environmental Influences on Behaviour and Mental Health*
-
-# Topics:
-
-- **Quantitative genetics and heritability**
-- **Candidate gene studies**
-- **Genome-wide studies**
-- **Prediction**
-- **Causality**
 
 # What is a *"common"*, *"complex"* psychiatric disorder?
 
@@ -166,8 +160,7 @@ Proportion of similarity in phenotypes that can be attributed to similarity in g
 $$\mathrm{var}(P) = \mathrm{var}(G) + \mathrm{var}(𝐸)$$
 
 **Proportion of variance**
-$$H^2 = \frac{\mathrm{var}(G)}{\mathrm{var}(𝑃)}, e^2 = \frac{\mathrm{var}(E)}{\mathrm{var}(𝑃)}$$
-$$H^2 + e^2 = 1$$
+$$H^2 = \frac{\mathrm{var}(G)}{\mathrm{var}(𝑃)}, e^2 = \frac{\mathrm{var}(E)}{\mathrm{var}(𝑃)}, H^2 + e^2 = 1$$
 
 :::{.notes}
 The effect $G$ denotes all genetic effects ($G = A + D + I$ for additive, dominance, and epistatic variance). In the more limited case where it is assumed genetic effects act only additively (they don't interact with each other), then only additive genetic variance $\mathrm{var}(A)$ is used with (narrow-sense) heritability defined as $h^2 = \frac{\mathrm{var}(A)}{\mathrm{var}(P)}$.
@@ -464,11 +457,11 @@ $$
 Previously we defined
 
 $$
-G = d + s
+A = d + s
 $$
 thus
 $$
-\mathrm{var}(G) = \mathrm{var}(d) + \mathrm{var}(s)
+\mathrm{var}(A) = \mathrm{var}(d) + \mathrm{var}(s)
 $$
 and assume variances in parental phenotypes are equal
 $$
@@ -481,9 +474,9 @@ Then substitute into the regression equation
 
 $$
 \beta = 2\frac{\mathrm{var}(d) + \mathrm{var}(s)}{\mathrm{var}(P_d) + \mathrm{var}(P_s)} \\
-= 2 \frac{\mathrm{var}(G)}{\mathrm{var}(P) + \mathrm{var}(P)} \\
-= 2 \frac{\mathrm{var}(G)}{2 \mathrm{var}(P)} \\
-= \frac{\mathrm{var}(G)}{\mathrm{var}(P)} \\
+= 2 \frac{\mathrm{var}(A)}{\mathrm{var}(P) + \mathrm{var}(P)} \\
+= 2 \frac{\mathrm{var}(A)}{2 \mathrm{var}(P)} \\
+= \frac{\mathrm{var}(A)}{\mathrm{var}(P)} \\
 = h^2
 $$
 
@@ -630,7 +623,7 @@ Fernandez-Pujals AM et al. (2015) Epidemiology and Heritability of Major Depress
 ## Recurrance risk to relatives
 
 $$
-\lambda_\mathrm{R} = \frac{P(\mathrm{affected} | \mathrm{relative affected})}{P(\mathrm{affected in population})} = \frac{K_\mathrm{R}}{K}
+\lambda_\mathrm{R} = \frac{P(\mathrm{affected} | \mathrm{relative\ affected})}{P(\mathrm{affected\ in\ population})} = \frac{K_\mathrm{R}}{K}
 $$
 
 :::{.notes}
@@ -641,8 +634,8 @@ Represents how much more likely to are to be affected by a disorder given that a
 
 Example:
 
-- $K_\mathrm{sib} = P(\mathrm{affected} | \mathrm{sibling affected}) = 0.09$
-- $K = P(\mathrm{affected in population}) = 0.02$
+- $K_\mathrm{sib} = P(\mathrm{affected} | \mathrm{sibling\ affected}) = 0.09$
+- $K = P(\mathrm{affected\ in\ population}) = 0.02$
 - $\frac{K_\mathrm{sib}}{K} = \frac{0.09}{0.02} = 4.5$
 
 ## Recurrance risk for schizophrenia
@@ -734,7 +727,7 @@ Contrast pairs of relatives that have comparable environmental similarity but di
 
 ## Additive genetic and shared environment effects
 
-Add a shared (or "common") environment to the basic genetic model, to capture similarity between relatives attributable to environmental factors
+Add a shared ($C$ or "common") environment to the basic genetic model, to capture similarity between relatives attributable to environmental factors. $E$ represents the unique, non-shared environment.
 
 $$P = A + C + E$$
 
@@ -808,23 +801,25 @@ c^2 = 2r_\mathrm{DZ} - r_\mathrm{MZ} \\
 e^2 = 1 - h^2 - c^2
 $$
 
+
 ```{r}
 #| label: twins_cor
+#| fig-cap: "Visualisation with *r*[MZ] = 0.75 and *r*[DZ] = 0.5."
 #| echo: false
 require(tibble)
 require(ggplot2)
 
 twins_ac = tribble(
   ~Twin, ~Effect, ~Similarity,
-  "MZ", "Genetic", 0.5,
-  "MZ", "Shared Environment", 0.25,
-  "DZ", "Genetic", 0.25,
-  "DZ", "Shared Environment", 0.25
+  "MZ", "Genetic (A)", 0.5,
+  "MZ", "Shared Environment (C)", 0.25,
+  "DZ", "Genetic (A)", 0.25,
+  "DZ", "Shared Environment (C)", 0.25,
 )
 
 ggplot(twins_ac, aes(x = Twin, y = Similarity, fill = Effect)) +
   geom_col() +
-  scale_y_continuous(breaks=c(0, 0.25, 0.5, 0.75)) +
+  scale_y_continuous(lim = c(0, 1), breaks=c(0, 0.25, 0.5, 0.75, 1.0)) +
   theme_minimal(base_size = 15) 
 ```
 
