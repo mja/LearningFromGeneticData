@@ -852,7 +852,7 @@ ggplot(
   scale_x_discrete("Main Trait Domain") +
   scale_y_continuous("Number of studies") +
   coord_flip() +
-  theme_minimal()
+  theme_minimal(base_size = 16)
 
 ```
 
@@ -864,6 +864,7 @@ Polderman TJC et al.  [Meta-Analysis of the Heritability of Human Traits based 
 
 ```{r}
 #| label: match-meta
+#| fig-cap: "Meta-analysis of phenotype domains"
 #| echo: false
 require(dplyr)
 require(readr)
@@ -911,11 +912,12 @@ ggplot(match_meta_full_bmh, aes(x = component, fill = component, y = VarProp, ym
   geom_col() +
   geom_errorbar() +
   scale_x_discrete("Variance component") +
-  scale_y_continuous("Variance proportion") +
+  scale_y_continuous("Variance proportion", lim = c(0, 1)) +
   coord_flip() +
-  facet_grid(row = vars(`ICD10-ICF Chapter`)) +
-  theme_minimal() +
-  theme(strip.text.y = element_text(angle = 0)) 
+  facet_grid(row = vars(fct_reorder(`ICD10-ICF Chapter`, VarProp, max))) +
+  theme_minimal(base_size = 16) +
+  theme(strip.text.y = element_text(angle = 0))  +
+  guides(fill = "none")
 ```
 
 :::{.notes}
@@ -928,6 +930,7 @@ Data from [`match.ctglab.nl`](https://match.ctglab.nl).
 
 ```{r}
 #| label: match-meta-subchapter
+#| fig-cap: "Meta-analysis of psychiatric, neurological, and psychological phenotypes"
 #| echo: false
 require(dplyr)
 require(readr)
@@ -946,8 +949,8 @@ match_meta_subchapter |>
     names_to = "estimand",
     values_to = "estimate"
   ) |>
-  filter(str_detect(estimand, "^[SE_]*[A|C]FULL_all")) |>
-  mutate(estimand = str_remove(estimand, "FULL_all")) |>
+  filter(str_detect(estimand, "^[SE_]*[A|C]FULL_SS")) |>
+  mutate(estimand = str_remove(estimand, "FULL_SS")) |>
   separate_wider_delim(
     estimand,
     delim = "_",
@@ -959,18 +962,31 @@ match_meta_subchapter |>
   pivot_wider(names_from = term, values_from = estimate)
 
 match_meta_subchapter_bmh <- match_meta_subchapter_full |>
-  filter(`ICD-10/ICF subchapter` %in% c(
-    "Recurrent Depressive Disorder",
-    "Depressive Episode",
-    "Reaction to Severe Stress, and Adjustment Disorders",
-    "Producing Drawings and Photographs",
-    "Temperament and Personality Functions",
-    "Eating Disorders",
-    "Obsessive-Compulsive Disorder",
-    "Other Anxiety Disorders",
-    "Phobic Anxiety Disorders",
-    "Schizophrenia"
-  )
+  mutate(
+    ICD10 = case_match(
+      `ICD-10/ICF subchapter`,
+      "Recurrent Depressive Disorder" ~ "Recurrent Depression",
+      "Depressive Episode" ~ "Depression",
+      "Temperament and Personality Functions" ~ "Personality",
+      "Eating Disorders" ~ "Eating Disorders",
+      "Obsessive-Compulsive Disorder" ~ "OCD",
+      "Other Anxiety Disorders" ~ "Anxiety",
+      "Phobic Anxiety Disorders" ~ "Phobias",
+      "Schizophrenia" ~ "Schizophrenia",
+      "Bipolar Affective Disorder" ~ "Bipolar Disorder",
+      "Dementia In Alzheimer Disease" ~ "Dementia"
+    )
+  ) |>
+  filter(!is.na(ICD10))
 
-  )
+ggplot(match_meta_subchapter_bmh, aes(x = component, fill = component, y = VarProp, ymin = VarProp - SE, ymax = VarProp + SE))+
+  geom_col() +
+  geom_errorbar() +
+  scale_x_discrete("Variance component") +
+  scale_y_continuous("Variance proportion", lim = c(-0.03, 1)) +
+  coord_flip() +
+  facet_grid(row = vars(fct_reorder(ICD10, VarProp, max))) +
+  theme_minimal(base_size = 16) +
+  theme(strip.text.y = element_text(angle = 0)) +
+  guides(fill = "none")
 ```
