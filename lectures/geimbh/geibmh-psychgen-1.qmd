@@ -1,5 +1,5 @@
 ---
-title: Genetics of common complex psychiatric disorders
+title: Genetics of common complex psychiatric disorders I
 author: Mark Adams
 format: 
   revealjs:
@@ -623,6 +623,34 @@ $$
 \lambda_\mathrm{R} = \frac{P(\mathrm{affected} | \mathrm{relative\ affected})}{P(\mathrm{affected\ in\ population})} = \frac{K_\mathrm{R}}{K}
 $$
 
+```{r}
+#| label: liability_scz_mdd
+#| echo: false
+require(dplyr)
+require(ggplot2)
+require(stringr)
+
+liability_scz_mdd <- tribble(
+  ~disorder, ~k,
+  "Schizophrenia", 0.01,
+  "Major Depressive Disorder", 0.15
+)
+
+ggplot(liability_scz_mdd) +
+  geom_function(fun = dnorm) +
+  stat_function(data = data.frame(disorder="Schizophrenia"), fun = dnorm, geom = "area", xlim = c(qnorm(1 - 0.01), 5), fill = "lightblue") +
+  stat_function(data = data.frame(disorder="Major Depressive Disorder"), fun = dnorm, geom = "area", xlim = c(qnorm(1 - 0.15), 5), fill = "lightblue") +
+  geom_vline(aes(xintercept = qnorm(1 - k))) +
+  geom_hline(yintercept = 0) +
+  geom_text(aes(label = str_glue("K = {k}"), x=qnorm(1 - k)+0.5), y= 0.3, hjust = "left") +
+  scale_y_continuous("Probability Density") +
+  scale_x_continuous("Liability", lim = c(-5, 5)) + 
+  facet_grid(cols = vars(disorder)) +
+  theme_classic(base_size = 16)
+
+```
+
+
 :::{.notes}
 Represents how much more likely to are to be affected by a disorder given that a relative is affected, compared to someone from the general population.
 :::
@@ -650,12 +678,12 @@ ggplot(scz_rr, aes(x = factor(Relationship, levels = rev(Relationship)), y = `Re
   scale_x_discrete("") +
   scale_y_continuous(breaks = 1:12) +
   coord_flip(ylim = c(1, 12)) +
-  theme_classic()
+  theme_classic(base_size = 16)
 
 ```
 
 :::{.notes}
-Recurrance risk to relatives for schizophrenia in Sweden, which has a baseline risk of $K = 0.047$%.
+Recurrance risk to relatives for schizophrenia in Sweden, which has a baseline risk of $K = 0.47$%.
 
 Lichtenstein, P. et al. Recurrence risks for schizophrenia in a Swedish National Cohort. Psychol. Med. 36, 1417–1425 (2006). doi:[10.1017/s0033291706008385](https://dx.doi.org/10.1017/s0033291706008385)
   
@@ -663,7 +691,7 @@ Lichtenstein, P. et al. Recurrence risks for schizophrenia in a Swedish National
 
 ## Recurrance risk and heritability
 
-- Code $\mathrm{unaffected} = 0, \mathrm{unaffected} = 1$
+- Score $\mathrm{unaffected} = 0, \mathrm{unaffected} = 1$
 - If population prevalence is $K$, then phenotypic variance is $K(1-K)$ (Bernoulli distribution)
 
 
@@ -1038,3 +1066,6 @@ ggplot(match_meta_subchapter_bmh, aes(x = component, fill = component, y = VarPr
   theme(strip.text.y = element_text(angle = 0)) +
   guides(fill = "none")
 ```
+
+## Genetic values
+
