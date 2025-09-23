@@ -710,6 +710,54 @@ h^2 = \frac{\mathrm{cov}_\mathrm{R}}{\mathrm{r}V_\mathrm{P}} \\
 = \frac{K (\lambda_\mathrm{R} - 1)}{\mathrm{r}(1-K)} \\
 $$
 
+## Recurrance risk of psychiatric disorders
+
+```{r}
+#| label: psy_rr
+#| fig-cap: "Prevalence in population (K) and with one parent affected (K[1])"
+#| echo: false
+require(dplyr)
+require(tidyr)
+require(ggplot2)
+
+# based on data and code from https://github.com/BartBaselmans/CHARRGe
+a <- 0.5
+psy_k <- tribble(
+  ~disorder, ~h2, ~K,
+  "Schizophrenia", 0.70, 0.01,
+  "Bipolar Disorder", 0.65, 0.01,
+  "Major Depressive Disorder", 0.35,0.15,
+  "ADHD", 0.75, 0.05, 
+  "Anorexia Nervosa", 0.5, 0.01,
+ "Autism Spectrum Disorder", 0.8, 0.01
+) |>
+  mutate(Tx = -qnorm(K, 0, 1)) |>
+  mutate(z = dnorm(Tx)) |>
+  mutate(i = z/K) |>
+  mutate(Tx1 = (Tx - a * i * h2) / (sqrt(1 - a * a * h2 * h2 * i * (i-Tx)))) |>
+  mutate(K1 = 1 - pnorm(Tx1))
+
+psy_k1 <- psy_k |>
+  select(disorder, K, K1) |>
+  pivot_longer(cols = c(K, K1), names_to = "K", values_to = "prev")
+
+ggplot(psy_k1, aes(x = K, y = 100*prev)) +
+  geom_col() +
+  scale_x_discrete("") +
+  scale_y_continuous("Lifetime Prevalence (%)") +
+  coord_flip() +
+  facet_grid(rows = vars(disorder)) +
+  theme_minimal(base_size = 16) +
+  theme(strip.text.y = element_text(angle = 0))
+```
+
+:::{.notes}
+
+Baselmans, B. M. L., Yengo, L., Rheenen, W. van & Wray, N. R. Risk in relatives, heritability, SNP-based heritability and genetic correlations in psychiatric disorders: a review. Biol Psychiat (2020) doi:10.1016/j.biopsych.2020.05.034.
+
+:::
+  
+
 ## Estimating environmental effects
 
 Contrast pairs of relatives that have comparable environmental similarity but different genetic similarity.
