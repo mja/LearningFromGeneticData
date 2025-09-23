@@ -186,10 +186,23 @@ similarity in genotypes.
 
 **Model:** Phenotype (P) = Genotype (G) + Environment (E)  
 **Variance decomposition**
-$$\mathrm{var}(P) = \mathrm{var}(𝐺) + \mathrm{var}(𝐸)$$ **Proportion of
-variance** $$h^2 = \frac{\mathrm{var}(𝐺)}{\mathrm{var}(𝑃)}$$
+$$\mathrm{var}(P) = \mathrm{var}(G) + \mathrm{var}(𝐸)$$
+
+**Proportion of variance**
+$$H^2 = \frac{\mathrm{var}(G)}{\mathrm{var}(𝑃)}$$
+
+$$e^2 = \frac{\mathrm{var}(E)}{\mathrm{var}(𝑃)}$$
+
+$$H^2 + e^2 = 1$$
 
 <div class="notes">
+
+The effect $G$ denotes all genetic effects ($G = A + D + I$ for
+additive, dominance, and epistatic variance). In the more limited case
+where it is assumed genetic effects act only additively (they don’t
+interact with each other), then only additive genetic variance
+$\mathrm{var}(A)$ is used with (narrow-sense) heritability defined as
+$h^2 = \frac{\mathrm{var}(A)}{\mathrm{var}(P)}$.
 
 - Tenesa, A., Haley, C. [The heritability of human disease: estimation,
   uses and abuses](https://dx.doi.org/10.1038/nrg3377). *Nat Rev Genet*
@@ -245,11 +258,11 @@ the variance of the predictor ($A$).
 ## Simple model of genetic and environmental effects
 
 $$
-P = G + E
+P = A + E
 $$
 
-The phenotype value $P$ is influenced by a genetic effect $G$ and and
-environmental effect $E$.
+The phenotype value $P$ is influenced by an additive genetic effect $A$
+and and environmental effect $E$.
 
 <div class="notes">
 
@@ -261,7 +274,7 @@ average phenotype in the population.
 ## Simple model of genomics
 
 $$
-G = d + s
+A = d + s
 $$
 
 Each individual has two copies of the genome, one inherited from each
@@ -307,10 +320,10 @@ environmental value ($e$).
 
 <div class="column" width="40%">
 
-$\beta = \frac{\mathrm{cov}(A, B)}{\mathrm{var}(A)}$
+$\beta = \frac{\mathrm{cov}(X, Y)}{\mathrm{var}(X)}$
 
-- $A$ = average of parents’ phenotypes
-- $B$ = offspring phenotype
+- $X$ = average of parents’ phenotypes
+- $Y$ = offspring phenotype
 
 Therefore,
 $\beta = \frac{\mathrm{cov}(\frac{P_d + P_s}{2}, P_o)}{\mathrm{var}(\frac{P_d + P_s}{2})}$
@@ -561,11 +574,19 @@ Heritability can also be estimated from resemblance between different
 types of related pairs. The general equation is:
 
 $$
-h^2 = \frac{b}{r}
+h^2 = \frac{b}{\mathrm{r}}
 $$
 
 - $b$ = regression coefficient
-- $r$ = coefficient of additive variance (“relatedness”)
+- $\mathrm{r}$ = relatedness coefficient (“coefficient of additive
+  variance”)
+
+<div class="notes">
+
+In this notation we used normal $\mathrm{r}$ to represent relatedness,
+to disguish it from italic $r$ for correlation coefficient.
+
+</div>
 
 ## Example data: depression scores
 
@@ -666,9 +687,9 @@ $$
 ## Heritability estimate
 
 $$
-h^2 = \frac{\mathrm{cov}_\mathrm{R}}{rV_\mathrm{P}} \\
-= \frac{K^2 (\lambda_\mathrm{R} - 1)}{rK(1-K)} \\
-= \frac{K (\lambda_\mathrm{R} - 1)}{r(1-K)} \\
+h^2 = \frac{\mathrm{cov}_\mathrm{R}}{\mathrm{r}V_\mathrm{P}} \\
+= \frac{K^2 (\lambda_\mathrm{R} - 1)}{\mathrm{r}K(1-K)} \\
+= \frac{K (\lambda_\mathrm{R} - 1)}{\mathrm{r}(1-K)} \\
 $$
 
 ## Estimating environmental effects
@@ -678,8 +699,8 @@ similarity but different genetic similarity.
 
 ![](assets/Identical-fraternal-sperm-egg.svg)
 
-- Monozygotic (MZ) twins $r = 1.0$
-- Dizygotic (DZ) twins $r = 0.5$
+- Monozygotic (MZ) twins $\mathrm{r} = 1.0$
+- Dizygotic (DZ) twins $\mathrm{r} = 0.5$
 
 <div class="notes">
 
@@ -691,9 +712,9 @@ CC-BY-SA Trikly.
 
 ## Twin correlations
 
-MZ twins: $t(\mathrm{MZ}) = h^2 + c^2$
+MZ twins: $r_\mathrm{MZ} = h^2 + c^2$
 
-DZ twins: $t(\mathrm{DZ}) = \frac{1}{2}h^2 + c^2$
+DZ twins: $r_\mathrm{DZ} = \frac{1}{2}h^2 + c^2$
 
 ## 
 
@@ -702,14 +723,14 @@ DZ twins: $t(\mathrm{DZ}) = \frac{1}{2}h^2 + c^2$
 Start with the MZ twin equation:
 
 $$
-t(\mathrm{MZ}) = h^2 + c^2
+r_\mathrm{MZ} = h^2 + c^2
 $$
 
 Take the DZ twin correlation and solve for $c^2$
 
 $$
-t(\mathrm{DZ}) = \frac{1}{2}h^2 + c^2 \\
-c^2 = t(\mathrm{DZ}) - \frac{1}{2}h^2
+r_\mathrm{DZ} = \frac{1}{2}h^2 + c^2 \\
+c^2 = r_\mathrm{DZ} - \frac{1}{2}h^2
 $$
 
 ## 
@@ -717,8 +738,8 @@ $$
 Substitute $c^2$ into the MZ equation
 
 $$
-t(\mathrm{MZ}) = h^2 + \underbrace{c^2} \\
-t(\mathrm{MZ}) = h^2 + [t(\mathrm{DZ}) - \frac{1}{2}h^2]
+r_\mathrm{MZ} = h^2 + \underbrace{c^2} \\
+r_\mathrm{MZ} = h^2 + [r_\mathrm{DZ} - \frac{1}{2}h^2]
 $$
 
 ## 
@@ -726,11 +747,11 @@ $$
 Solve for $h^2$
 
 $$
-t(\mathrm{MZ}) = h^2 + t(\mathrm{DZ}) - \frac{1}{2}h^2 \\
-t(\mathrm{MZ}) = t(\mathrm{DZ}) + h^2 - \frac{1}{2}h^2 \\
-t(\mathrm{MZ}) = t(\mathrm{DZ}) + \frac{1}{2}h^2 \\
-\frac{1}{2}h^2 = t(\mathrm{MZ}) - t(\mathrm{DZ}) \\
-h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})]
+r_\mathrm{MZ} = h^2 + r_\mathrm{DZ} - \frac{1}{2}h^2 \\
+r_\mathrm{MZ} = r_\mathrm{DZ} + h^2 - \frac{1}{2}h^2 \\
+r_\mathrm{MZ} = r_\mathrm{DZ} + \frac{1}{2}h^2 \\
+\frac{1}{2}h^2 = r_\mathrm{MZ} - r_\mathrm{DZ} \\
+h^2 = 2[r_\mathrm{MZ} - r_\mathrm{DZ}]
 $$
 
 ## 
@@ -739,11 +760,11 @@ Substitute $h^2$ into MZ equation and solve for shared environment
 similarity ($c^2$)
 
 $$
-t(\mathrm{MZ}) = \underbrace{h^2} + c^2 \\
-t(\mathrm{MZ}) = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] + c^2 \\
-t(\mathrm{MZ}) - 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] = c^2 \\
-c^2 = t(\mathrm{MZ}) - 2t(\mathrm{MZ}) + 2t(\mathrm{DZ}) \\
-c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ})
+r_\mathrm{MZ} = \underbrace{h^2} + c^2 \\
+r_\mathrm{MZ} = 2[r_\mathrm{MZ} - r_\mathrm{DZ}] + c^2 \\
+r_\mathrm{MZ} - 2[r_\mathrm{MZ} - r_\mathrm{DZ}] = c^2 \\
+c^2 = r_\mathrm{MZ} - 2r_\mathrm{MZ} + 2r_\mathrm{DZ} \\
+c^2 = 2r_\mathrm{DZ} - r_\mathrm{MZ}
 $$
 
 ## 
@@ -751,8 +772,8 @@ $$
 Therefore from MZ and DZ twin correlations we can estimate:
 
 $$
-h^2 = 2[t(\mathrm{MZ}) - t(\mathrm{DZ})] \\
-c^2 = 2t(\mathrm{DZ}) - t(\mathrm{MZ}) \\
+h^2 = 2[r_\mathrm{MZ} - r_\mathrm{DZ}] \\
+c^2 = 2r_\mathrm{DZ} - r_\mathrm{MZ} \\
 e^2 = 1 - h^2 - c^2
 $$
 
@@ -773,6 +794,14 @@ doi:10.1038/ng.3285
 
 ## Meta-analysis of twin heritability
 
-[`match.ctglab.nl`](https://match.ctglab.nl)
-
 ![](geibmh-psychgen-1_files/figure-commonmark/match-meta-1.png)
+
+<div class="notes">
+
+Mental and behavioural disorders are on average moderately heritable
+with a smaller but substantial portion attributable to the shared
+environment.
+
+Data from [`match.ctglab.nl`](https://match.ctglab.nl).
+
+</div>
