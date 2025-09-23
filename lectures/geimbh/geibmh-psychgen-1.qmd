@@ -745,38 +745,22 @@ DZ twins: $r_\mathrm{DZ} = \frac{1}{2}h^2 + c^2$
 
 ### Solve for genetic similarity ($h^2$)
 
-Start with the MZ twin equation:
+Calculate difference between MZ and DZ correlations
 
 $$
-r_\mathrm{MZ} = h^2 + c^2
+r_\mathrm{MZ} - r_\mathrm{DZ} = (h^2 + c^2) - (\frac{1}{2}h^2 + c^2)
 $$
 
-Take the DZ twin correlation and solve for $c^2$
-
 $$
-r_\mathrm{DZ} = \frac{1}{2}h^2 + c^2 \\
-c^2 = r_\mathrm{DZ} - \frac{1}{2}h^2
+r_\mathrm{MZ} - r_\mathrm{DZ} = h^2 - \frac{1}{2}h^2 + c^2 - c^2
 $$
 
-##
-
-Substitute $c^2$ into the MZ equation
-
 $$
-r_\mathrm{MZ} = h^2 + \underbrace{c^2} \\
-r_\mathrm{MZ} = h^2 + [r_\mathrm{DZ} - \frac{1}{2}h^2]
+r_\mathrm{MZ} - r_\mathrm{DZ} = \frac{1}{2}h^2
 $$
 
-##
-
-Solve for $h^2$
-
 $$
-r_\mathrm{MZ} = h^2 + r_\mathrm{DZ} - \frac{1}{2}h^2 \\
-r_\mathrm{MZ} = r_\mathrm{DZ} + h^2 - \frac{1}{2}h^2 \\
-r_\mathrm{MZ} = r_\mathrm{DZ} + \frac{1}{2}h^2 \\
-\frac{1}{2}h^2 = r_\mathrm{MZ} - r_\mathrm{DZ} \\
-h^2 = 2[r_\mathrm{MZ} - r_\mathrm{DZ}]
+h^2 = 2(r_\mathrm{MZ} - r_\mathrm{DZ})
 $$
 
 ##
@@ -785,8 +769,8 @@ Substitute $h^2$ into MZ equation and solve for shared environment similarity ($
 
 $$
 r_\mathrm{MZ} = \underbrace{h^2} + c^2 \\
-r_\mathrm{MZ} = 2[r_\mathrm{MZ} - r_\mathrm{DZ}] + c^2 \\
-r_\mathrm{MZ} - 2[r_\mathrm{MZ} - r_\mathrm{DZ}] = c^2 \\
+r_\mathrm{MZ} = 2(r_\mathrm{MZ} - r_\mathrm{DZ}) + c^2 \\
+r_\mathrm{MZ} - 2(r_\mathrm{MZ} - r_\mathrm{DZ}) = c^2 \\
 c^2 = r_\mathrm{MZ} - 2r_\mathrm{MZ} + 2r_\mathrm{DZ} \\
 c^2 = 2r_\mathrm{DZ} - r_\mathrm{MZ}
 $$
@@ -796,7 +780,7 @@ $$
 Therefore from MZ and DZ twin correlations we can estimate:
 
 $$
-h^2 = 2[r_\mathrm{MZ} - r_\mathrm{DZ}] \\
+h^2 = 2(r_\mathrm{MZ} - r_\mathrm{DZ}) \\
 c^2 = 2r_\mathrm{DZ} - r_\mathrm{MZ} \\
 e^2 = 1 - h^2 - c^2
 $$
