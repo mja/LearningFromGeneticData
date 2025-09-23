@@ -546,10 +546,9 @@ Wray, N. & Visscher, P. (2008) [Estimating trait heritability](https://www.natur
 
 :::
 
-
 ##
 
-:::: {.columns}
+::::{.columns}
 
 :::{.column}
 
@@ -559,25 +558,23 @@ Wray, N. & Visscher, P. (2008) [Estimating trait heritability](https://www.natur
 
 :::{.column}
 
-
-::: {.content-visible unless-format="pdf"}
-![](assets/underground.png)
-:::
+[![](assets/underground.png)]{.content-visible when-format="html"}
 
 :::
 
 ::::
 
 :::{.notes}
-- Parents' environments are not similar: $\mathrm{cov}(e_d, e_s) = 0$
-- No assortative mating: $\mathrm{cov}(d, s) = 0$
-- Parents do not transmit their environments: $\mathrm{cov}(e_o, e_d) = 0$, $\mathrm{cov}(e_o, e_s) = 0$
-- No gene-environment correlation: $\mathrm{cov}(d, e_d) = 0$, $\mathrm{cov}(s, e_s) = 0$
-- No genetic nature: $\mathrm{cov}(d, e_o) = 0$, $\mathrm{cov}(s, e_o) = 0$
-- No inbreeding: $\mathrm{cov}(d, d^\prime) = 0$, $\mathrm{cov}(s, s^\prime) = 0$
-- Genetic effects are additive: $Y = a + a^\prime + e$
-- Genetic influence is the same for both sexes: $\mathrm{var}(d + d^\prime) =  var(s + s^\prime)$
+Parents' environments are not similar: $\mathrm{cov}(e_d, e_s) = 0$  
+No assortative mating: $\mathrm{cov}(d, s) = 0$  
+Parents do not transmit their environments: $\mathrm{cov}(e_o, e_d) = 0$, $\mathrm{cov}(e_o, e_s) = 0$  
+No gene-environment correlation: $\mathrm{cov}(d, e_d) = 0$, $\mathrm{cov}(s, e_s) = 0$  
+No genetic nature: $\mathrm{cov}(d, e_o) = 0$, $\mathrm{cov}(s, e_o) = 0$  
+No inbreeding: $\mathrm{cov}(d, d^\prime) = 0$, $\mathrm{cov}(s, s^\prime) = 0$  
+Genetic effects are additive: $Y = a + a^\prime + e$  
+Genetic influence is the same for both sexes: $\mathrm{var}(d + d^\prime) =  var(s + s^\prime)$
 :::
+
 
 ## Generalising to other relatives
 
@@ -587,8 +584,8 @@ $$
 h^2 = \frac{b}{\mathrm{r}}
 $$
 
-- $b$ = regression coefficient
-- $\mathrm{r}$ = relatedness coefficient ("coefficient of additive variance")
+$b$ = regression coefficient  
+$\mathrm{r}$ = relatedness coefficient ("coefficient of additive variance")
 
 :::{.notes}
 In this notation we used normal $\mathrm{r}$ to represent relatedness, to disguish it from italic $r$ for correlation coefficient.
@@ -669,6 +666,7 @@ Lichtenstein, P. et al. Recurrence risks for schizophrenia in a Swedish National
 - Code $\mathrm{unaffected} = 0, \mathrm{unaffected} = 1$
 - If population prevalence is $K$, then phenotypic variance is $K(1-K)$ (Bernoulli distribution)
 
+
 ##
 
 - $Y$ = score of individual (proband)
@@ -716,10 +714,22 @@ $$
 
 Contrast pairs of relatives that have comparable environmental similarity but different genetic similarity.
 
+::::{.columns}
+
+:::{.column}
+
 ![](assets/Identical-fraternal-sperm-egg.svg)
+
+:::
+
+:::{.column}
 
 - Monozygotic (MZ) twins $\mathrm{r} = 1.0$
 - Dizygotic (DZ) twins $\mathrm{r} = 0.5$
+
+:::
+
+::::
 
 :::{.notes}
 [Zygote development figure](https://commons.wikimedia.org/wiki/File:Identical-fraternal-sperm-egg.svg) CC-BY-SA Trikly.
@@ -768,10 +778,22 @@ $$
 Substitute $h^2$ into MZ equation and solve for shared environment similarity ($c^2$)
 
 $$
-r_\mathrm{MZ} = \underbrace{h^2} + c^2 \\
-r_\mathrm{MZ} = 2(r_\mathrm{MZ} - r_\mathrm{DZ}) + c^2 \\
-r_\mathrm{MZ} - 2(r_\mathrm{MZ} - r_\mathrm{DZ}) = c^2 \\
-c^2 = r_\mathrm{MZ} - 2r_\mathrm{MZ} + 2r_\mathrm{DZ} \\
+r_\mathrm{MZ} = \underbrace{h^2} + c^2
+$$
+
+$$
+r_\mathrm{MZ} = 2(r_\mathrm{MZ} - r_\mathrm{DZ}) + c^2
+$$
+
+$$
+r_\mathrm{MZ} - 2(r_\mathrm{MZ} - r_\mathrm{DZ}) = c^2
+$$
+
+$$
+c^2 = r_\mathrm{MZ} - 2r_\mathrm{MZ} + 2r_\mathrm{DZ}
+$$
+
+$$
 c^2 = 2r_\mathrm{DZ} - r_\mathrm{MZ}
 $$
 
@@ -888,7 +910,8 @@ match_meta_full_bmh <- match_meta_full |>
 ggplot(match_meta_full_bmh, aes(x = component, fill = component, y = VarProp, ymin = VarProp - SE, ymax = VarProp + SE))+
   geom_col() +
   geom_errorbar() +
-  scale_x_discrete("Variance proportion") +
+  scale_x_discrete("Variance component") +
+  scale_y_continuous("Variance proportion") +
   coord_flip() +
   facet_grid(row = vars(`ICD10-ICF Chapter`)) +
   theme_minimal() +
@@ -900,3 +923,17 @@ Mental and behavioural disorders are on average moderately heritable with a smal
 
 Data from [`match.ctglab.nl`](https://match.ctglab.nl).
 :::
+
+##
+
+```{r}
+#| label: match-meta-subchapter
+#| echo: false
+require(dplyr)
+require(readr)
+require(tidyr)
+require(stringr)
+require(ggplot2)
+
+match_meta_subchapter <- read_csv(here::here("data/polderman-match/polderman-match-st21-meta-subchapter.csv"), comment = "#")
+```

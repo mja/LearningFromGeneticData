@@ -1,18 +1,12 @@
 # Genetics of common complex psychiatric disorders
 Mark Adams
 
+# Part 1: Biometrics
+
 Mark Adams  
 Division of Psychiatry  
 `mark.adams@ed.ac.uk`  
 *Genetics and Environmental Influences on Behaviour and Mental Health*
-
-# Topics:
-
-- **Quantitative genetics and heritability**
-- **Candidate gene studies**
-- **Genome-wide studies**
-- **Prediction**
-- **Causality**
 
 # What is a *“common”*, *“complex”* psychiatric disorder?
 
@@ -189,11 +183,7 @@ similarity in genotypes.
 $$\mathrm{var}(P) = \mathrm{var}(G) + \mathrm{var}(𝐸)$$
 
 **Proportion of variance**
-$$H^2 = \frac{\mathrm{var}(G)}{\mathrm{var}(𝑃)}$$
-
-$$e^2 = \frac{\mathrm{var}(E)}{\mathrm{var}(𝑃)}$$
-
-$$H^2 + e^2 = 1$$
+$$H^2 = \frac{\mathrm{var}(G)}{\mathrm{var}(𝑃)}, e^2 = \frac{\mathrm{var}(E)}{\mathrm{var}(𝑃)}, H^2 + e^2 = 1$$
 
 <div class="notes">
 
@@ -245,11 +235,11 @@ relationship between these two variables?
 
 <div class="column fragment" width="40%">
 
-$\beta = \frac{\mathrm{cov}(A, B)}{\mathrm{var}(A)}$
+$\beta = \frac{\mathrm{cov}(X, Y)}{\mathrm{var}(X)}$
 
 Estimate the beta coefficient (slope) for a simple regression from the
-covariance between predictor ($A$) and outcome ($B$) variable divided by
-the variance of the predictor ($A$).
+covariance between predictor ($X$) and outcome ($Y$) variable divided by
+the variance of the predictor ($X$).
 
 </div>
 
@@ -352,8 +342,8 @@ $$
 $$ Thus we can do a pairwise expansion to: $$
 = \mathrm{cov}(\frac{d}{2} + \frac{d^\prime}{2} + \frac{e_d}{2} + \frac{s}{2} + \frac{s^\prime}{2} + \frac{e_s}{2}, d + s + e_o)
 $$ $$
-= \mathrm{cov}(\frac{d}{2}, d) + \mathrm{cov}(\frac{d^\prime}{2}, d) + \dotsm+ \mathrm{cov}(\frac{e_s}{2}, e_o)$$
-\$\$
+= \mathrm{cov}(\frac{d}{2}, d) + \mathrm{cov}(\frac{d^\prime}{2}, d) + \dotsm+ \mathrm{cov}(\frac{e_s}{2}, e_o)
+$$
 
 ## Simplifications
 
@@ -476,9 +466,9 @@ $$
 Previously we defined
 
 $$
-G = d + s
+A = d + s
 $$ thus $$
-\mathrm{var}(G) = \mathrm{var}(d) + \mathrm{var}(s)
+\mathrm{var}(A) = \mathrm{var}(d) + \mathrm{var}(s)
 $$ and assume variances in parental phenotypes are equal $$
 \mathrm{var}(P_d) = \mathrm{var}(P_s) = \mathrm{var}(P)
 $$
@@ -489,9 +479,9 @@ Then substitute into the regression equation
 
 $$
 \beta = 2\frac{\mathrm{var}(d) + \mathrm{var}(s)}{\mathrm{var}(P_d) + \mathrm{var}(P_s)} \\
-= 2 \frac{\mathrm{var}(G)}{\mathrm{var}(P) + \mathrm{var}(P)} \\
-= 2 \frac{\mathrm{var}(G)}{2 \mathrm{var}(P)} \\
-= \frac{\mathrm{var}(G)}{\mathrm{var}(P)} \\
+= 2 \frac{\mathrm{var}(A)}{\mathrm{var}(P) + \mathrm{var}(P)} \\
+= 2 \frac{\mathrm{var}(A)}{2 \mathrm{var}(P)} \\
+= \frac{\mathrm{var}(A)}{\mathrm{var}(P)} \\
 = h^2
 $$
 
@@ -544,27 +534,25 @@ Nature Education 1(1):29
 
 <div class="column">
 
-![](assets/underground.png)
-
 </div>
 
 </div>
 
 <div class="notes">
 
-- Parents’ environments are not similar: $\mathrm{cov}(e_d, e_s) = 0$
-- No assortative mating: $\mathrm{cov}(d, s) = 0$
-- Parents do not transmit their environments:
-  $\mathrm{cov}(e_o, e_d) = 0$, $\mathrm{cov}(e_o, e_s) = 0$
-- No gene-environment correlation: $\mathrm{cov}(d, e_d) = 0$,
-  $\mathrm{cov}(s, e_s) = 0$
-- No genetic nature: $\mathrm{cov}(d, e_o) = 0$,
-  $\mathrm{cov}(s, e_o) = 0$
-- No inbreeding: $\mathrm{cov}(d, d^\prime) = 0$,
-  $\mathrm{cov}(s, s^\prime) = 0$
-- Genetic effects are additive: $Y = a + a^\prime + e$
-- Genetic influence is the same for both sexes:
-  $\mathrm{var}(d + d^\prime) =  var(s + s^\prime)$
+Parents’ environments are not similar: $\mathrm{cov}(e_d, e_s) = 0$  
+No assortative mating: $\mathrm{cov}(d, s) = 0$  
+Parents do not transmit their environments:
+$\mathrm{cov}(e_o, e_d) = 0$, $\mathrm{cov}(e_o, e_s) = 0$  
+No gene-environment correlation: $\mathrm{cov}(d, e_d) = 0$,
+$\mathrm{cov}(s, e_s) = 0$  
+No genetic nature: $\mathrm{cov}(d, e_o) = 0$,
+$\mathrm{cov}(s, e_o) = 0$  
+No inbreeding: $\mathrm{cov}(d, d^\prime) = 0$,
+$\mathrm{cov}(s, s^\prime) = 0$  
+Genetic effects are additive: $Y = a + a^\prime + e$  
+Genetic influence is the same for both sexes:
+$\mathrm{var}(d + d^\prime) =  var(s + s^\prime)$
 
 </div>
 
@@ -577,9 +565,9 @@ $$
 h^2 = \frac{b}{\mathrm{r}}
 $$
 
-- $b$ = regression coefficient
-- $\mathrm{r}$ = relatedness coefficient (“coefficient of additive
-  variance”)
+$b$ = regression coefficient  
+$\mathrm{r}$ = relatedness coefficient (“coefficient of additive
+variance”)
 
 <div class="notes">
 
@@ -607,7 +595,7 @@ doi:[10.1371/journal.pone.0142197](https://dx.doi.org/10.1371/journal.pone.01421
 ## Recurrance risk to relatives
 
 $$
-\lambda_\mathrm{R} = \frac{P(\mathrm{affected} | \mathrm{relative affected})}{P(\mathrm{affected in population})} = \frac{K_\mathrm{R}}{K}
+\lambda_\mathrm{R} = \frac{P(\mathrm{affected} | \mathrm{relative\ affected})}{P(\mathrm{affected\ in\ population})} = \frac{K_\mathrm{R}}{K}
 $$
 
 <div class="notes">
@@ -622,8 +610,8 @@ population.
 
 Example:
 
-- $K_\mathrm{sib} = P(\mathrm{affected} | \mathrm{sibling affected}) = 0.09$
-- $K = P(\mathrm{affected in population}) = 0.02$
+- $K_\mathrm{sib} = P(\mathrm{affected} | \mathrm{sibling\ affected}) = 0.09$
+- $K = P(\mathrm{affected\ in\ population}) = 0.02$
 - $\frac{K_\mathrm{sib}}{K} = \frac{0.09}{0.02} = 4.5$
 
 ## Recurrance risk for schizophrenia
@@ -697,10 +685,22 @@ $$
 Contrast pairs of relatives that have comparable environmental
 similarity but different genetic similarity.
 
+<div class="columns">
+
+<div class="column">
+
 ![](assets/Identical-fraternal-sperm-egg.svg)
+
+</div>
+
+<div class="column">
 
 - Monozygotic (MZ) twins $\mathrm{r} = 1.0$
 - Dizygotic (DZ) twins $\mathrm{r} = 0.5$
+
+</div>
+
+</div>
 
 <div class="notes">
 
@@ -709,6 +709,18 @@ figure](https://commons.wikimedia.org/wiki/File:Identical-fraternal-sperm-egg.sv
 CC-BY-SA Trikly.
 
 </div>
+
+## Additive genetic and shared environment effects
+
+Add a shared ($C$ or “common”) environment to the basic genetic model,
+to capture similarity between relatives attributable to environmental
+factors. $E$ represents the unique, non-shared environment.
+
+$$P = A + C + E$$
+
+$$h^2 = \frac{\mathrm{var}(A)}{\mathrm{var}(P)}, c^2 = \frac{\mathrm{var}(C)}{\mathrm{var}(P)}, e^2 = \frac{\mathrm{var}(E)}{\mathrm{var}(P)}$$
+
+$$h^2 + c^2 + e^2 = 1$$
 
 ## Twin correlations
 
@@ -720,38 +732,22 @@ DZ twins: $r_\mathrm{DZ} = \frac{1}{2}h^2 + c^2$
 
 ### Solve for genetic similarity ($h^2$)
 
-Start with the MZ twin equation:
+Calculate difference between MZ and DZ correlations
 
 $$
-r_\mathrm{MZ} = h^2 + c^2
+r_\mathrm{MZ} - r_\mathrm{DZ} = (h^2 + c^2) - (\frac{1}{2}h^2 + c^2)
 $$
 
-Take the DZ twin correlation and solve for $c^2$
-
 $$
-r_\mathrm{DZ} = \frac{1}{2}h^2 + c^2 \\
-c^2 = r_\mathrm{DZ} - \frac{1}{2}h^2
+r_\mathrm{MZ} - r_\mathrm{DZ} = h^2 - \frac{1}{2}h^2 + c^2 - c^2
 $$
 
-## 
-
-Substitute $c^2$ into the MZ equation
-
 $$
-r_\mathrm{MZ} = h^2 + \underbrace{c^2} \\
-r_\mathrm{MZ} = h^2 + [r_\mathrm{DZ} - \frac{1}{2}h^2]
+r_\mathrm{MZ} - r_\mathrm{DZ} = \frac{1}{2}h^2
 $$
 
-## 
-
-Solve for $h^2$
-
 $$
-r_\mathrm{MZ} = h^2 + r_\mathrm{DZ} - \frac{1}{2}h^2 \\
-r_\mathrm{MZ} = r_\mathrm{DZ} + h^2 - \frac{1}{2}h^2 \\
-r_\mathrm{MZ} = r_\mathrm{DZ} + \frac{1}{2}h^2 \\
-\frac{1}{2}h^2 = r_\mathrm{MZ} - r_\mathrm{DZ} \\
-h^2 = 2[r_\mathrm{MZ} - r_\mathrm{DZ}]
+h^2 = 2(r_\mathrm{MZ} - r_\mathrm{DZ})
 $$
 
 ## 
@@ -760,10 +756,22 @@ Substitute $h^2$ into MZ equation and solve for shared environment
 similarity ($c^2$)
 
 $$
-r_\mathrm{MZ} = \underbrace{h^2} + c^2 \\
-r_\mathrm{MZ} = 2[r_\mathrm{MZ} - r_\mathrm{DZ}] + c^2 \\
-r_\mathrm{MZ} - 2[r_\mathrm{MZ} - r_\mathrm{DZ}] = c^2 \\
-c^2 = r_\mathrm{MZ} - 2r_\mathrm{MZ} + 2r_\mathrm{DZ} \\
+r_\mathrm{MZ} = \underbrace{h^2} + c^2
+$$
+
+$$
+r_\mathrm{MZ} = 2(r_\mathrm{MZ} - r_\mathrm{DZ}) + c^2
+$$
+
+$$
+r_\mathrm{MZ} - 2(r_\mathrm{MZ} - r_\mathrm{DZ}) = c^2
+$$
+
+$$
+c^2 = r_\mathrm{MZ} - 2r_\mathrm{MZ} + 2r_\mathrm{DZ}
+$$
+
+$$
 c^2 = 2r_\mathrm{DZ} - r_\mathrm{MZ}
 $$
 
@@ -772,12 +780,13 @@ $$
 Therefore from MZ and DZ twin correlations we can estimate:
 
 $$
-h^2 = 2[r_\mathrm{MZ} - r_\mathrm{DZ}] \\
+h^2 = 2(r_\mathrm{MZ} - r_\mathrm{DZ}) \\
 c^2 = 2r_\mathrm{DZ} - r_\mathrm{MZ} \\
 e^2 = 1 - h^2 - c^2
 $$
 
-![](geibmh-psychgen-1_files/figure-commonmark/twins_cor-1.png)
+![Visualisation with *r*\[MZ\] = 0.75 and *r*\[DZ\] =
+0.5.](geibmh-psychgen-1_files/figure-commonmark/twins_cor-1.png)
 
 ## What do we know about psychiatric genetics from twins studies
 
@@ -805,3 +814,5 @@ environment.
 Data from [`match.ctglab.nl`](https://match.ctglab.nl).
 
 </div>
+
+## 
