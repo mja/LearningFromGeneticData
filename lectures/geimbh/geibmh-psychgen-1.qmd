@@ -1097,5 +1097,90 @@ ggplot(match_meta_subchapter_bmh, aes(x = component, fill = component, y = VarPr
   guides(fill = "none")
 ```
 
-## Genetic values
+# Genetics of depression and schizophrenia
+
+## Major depressive disorder (MDD)
+
+- 1+ in 10 affected 
+- 7-11 years of life are lost
+- Global cause of ill-health
+
+## MDD diagnostic criteria {.smaller}
+
+1 of the 2 **cardinal** symptoms with 5 symptoms in total:
+
+1. **Low mood**
+2. **Anhedonia**
+3. Increase or decrease in weight or appetite
+4. Insomnia or hypersomnia
+5. Psychomotor agitation or slowing
+6. Fatigue 
+7. Feelings of worthlessness/guilt
+8. Concentration problems
+9. Suicidal ideation
+
+Heterogeneous disorder: 227 possible symptom profiles.
+
+:::{.notes}
+Fried, E. I. & Nesse, R. M. Depression is not a consistent syndrome: An investigation of unique symptom patterns in the STAR*D study. J Affect Disorders 172, 96–102 (2015).
+:::
+
+## "Evidence for Multiple Genetic Factors Underlying DSM-IV Criteria for Major Depression"
+
+```{mermaid}
+flowchart LR
+  twins["7500 twin pairs"]
+  screen{"Screen
+  cardinal
+  symptoms"}
+  endorse["3671 endorsed"]
+  denied["3829 denied"]
+  symptoms("Symptoms assessed")
+  twins --> screen
+  screen --> endorse
+  screen --> denied
+  endorse --> symptoms
+```
+
+:::{.notes}
+Kendler, K. S., Aggen, S. H. & Neale, M. C. Evidence for Multiple Genetic Factors Underlying DSM-IV Criteria for Major Depression. JAMA Psychiat 70, 599–607 (2013).
+:::
+
+## Multivariate twin model
+
+- analysed MZ and DZ twin cross-correlations among depression symptoms
+- tested 1, 2, or 3 factor models of genetic, shared environment, and unique environment
+
+## Best fit model {.smaller}
+
+**Genetic factors**
+
+1. Psychomotor/cognitive symptoms (psychomotor, guilt, concentration, suicidality)
+2. Mood symptoms (low mood, anhedonia)
+3. Neurovegetative symptoms (weight, sleep, fatigue)
+
+**Individual-specific (unique) environment factors**
+
+1. General depression (low mood, anhedonia, weight, sleep, psychomotor, fatigue, concentration)
+2. Mood symptoms (low mood, anhedonia, concentration)
+3. Cognitive symptoms (guilt, suicidality)
+
+## External validators of genetic factor scores {.smaller}
+
+|Validator variable|Cognitive/Motor|Core Mood|Neurovegetative|
+|------------------|--------------:|--------:|--------------:|
+|Neuroticism        | **0.54**      |**0.27** |**0.30**       |
+|Anxiety disorder   | **0.77**      | **0.49**| **0.47**      |
+|Age at onset       | **-3.00**     | -1.15   | 0.37          |
+|No. of episodes    | **0.55**      | 0.16    | **0.23**      |
+|Melancholia subtype| **1.05**      |**-0.43**| **1.34**      |
+|Unreactive mood    | **0.82**      | 0.10    | **0.79**      |
+
+: Data from Table 4 Kendler, Aggen, & Neale. **_p_ < 0.001**
+
+:::{.notes}
+Cognitive/Motor factor associated with non-specific liability to internalising disorders  
+Neurovegetative factor most strongly related to Melancholic subtype more specific to major depression
+:::
+
 
