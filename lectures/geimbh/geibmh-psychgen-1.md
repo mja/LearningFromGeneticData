@@ -1,4 +1,4 @@
-# Genetics of common complex psychiatric disorders
+# Genetics of common complex psychiatric disorders I
 Mark Adams
 
 # Part 1: Biometrics
@@ -35,6 +35,30 @@ genetic standpoint.
   Cellular, and Diagnostic Architectures of Psychiatric
   Disorders](https://doi.org/10.1016/j.cell.2019.01.015). *Cell*
   doi:10.1016/j.cell.2019.01.015
+
+</div>
+
+## Psychiatric diagnoses
+
+- Depressive disorder: Marked and persistent low mood and inability to
+  feel pleasure.
+- Anxiety disorder: Extensive, pervasive, unrealistic, and disabling
+  worry
+- Bipolar disorder: Intense mood swings between mania and depression.
+- Schizophrenia: Peristent hallucinations and delusions that severely
+  impair functioning, highly disorganised thought and speech
+- Eating disorders: self-starvation or excessive over-eating,
+  debilitating preoccupation with body image
+- Attention-deficit/hyperactivity disorder: Early onset, developmentally
+  inappropriate and persistant hyperactivity and inattention.
+- Autism spectrum disorders: Markedly impaired interpersonal
+  interactions, non-goal-directed behaviours, and language development.
+
+<div class="notes">
+
+Sullivan, P. F., Daly, M. J. & O’Donovan, M. Genetic architectures of
+psychiatric disorders: the emerging picture and its implications. Nat
+Rev Genet 13, 537 551 (2012).
 
 </div>
 
@@ -598,6 +622,8 @@ $$
 \lambda_\mathrm{R} = \frac{P(\mathrm{affected} | \mathrm{relative\ affected})}{P(\mathrm{affected\ in\ population})} = \frac{K_\mathrm{R}}{K}
 $$
 
+![](geibmh-psychgen-1_files/figure-commonmark/liability_scz_mdd-1.png)
+
 <div class="notes">
 
 Represents how much more likely to are to be affected by a disorder
@@ -621,7 +647,7 @@ Example:
 <div class="notes">
 
 Recurrance risk to relatives for schizophrenia in Sweden, which has a
-baseline risk of $K = 0.047$%.
+baseline risk of $K = 0.47$%.
 
 Lichtenstein, P. et al. Recurrence risks for schizophrenia in a Swedish
 National Cohort. Psychol. Med. 36, 1417–1425 (2006).
@@ -631,7 +657,7 @@ doi:[10.1017/s0033291706008385](https://dx.doi.org/10.1017/s0033291706008385)
 
 ## Recurrance risk and heritability
 
-- Code $\mathrm{unaffected} = 0, \mathrm{unaffected} = 1$
+- Score $\mathrm{unaffected} = 0, \mathrm{unaffected} = 1$
 - If population prevalence is $K$, then phenotypic variance is $K(1-K)$
   (Bernoulli distribution)
 
@@ -679,6 +705,20 @@ h^2 = \frac{\mathrm{cov}_\mathrm{R}}{\mathrm{r}V_\mathrm{P}} \\
 = \frac{K^2 (\lambda_\mathrm{R} - 1)}{\mathrm{r}K(1-K)} \\
 = \frac{K (\lambda_\mathrm{R} - 1)}{\mathrm{r}(1-K)} \\
 $$
+
+## Recurrance risk of psychiatric disorders
+
+![Prevalence in population (K) and with one parent affected
+(K\[1\])](geibmh-psychgen-1_files/figure-commonmark/psy_rr-1.png)
+
+<div class="notes">
+
+Baselmans, B. M. L., Yengo, L., Rheenen, W. van & Wray, N. R. Risk in
+relatives, heritability, SNP-based heritability and genetic correlations
+in psychiatric disorders: a review. Biol Psychiat (2020)
+doi:10.1016/j.biopsych.2020.05.034.
+
+</div>
 
 ## Estimating environmental effects
 
@@ -803,7 +843,8 @@ doi:10.1038/ng.3285
 
 ## Meta-analysis of twin heritability
 
-![](geibmh-psychgen-1_files/figure-commonmark/match-meta-1.png)
+![Meta-analysis of phenotype
+domains](geibmh-psychgen-1_files/figure-commonmark/match-meta-1.png)
 
 <div class="notes">
 
@@ -816,3 +857,8 @@ Data from [`match.ctglab.nl`](https://match.ctglab.nl).
 </div>
 
 ## 
+
+![Meta-analysis of psychiatric, neurological, and psychological
+phenotypes](geibmh-psychgen-1_files/figure-commonmark/match-meta-subchapter-1.png)
+
+## Genetic values

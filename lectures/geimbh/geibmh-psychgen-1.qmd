@@ -19,6 +19,21 @@ Division of Psychiatry
 `mark.adams@ed.ac.uk`  
 *Genetics and Environmental Influences on Behaviour and Mental Health*
 
+```{r plotting}
+#| echo: false
+
+# font size for plotting
+base_size <- function() {
+  size = 12
+  if (knitr::is_html_output()) {
+    size = 16
+  } else if (knitr::is_latex_output()) {
+    size = 10
+  }
+  size
+}
+```
+
 # What is a *"common"*, *"complex"* psychiatric disorder?
 
 **Common:** Affects 1% or more of the population  
@@ -30,6 +45,21 @@ Psychiatric disorders are defined by disruption to higher-order brain functions 
 - Sullivan PF and Geschwind DH (2019) [Defining the Genetic, Genomic, Cellular, and Diagnostic Architectures of Psychiatric Disorders](https://doi.org/10.1016/j.cell.2019.01.015). *Cell* doi:10.1016/j.cell.2019.01.015
 
 :::
+
+## Psychiatric diagnoses {.smaller}
+
+- Depressive disorder: Marked and persistent low mood and inability to feel pleasure.
+- Anxiety disorder: Extensive, pervasive, unrealistic, and disabling worry.
+- Bipolar disorder: Intense mood swings between mania and depression.
+- Schizophrenia: Peristent hallucinations and delusions that severely impair functioning, highly disorganised thought and speech.
+- Eating disorders: self-starvation or excessive over-eating, debilitating preoccupation with body image. 
+- Attention-deficit/hyperactivity disorder: Early onset, developmentally inappropriate and persistant hyperactivity and inattention. 
+- Autism spectrum disorders: Markedly impaired interpersonal interactions, non-goal-directed behaviours, and language development.
+
+:::{.notes}
+Sullivan, P. F., Daly, M. J. & O’Donovan, M. Genetic architectures of psychiatric disorders: the emerging picture and its implications. Nat Rev Genet 13, 537 551 (2012).
+:::
+  
 
 ## 🧬👪🚬💢🏡💞🩻🏫
 
@@ -646,7 +676,7 @@ ggplot(liability_scz_mdd) +
   scale_y_continuous("Probability Density") +
   scale_x_continuous("Liability", lim = c(-5, 5)) + 
   facet_grid(cols = vars(disorder)) +
-  theme_classic(base_size = 16)
+  theme_classic(base_size = base_size())
 
 ```
 
@@ -678,7 +708,7 @@ ggplot(scz_rr, aes(x = factor(Relationship, levels = rev(Relationship)), y = `Re
   scale_x_discrete("") +
   scale_y_continuous(breaks = 1:12) +
   coord_flip(ylim = c(1, 12)) +
-  theme_classic(base_size = 16)
+  theme_classic(base_size = base_size())
 
 ```
 
@@ -775,7 +805,7 @@ ggplot(psy_k1, aes(x = K, y = 100*prev)) +
   scale_y_continuous("Lifetime Prevalence (%)") +
   coord_flip() +
   facet_grid(rows = vars(disorder)) +
-  theme_minimal(base_size = 16) +
+  theme_minimal(base_size = base_size()) +
   theme(strip.text.y = element_text(angle = 0))
 ```
 
@@ -902,7 +932,7 @@ twins_ac = tribble(
 ggplot(twins_ac, aes(x = Twin, y = Similarity, fill = Effect)) +
   geom_col() +
   scale_y_continuous(lim = c(0, 1), breaks=c(0, 0.25, 0.5, 0.75, 1.0)) +
-  theme_minimal(base_size = 15) 
+  theme_minimal(base_size = base_size()) 
 ```
 
 ## What do we know about psychiatric genetics from twins studies
@@ -928,7 +958,7 @@ ggplot(
   scale_x_discrete("Main Trait Domain") +
   scale_y_continuous("Number of studies") +
   coord_flip() +
-  theme_minimal(base_size = 16)
+  theme_minimal(base_size = base_size())
 
 ```
 
@@ -991,7 +1021,7 @@ ggplot(match_meta_full_bmh, aes(x = component, fill = component, y = VarProp, ym
   scale_y_continuous("Variance proportion", lim = c(0, 1)) +
   coord_flip() +
   facet_grid(row = vars(fct_reorder(`ICD10-ICF Chapter`, VarProp, max))) +
-  theme_minimal(base_size = 16) +
+  theme_minimal(base_size = base_size()) +
   theme(strip.text.y = element_text(angle = 0))  +
   guides(fill = "none")
 ```
@@ -1062,7 +1092,7 @@ ggplot(match_meta_subchapter_bmh, aes(x = component, fill = component, y = VarPr
   scale_y_continuous("Variance proportion", lim = c(-0.03, 1)) +
   coord_flip() +
   facet_grid(row = vars(fct_reorder(ICD10, VarProp, max))) +
-  theme_minimal(base_size = 16) +
+  theme_minimal(base_size = base_size()) +
   theme(strip.text.y = element_text(angle = 0)) +
   guides(fill = "none")
 ```
