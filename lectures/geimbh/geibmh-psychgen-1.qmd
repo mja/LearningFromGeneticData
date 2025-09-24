@@ -57,13 +57,12 @@ Psychiatric disorders are defined by disruption to higher-order brain functions 
 - Autism spectrum disorders: Markedly impaired interpersonal interactions, non-goal-directed behaviours, and language development.
 
 :::{.notes}
-Sullivan, P. F., Daly, M. J. & O’Donovan, M. Genetic architectures of psychiatric disorders: the emerging picture and its implications. Nat Rev Genet 13, 537 551 (2012).
-
-Frances, A. Essential of Psychiatric Diagnosis. Guilford Press (2013).
+- Sullivan, P. F., Daly, M. J. & O’Donovan, M. Genetic architectures of psychiatric disorders: the emerging picture and its implications. Nat Rev Genet 13, 537 551 (2012).
+- Frances, A. Essentials of Psychiatric Diagnosis. Guilford Press (2013).
 :::
   
 
-## 🧬👪🚬💢🏡💞🩻🏫
+## Prevalences
 
 - Depression: 3% in a week
 - Schizophrenia: 1% in lifetime
@@ -173,9 +172,7 @@ plot_loci(loci_freq)
 ```
 
 :::{.notes}
-> "R. A. Fisher's 1918 paper, 'The correlation between relatives on the supposition of Mendelian inheritance', resolved the often bitter conflict between biometricians and Mendelians, which raged for a decade following the rediscovery of Mendel's work. Fisher showed that a complex quantitative trait could be explained by Mendelian inheritance if several genes affect the trait.
-> "Because he crossed true-breeding plants, Mendel's experiments showed that a single locus with two alleles of equal frequency results in three genotypes (see the figure, part a). If the allelic effects are additive, the three genotypes produce three phenotypes; in the case of Mendel's qualitative traits, the allelic effects showed complete dominance, so only two phenotypes were observed. However, assuming equal and additive effects, 2 genes yield 9 genotypes and 5 phenotypes (part b) and 3 genes yield 27 genotypes and 7 phenotypes (part c). With unequal and non-additive allelic effects and some environmental influence, three genes would result in a normal bell-shaped curve of continuous variation (part d). This logic assumes common alleles; rare alleles will skew the distribution. Genome-wide association research suggests that many more than three genes affect most traits, which underscores the expectation that polygenic traits are quantitative traits."
-
+> "R. A. Fisher's 1918 paper, 'The correlation between relatives on the supposition of Mendelian inheritance', resolved the often bitter conflict between biometricians and Mendelians, which raged for a decade following the rediscovery of Mendel's work. Fisher showed that a complex quantitative trait could be explained by Mendelian inheritance if several genes affect the trait."
 - Plomin, R., Haworth, C. & Davis, O. [Common disorders are quantitative traits](https://dx.doi.org/10.1038/nrg2670). *Nat Rev Genet* **10**, 872-878 (2009). doi:10.1038/nrg2670
 :::
 
@@ -416,7 +413,7 @@ If there is assortative mating between the parents, then these effects would be 
 
 ##
 
-Covariance between parent and offspring environment effects
+*Covariance between parent and offspring environment effects*
 $$
 \mathrm{cov}(\frac{e_d}{2}, e_o), \mathrm{cov}(\frac{e_s}{2}, e_o)
 $$
@@ -425,7 +422,7 @@ $$
 If aspects of the parental environment are transmitted as well or if parents and offspring tend to encounter similar environments, then these effects are expected to covary.
 :::
 
-Covariance between parental genetic and offspring environmental effects
+*Covariance between parental genetic and offspring environmental effects*
 $$
 \mathrm{cov}(\frac{d}{2}, e_o), \mathrm{cov}(\frac{s}{2}, e_o)
 $$
@@ -610,6 +607,9 @@ Genetic influence is the same for both sexes: $\mathrm{var}(d + d^\prime) =  var
 
 Heritability can also be estimated from resemblance between different types of related pairs. The general equation is:
 
+::::{.columns}
+
+:::{.column}
 $$
 h^2 = \frac{b}{\mathrm{r}}
 $$
@@ -617,8 +617,20 @@ $$
 $b$ = regression coefficient  
 $\mathrm{r}$ = relatedness coefficient ("coefficient of additive variance")
 
+:::
+
+:::{.column}
+
+![](assets/Coefficient_of_relatedness.png)
+
+:::
+
+::::
+
 :::{.notes}
 In this notation we used normal $\mathrm{r}$ to represent relatedness, to disguish it from italic $r$ for correlation coefficient.
+
+Figure [Coefficient of relatedness](https://commons.wikimedia.org/wiki/File:Coefficient_of_relatedness.png) CC-BY-SA Citynoise.
 :::
 
 ## Example data: depression scores
@@ -682,7 +694,7 @@ ggplot(liability_scz_mdd) +
 
 
 :::{.notes}
-Represents how much more likely to are to be affected by a disorder given that a relative is affected, compared to someone from the general population.
+Represents how much more likely a person is to be affected by a disorder given that a relative is affected, compared to someone from the general population.
 :::
 
 ## 
@@ -721,8 +733,8 @@ Lichtenstein, P. et al. Recurrence risks for schizophrenia in a Swedish National
 
 ## Recurrance risk and heritability
 
-- Score $\mathrm{unaffected} = 0, \mathrm{unaffected} = 1$
-- If population prevalence is $K$, then phenotypic variance is $K(1-K)$ (Bernoulli distribution)
+- Score $\mathrm{unaffected} = 0, \mathrm{affected} = 1$
+- If population prevalence is $K$, then phenotypic variance is $V_\mathrm{P} = K(1-K)$ (Bernoulli distribution)
 
 
 ##
@@ -1198,7 +1210,7 @@ At least one **core** symptom and two or more symptoms present for a significant
 Negative symptoms encompass deficiencies in emotional life, motivations, thinking, and relationships
 :::
 
-## Schizophrenia isk factors
+## Schizophrenia risk factors
 
 ![](assets/pmed.0020212.g001.PNG_L.png)
 
