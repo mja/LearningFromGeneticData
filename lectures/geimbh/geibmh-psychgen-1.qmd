@@ -58,6 +58,8 @@ Psychiatric disorders are defined by disruption to higher-order brain functions 
 
 :::{.notes}
 Sullivan, P. F., Daly, M. J. & O’Donovan, M. Genetic architectures of psychiatric disorders: the emerging picture and its implications. Nat Rev Genet 13, 537 551 (2012).
+
+Frances, A. Essential of Psychiatric Diagnosis. Guilford Press (2013).
 :::
   
 
@@ -527,9 +529,9 @@ height_parent_child_cov <- round(with(height_singletons, cov(parents_cm, child_c
 height_parent_var <- round(with(height_singletons, var(parents_cm)), 2)
 ```
 
-- $\mathrm{cov}(\frac{P_d + P_s}{2}, P_o) =$  `r height_parent_child_cov`
-- $\mathrm{var}(\frac{P_d + P_s}{2}) =$  `r height_parent_var`
-- $\hat{h}^2 =$  `r height_parent_child_cov` / `r height_parent_var` = `r round(height_parent_child_cov / height_parent_var, 2)`
+$\mathrm{cov}(\frac{P_d + P_s}{2}, P_o) =$  `r height_parent_child_cov`  
+$\mathrm{var}(\frac{P_d + P_s}{2}) =$  `r height_parent_var`  
+$\hat{h}^2 =$  `r height_parent_child_cov` / `r height_parent_var` = `r round(height_parent_child_cov / height_parent_var, 2)`
 
 ##
 
@@ -571,9 +573,7 @@ ggplot(bind_rows(sims), aes(x = parents, y = children)) +
 
 
 :::{.notes}
-
 Wray, N. & Visscher, P. (2008) [Estimating trait heritability](https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/). Nature Education 1(1):29
-
 :::
 
 ##
@@ -1127,7 +1127,7 @@ Fried, E. I. & Nesse, R. M. Depression is not a consistent syndrome: An investig
 
 ## "Evidence for Multiple Genetic Factors Underlying DSM-IV Criteria for Major Depression"
 
-```{mermaid}
+```{mermaid twin_pairs_mdd}
 flowchart LR
   twins["7500 twin pairs"]
   screen{"Screen
@@ -1184,3 +1184,26 @@ Neurovegetative factor most strongly related to Melancholic subtype more specifi
 :::
 
 
+## Schizophrenia diagnostic criteria
+
+At least one **core** symptom and two or more symptoms present for a significant period of time
+
+1. **Delusions**
+2. **Hallucinations**
+3. **Disorganised speech**
+4. Grossly disorganised or catatonic behaviour
+5. Negative symptoms 
+
+:::{.notes}
+Negative symptoms encompass deficiencies in emotional life, motivations, thinking, and relationships
+:::
+
+## Schizophrenia isk factors
+
+![](assets/pmed.0020212.g001.PNG_L.png)
+
+:::{.notes}
+Compare environmental risk factors to family history.
+
+Figure CC-BY Sullivan PF (2005) The Genetics of Schizophrenia. PLoS Med 2(7): e212. doi:[10.1371/journal.pmed.0020212](https://doi.org/10.1371/journal.pmed.0020212).
+:::
