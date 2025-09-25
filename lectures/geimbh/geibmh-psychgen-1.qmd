@@ -166,12 +166,12 @@ Ronald Fisher reconciled the inheritance of continuous and categorical phenotype
 
 Single locus with two alleles, $\mathrm{A}_1$ and $\mathrm{A}_2$, and four genotypes with values:
 
-- $\mathrm{A}_1\mathrm{A}_1$: $+a$
-- $\mathrm{A}_1\mathrm{A}_2$ and $\mathrm{A}_2\mathrm{A}_1$: 0
-- $\mathrm{A}_2\mathrm{A}_2$: $-a$
+- $\mathrm{A}_1\mathrm{A}_1$: $2a$
+- $\mathrm{A}_1\mathrm{A}_2$ and $\mathrm{A}_2\mathrm{A}_1$: $a$
+- $\mathrm{A}_2\mathrm{A}_2$: $0$
 
 :::{.notes}
-At this locus the $\mathrm{A}_1$ allele increases the value of the phenotype.
+At this locus the $\mathrm{A}_2\mathrm{A}_2$ homozygote is set as the baseline
 :::
 
 ##
@@ -186,11 +186,11 @@ If allele $\mathrm{A}_1$ has a frequency of $p$ and $\mathrm{A}_2$ has frequency
 
 |Genotype                   | Frequency | Value | Freq. $\times$ Val.|
 |---------------------------|----------:|------:|-------------------:|
-|$\mathrm{A}_1\mathrm{A}_1$ | $p^2$     |$+a$       |$p^2a$          |
-|$\mathrm{A}_1\mathrm{A}_2$ | $p(1-p)$  |$0$        |$0$             |
-|$\mathrm{A}_2\mathrm{A}_1$ | $p(1-p)$  |$0$        |$0$             |
-|$\mathrm{A}_2\mathrm{A}_2$ | $(1-p)^2$ |$-a$       |$-(1-p)^2a$     |
-|                           |           |Mean =     |$(2p - 1)a$     |
+|$\mathrm{A}_1\mathrm{A}_1$ | $p^2$     |$2a$       |$2p^2a$          |
+|$\mathrm{A}_1\mathrm{A}_2$ | $p(1-p)$  |$a$        |$p(1-p)a$             |
+|$\mathrm{A}_2\mathrm{A}_1$ | $p(1-p)$  |$a$        |$p(1-p)a$             |
+|$\mathrm{A}_2\mathrm{A}_2$ | $(1-p)^2$ |$0$        |$0$     |
+|                           |           |Mean =     |$2pa$     |
 |                           |           |Variance = | $2p(1-p)a^2$   |
 
 :::{.notes}
@@ -202,7 +202,7 @@ Table based on Table 7.1, Falconer and Mackay.
 Each individual $i$ has a genetic value at locus $j$: 
 
 $$
-g_{ij} \in [+a_j, 0, -a_j]
+g_{ij} \in [0, a_j, 2a_j]
 $$
 
 Total genetic value from $M$ loci:
