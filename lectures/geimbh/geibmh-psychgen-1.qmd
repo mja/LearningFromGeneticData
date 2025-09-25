@@ -189,7 +189,7 @@ If allele $\mathrm{A}_1$ has a frequency of $p$ and $\mathrm{A}_2$ has frequency
 |$\mathrm{A}_1\mathrm{A}_1$ | $p^2$     |$+a$       |$p^2a$          |
 |$\mathrm{A}_1\mathrm{A}_2$ | $p(1-p)$  |$0$        |$0$             |
 |$\mathrm{A}_2\mathrm{A}_1$ | $p(1-p)$  |$0$        |$0$             |
-|$\mathrm{A}_2\mathrm{A}_2$ | $(1-p)^2$ |$+a$       |$-(1-p)^2a$     |
+|$\mathrm{A}_2\mathrm{A}_2$ | $(1-p)^2$ |$-a$       |$-(1-p)^2a$     |
 |                           |           |Mean =     |$(2p - 1)a$     |
 |                           |           |Variance = | $2p(1-p)a^2$   |
 
@@ -197,9 +197,27 @@ If allele $\mathrm{A}_1$ has a frequency of $p$ and $\mathrm{A}_2$ has frequency
 Table based on Table 7.1, Falconer and Mackay.
 :::
 
+## Genetic values
+
+Each individual $i$ has a genetic value at locus $j$: 
+
+$$
+g_{ij} \in [+a_j, 0, -a_j]
+$$
+
+Total genetic value from $M$ loci:
+
+$$
+G_i = \sum_{j = 1}^M g_{ij}
+$$
+
+$$
+\mathrm{var}(G) = \sum_{j = 1}^M 2p_j(1-p_j)a_j^2
+$$
+
 ## Polygenic traits are quantitative traits
 
-Adding up effects from a large number of genetic effects to make a continuous phenotype is related to the Central Limit Theorem.
+Adding up effects from a large number of genetic loci makes a continuous phenotype.
 
 ```{r polygenic_quantitative_10}
 #| echo: false
