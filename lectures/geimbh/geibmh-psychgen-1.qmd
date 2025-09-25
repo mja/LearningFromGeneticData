@@ -5,8 +5,14 @@ format:
   revealjs:
     embed-resources: true
     self-contained-math: true
-  pdf: default
-  gfm: default
+    output-filename: "geibmh-psychgen-1-slides.html"
+  pdf:
+    output-filename: "geibmh-psychgen-1-notes.pdf"
+  html:
+    output-filename: "geibmh-psychgen-1-notes.html"
+    embed-resources: true
+    self-contained-math: true
+
 execute:
   warning: false
   message: false
