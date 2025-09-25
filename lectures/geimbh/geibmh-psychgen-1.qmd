@@ -162,6 +162,41 @@ Ronald Fisher reconciled the inheritance of continuous and categorical phenotype
 - Bodmer et al (2021) [The outstanding scientist, R.A. Fisher: his views on eugenics and race](https://dx.doi.org/10.1038/s41437-020-00394-6). _Heredity_ doi:10.1038/s41437-020-00394-6
 :::
 
+## Single locus with additive effect
+
+Single locus with two alleles, $\mathrm{A}_1$ and $\mathrm{A}_2$, and four genotypes with values:
+
+- $\mathrm{A}_1\mathrm{A}_1$: $+a$
+- $\mathrm{A}_1\mathrm{A}_2$ and $\mathrm{A}_2\mathrm{A}_1$: 0
+- $\mathrm{A}_2\mathrm{A}_2$: $-a$
+
+:::{.notes}
+At this locus the $\mathrm{A}_1$ allele increases the value of the phenotype.
+:::
+
+##
+
+If allele $\mathrm{A}_1$ has a frequency of $p$ and $\mathrm{A}_2$ has frequency $1-p$, then the genotype frequencies are:
+
+- $\mathrm{A}_1\mathrm{A}_1$: $p^2$
+- $\mathrm{A}_1\mathrm{A}_2$ and $\mathrm{A}_2\mathrm{A}_1$: $2p(1-p)$
+- $\mathrm{A}_2\mathrm{A}_2$: $(1-p^2)$
+
+##
+
+|Genotype                   | Frequency | Value | Freq. $\times$ Val.|
+|---------------------------|----------:|------:|-------------------:|
+|$\mathrm{A}_1\mathrm{A}_1$ | $p^2$     |$+a$       |$p^2a$          |
+|$\mathrm{A}_1\mathrm{A}_2$ | $p(1-p)$  |$0$        |$0$             |
+|$\mathrm{A}_2\mathrm{A}_1$ | $p(1-p)$  |$0$        |$0$             |
+|$\mathrm{A}_2\mathrm{A}_2$ | $(1-p)^2$ |$+a$       |$-(1-p)^2a$     |
+|                           |           |Mean =     |$(2p - 1)a$     |
+|                           |           |Variance = | $2p(1-p)a^2$   |
+
+:::{.notes}
+Table based on Table 7.1, Falconer and Mackay.
+:::
+
 ## Polygenic traits are quantitative traits
 
 Adding up effects from a large number of genetic effects to make a continuous phenotype is related to the Central Limit Theorem.
