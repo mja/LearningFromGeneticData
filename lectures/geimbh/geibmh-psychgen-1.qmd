@@ -1272,3 +1272,17 @@ Compare environmental risk factors to family history.
 
 Figure CC-BY Sullivan PF (2005) The Genetics of Schizophrenia. PLoS Med 2(7): e212. doi:[10.1371/journal.pmed.0020212](https://doi.org/10.1371/journal.pmed.0020212).
 :::
+
+# Why is $h^2$ the symbol for heritability?
+
+##
+
+![](assets/wright-guinea-pigs-h.png)
+
+:::{.notes}
+$h$ for *h*eritability makes sense, but why the squared term?
+
+Sewall Wright was a geneticist who studied population and evolutionary genetics and developed path analysis. In a path diagram of genetic, segregation, developmental and environmental effects, the symbol $h$ was used as the correlation between an individual's genome and their phenotype. If the path weights are standardised, then $h^2$ represents the proportion of variance in the phenotype attributable to genetics. 
+
+Wright, S. The relative importance of heredity and environment in determining the piebald pattern of guinea-pigs. PNAS 1920. doi:[10.1073/pnas.6.6.320](https://doi.org/10.1073/pnas.6.6.320).
+:::
