@@ -1,0 +1,132 @@
+---
+title: Genetics of common complex psychiatric disorders II
+author: Mark James Adams
+format: 
+  revealjs:
+    embed-resources: true
+    self-contained-math: true
+  pdf: default
+execute:
+  warning: false
+  message: false
+  echo: false
+--- 
+
+# Part 2: Molecular genetics
+
+Mark James Adams  
+Division of Psychiatry  
+`mark.adams@ed.ac.uk`  
+*Genetics and Environmental Influences on Behaviour and Mental Health*
+
+```{r plotting}
+#| echo: false
+
+# font size for plotting
+base_size <- function(html = 16, latex = 10) {
+  size = 12
+  if (knitr::is_html_output()) {
+    size = html
+  } else if (knitr::is_latex_output()) {
+    size = latex
+  }
+  size
+}
+```
+
+## Structure of DNA
+
+::::{.columns}
+
+:::{.column}
+
+![](assets/phosphate_backbone.jpg)
+
+:::
+
+:::{.column}
+
+Diploid (two copies of each chromosome)
+
+![](assets/chromosomes-diploid.svg)
+
+:::
+
+::::
+
+:::{.notes}
+Deoxyribonucleic acid (DNA) is a large macromolecule composed of antiparallel (going in opposite directions) chains of nucleotides. Each nucleotide consists of a pair of nucleobases (Adenine paired with Thymine, Cytosine paired with Guanine).
+
+[DNA](https://www.genome.gov/genetics-glossary/Phosphate-Backbone) and [chromosome](https://bioart.niaid.nih.gov/bioart/551) images public domain National Institutes of Health.
+:::
+
+## Gene structure
+
+![](assets/HGBook-2023-09-23-ch1.2-007.jpg)
+
+:::{.notes}
+A portion of the genome contains genes that encode proteins. A gene has a promotor region, which is a DNA sequence that where and how much the gene is expressed. A gene contains a number of exons (coding sequence, determining the amino acide composition of the protein) and introns (non-coding sequence). DNA is transcribed into RNA, which is then spliced into mRNA and then becomes the template for the animo acid chain which folds into a protein.
+- Promoter: sequence determines where and how much of a gene is turned into RNA 
+- Exon: coding sequence, determines the amino acid composition of the protein 
+- Intron: non-coding sequence 
+
+Gene structure image from Figure 1.7, *[An Owner's Guide to the Human Genome](https://web.stanford.edu/group/pritchardlab/HGbook.html)* CC-BY Jonathan Pritchard.
+:::
+
+## Types and sizes of genetic variants
+
+```{r}
+#| label: variant_types
+require(dplyr)
+require(ggplot2)
+
+variant_types <- tribble(
+  ~type, ~magnitude_start, ~magnitude_end, ~x,
+  "SNP", 0.5, 2, 1,
+  "Indel", 2, 50, 2,
+  "STR", 5, 500, 3,
+  "Retroelements", 100, 1000, 4,
+  "Structural", 1000, 3.5e6, 5,
+  "Chromosomal", 3.5e6, 2.5e8, 6
+)
+
+# find middle between 2 points on log10 scale
+middle_log10 <- function(start, end) {
+  10^( (log10(start) + log10(end)) / 2)
+}
+
+ggplot(
+  variant_types,
+  aes(
+    x = x,
+    xend = x,
+    y = magnitude_start,
+    yend = magnitude_end
+)) +
+  geom_segment(
+    arrow = arrow(length = unit(3, "points"),
+    type = "closed", ends = "both")
+  ) +
+  geom_label(
+    aes(
+      label = type,
+      x = x + 0.5,
+      y = middle_log10(magnitude_start, magnitude_end),
+    label.size = base_size(),
+    size.unit = "pt"
+    )
+  ) +
+  scale_x_continuous("", breaks = NULL) +
+  scale_y_continuous(
+    "Size in basepairs",
+    transform = "log10",
+    breaks = c(1e0, 1e1, 1e3, 1e6, 1e8),
+    labels = c("1 bp", "10 bp", "1 kbp", "1 Mbp", "100 Mbp")
+  ) +
+  coord_flip() +
+  theme_minimal(base_size = base_size())
+```
+
+:::{.notes}
+The smallest genetic variants are single base-pair substitutions: Single Nucleotide Polymophism (SNP). Insertion/Deletions (indel) are slightly larger substitutions or 2 or up to a dozen nucleotides. Short Tandem Repeats (STR) are varying number of repeats of three-nucleotide codes. STRs can cause conditions like Huntington's Disease, where a normal copy of the gene will have 10–26 repeats while the Huntington's version will have 37–80 repeats. Microinsertions or microdeletions are structural variants about 1 megabase (Mb) in size, like the 15q13.3 microdeletion that increases risk of intellectual disability, seizures, and psychiatric illness. At the largest scale are inversions and translocations of parts of the chromosome or having more than two copies of a chromosome.
+:::
