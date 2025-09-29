@@ -1,18 +1,11 @@
 ---
 title: Genetics of common complex psychiatric disorders I
-author: Mark Adams
+author: Mark James Adams
 format: 
   revealjs:
     embed-resources: true
     self-contained-math: true
-    output-filename: "geibmh-psychgen-1-slides.html"
-  pdf:
-    output-filename: "geibmh-psychgen-1-notes.pdf"
-  html:
-    output-filename: "geibmh-psychgen-1-notes.html"
-    embed-resources: true
-    self-contained-math: true
-
+  pdf: default
 execute:
   warning: false
   message: false
@@ -20,7 +13,7 @@ execute:
 
 # Part 1: Biometrics
 
-Mark Adams  
+Mark James Adams  
 Division of Psychiatry  
 `mark.adams@ed.ac.uk`  
 *Genetics and Environmental Influences on Behaviour and Mental Health*
