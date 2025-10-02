@@ -36,28 +36,12 @@ base_size <- function(html = 16, latex = 10) {
 
 ## Structure of DNA
 
-::::{.columns}
-
-:::{.column}
-
-![](assets/phosphate_backbone.jpg)
-
-:::
-
-:::{.column}
-
-Diploid (two copies of each chromosome)
-
-![](assets/chromosomes-diploid.svg)
-
-:::
-
-::::
+![](assets/Base-pair_2024a.jpg)
 
 :::{.notes}
 Deoxyribonucleic acid (DNA) is a large macromolecule composed of antiparallel (going in opposite directions) chains of nucleotides. Each nucleotide consists of a pair of nucleobases (Adenine paired with Thymine, Cytosine paired with Guanine).
 
-[DNA](https://www.genome.gov/genetics-glossary/Phosphate-Backbone) and [chromosome](https://bioart.niaid.nih.gov/bioart/551) images public domain National Institutes of Health.
+[DNA](https://www.genome.gov/genetics-glossary/Base-Pair) image public domain National Institutes of Health.
 :::
 
 ## Gene structure
@@ -129,4 +113,254 @@ ggplot(
 
 :::{.notes}
 The smallest genetic variants are single base-pair substitutions: Single Nucleotide Polymophism (SNP). Insertion/Deletions (indel) are slightly larger substitutions or 2 or up to a dozen nucleotides. Short Tandem Repeats (STR) are varying number of repeats of three-nucleotide codes. STRs can cause conditions like Huntington's Disease, where a normal copy of the gene will have 10–26 repeats while the Huntington's version will have 37–80 repeats. Microinsertions or microdeletions are structural variants about 1 megabase (Mb) in size, like the 15q13.3 microdeletion that increases risk of intellectual disability, seizures, and psychiatric illness. At the largest scale are inversions and translocations of parts of the chromosome or having more than two copies of a chromosome.
+:::
+
+## Chromosomes
+
+Diploid (two copies of each chromosome)
+
+![](assets/chromosomes-diploid.svg)
+
+:::{.notes}
+[Chromosome](https://bioart.niaid.nih.gov/bioart/551) image public domain National Institutes of Health.
+:::
+
+## Single Nucleotide Polymorphisms (SNP) {.smaller}
+
+![](assets/Dna-SNP.svg)
+
+- Single base of DNA is substituted with another.
+- Occur in 1 of every 100 - 1000 basepairs (bp).
+- Currently, ± 1.2B SNPs are known.
+- Labelled with a dbSNP Reference ID ("rs number")
+
+:::{.notes}
+"SNP" is pronounced "snip". [dbSNP](https://www.ncbi.nlm.nih.gov/snp/) is a database for finding information on SNPs in the human genome. 
+
+[DNA-SNP images](https://commons.wikimedia.org/wiki/File:Dna-SNP.svg) CC-BY David Eccles.
+:::
+
+## Canidate gene studies (circa 2000)
+
+::: {.content-visible unless-format="html"}
+Advances in genotyping technology led to a new approach to study genetic effects. Instead of tracking inheritance through families, it was possible to look at the frequency of a variant in unrelated affected (cases) or unaffected (controls) people. Genotyping was still expensive so studies examined only a small handful of “candidate” genes chosen because of biological significance (usually related to neurotransmission).
+:::
+
+Example: Catechol-O-methyltransferase (COMT)
+
+::::{.columns}
+
+:::{.column}
+
+![](assets/4XUD.png)
+
+:::
+
+:::{.column}
+
+![](assets/Val158Met.png)
+
+:::
+
+::::
+
+SNP rs4680 G>A substitution (missense variant) results in amino acid change from valine to methionine at codon 158 (Val158Met).
+
+:::{.notes}
+COMT is involved in inactivation of dopamine, epinephrine, and norepinephrine. The Val variant metabolises dopamine at a higher rate than the Met variant. It was proposed that the [rs4680](https://www.ncbi.nlm.nih.gov/snp/rs4680) SNP was related to a large number of psychiatric disorders, but these results have not replicated. 
+
+Another highly studies variant was 5-HTTLP (serotonin-transporter-linked polymorphic region) in SLC6A4 (serotonin transporter gene).
+
+> “linkage studies investigate correlations between a disease and inheritance of specific chromosomal regions in families, whereas association studies focus on differences in the frequency of specific genetic markers in groups of affected and unaffected individuals.”
+
+- Sullivan … Neale (2001) Genetic Case-Control Association Studies in Neuropsychiatry, ARCH GEN PSYCHIATRY 58
+- Border et al. [No Support for Historical Candidate Gene or Candidate Gene-by-Interaction Hypotheses for Major Depression Across Multiple Large Samples](https://dx.doi.org/10.1176/appi.ajp.2018.18070881). American Journal of Psychiatry doi:10.1176/appi.ajp.2018.18070881
+:::
+
+## Genome-wide associations studies (GWAS) (2007 - today)
+
+- Candidate gene findings did not replicate
+- Power analysis: candidate gene study sample sizes were _vastly_ too small
+- Alternative: Assay the whole genome (hundreds of thousands or millions of variants) 
+- Hypothesis-free testing
+
+:::{.notes}
+A genome-wide association study (GWAS) is a hypothesis-free method of finding genetic factors that are associated with a trait or disease. Any two individuals randomly sampled from the population will differ in only about 0.5% of their genetic makeup.
+
+Sullivan. [Spurious Genetic Associations Biological Psychiatry](https://dx.doi.org/10.1016/j.biopsych.2006.11.010) 10.1016/j.biopsych.2006.11.010
+
+[Psychiatric Genomics Consortium](https://pgc.unc.edu) is one of the largest biological experiments in the world.
+:::
+
+## Conducting a GWAS
+
+- Two alleles: A and a 
+- Three genotypes: AA, Aa, aa
+- Arbitrarily select one allele (A) as the _effect_ allele
+- For each subject, count number of effect alleles: $x = 0, 1, 2$
+
+:::{.notes}
+An association test is performed by comparing a genotype at a particular SNP marker to a phenotype (a trait or disease). This test is usually done within a regression framework, using linear regression for continuous/quantitative phenotypes (like height) or a logistic regression for a binary or case/control phenotype (like disease status). 
+
+At each SNP there are typically two alleles, for example C and T. This allows for four possible genotypes: CC homozygote, CT or TC heterozyogotes, and TT homozygotes. The basic association tests assumes that substituting one allele for the other has an additive effect on the phenotype. This means that the model assumes that the average difference in phenotype between the CC genotype and the CT genotype is the same as between the CT and TT genotype.
+:::
+
+
+## 
+
+```{r}
+#| label: gwas_sim
+require(ggplot2)
+
+set.seed(3128279)
+beta <- 1
+freq <- 0.3
+n <- 100
+genotypes <- sample(0:2, size = n, replace = TRUE, prob = c((1-freq^2), 2*freq*(1-freq), freq^2))
+phenotypes <- 2.7 + beta * genotypes + rnorm(n)
+
+ggplot(
+  data.frame(phenotype = phenotypes, genotype = genotypes),
+  aes(x = genotype, y = phenotype)
+) +
+  stat_smooth(method = lm, se = FALSE) +
+  scale_x_continuous("SNP genotype", breaks = c(0, 1, 2)) +
+  scale_y_continuous("Phenotypic score") +
+  geom_point() +
+  theme_classic(base_size = base_size(html = 24))
+```
+
+- Regress on phenotype $Y$
+- Linear regression: $Y \sim \alpha + \beta x + \mathrm{covariates}$
+- Logistic regression: $\mathrm{Prob}(Y= 1) \sim \mathrm{logit}^{-1}(\alpha + \beta x + \mathrm{covariates})$
+- Repeat for all markers
+
+
+:::{.notes}
+To run the regression, the SNP genotype is encoded to a number as a count of one of the alleles (which allele is chosen is arbitrary, but traditionally it is allele with the lower frequency, called the minor allele). The chosen allele is called the "effect allele". In this example, if the T allele is chosen as the effect allele, then the numeric encoding is the number of T alleles in the genotype: CC = 0, CT and TC = 1, and TT = 2. This numeric representation can then be entered into a regression formula.
+
+From the fitted regression model, the beta coefficient $\beta$ for the SNP represents the average substitution effect of having one additional copy of the effect allele. 
+
+Binary traits like disease status are analysed as case-control studies using logistic regression. In a case-control analysis, the beta coefficient represents the change in log-odds of having the disease for every additional copy of the effect allele. Exponentiating the beta coefficient,  $\exp(\beta)$, converts the effect size to an odds ratio.
+
+- Balding, D. [A tutorial on statistical methods for population association studies](https://doi.org/10.1038/nrg1916). Nat Rev Genet 7, 781–791 (2006). doi:10.1038/nrg1916
+- Uffelmann, E., et al. [Genome-wide association studies](https://doi.org/10.1038/s43586-021-00056-9). Nat Rev Methods Primers 1, 59 (2021). doi:10.1038/s43586-021-00056-9
+:::
+
+## 15+ years of GWAS
+
+```{r}
+#| label: gwas_catalog
+#| cache: true
+require(readr)
+require(dplyr)
+require(tidyr)
+require(stringr)
+require(lubridate)
+require(ggplot2)
+studies <- read_tsv("https://www.ebi.ac.uk/gwas/api/search/downloads/studies")
+
+studies_sizes <- studies |>
+  transmute(
+    PUBMEDID,
+    `DISEASE/TRAIT`,
+    DATE,
+    `ASSOCIATION COUNT`,
+    sample_size = str_extract_all(
+      str_remove_all(
+        `INITIAL SAMPLE SIZE`,
+        pattern = ","
+      ),
+      pattern = "[0-9]+"
+    )
+  ) |>
+  unnest_longer(sample_size) |>
+  group_by(PUBMEDID, `DISEASE/TRAIT`, DATE, `ASSOCIATION COUNT`) |>
+  summarise(sample_size = sum(as.numeric(sample_size)))
+
+# top 13 most studied traits
+traits13 <- studies |> 
+  count(`DISEASE/TRAIT`) |> 
+  arrange(desc(n)) |> 
+  slice_head(n = 13) |>
+  pull(`DISEASE/TRAIT`)
+
+studies_avg <-
+studies_sizes |>
+  filter(`DISEASE/TRAIT` %in% traits13) |>
+  mutate(year = year(DATE)) |>
+  group_by(`DISEASE/TRAIT`, year) |>
+  summarize(
+    associations = max(`ASSOCIATION COUNT`), sample_size = max(sample_size)
+  ) |>
+  filter(associations >= 1)
+
+ggplot(
+  studies_avg,
+  aes(
+    x = year,
+    y = associations,
+    colour = `DISEASE/TRAIT`,
+    size = sample_size
+  )
+) +
+  geom_point() +
+  scale_y_log10("Number of associations") +
+  scale_x_continuous("Year")
+```
+
+:::{.notes}
+Abdellaoui, A., Yengo, L., Verweij, K. J. H. & Visscher, P. M. 15 years of GWAS discovery: Realizing the promise. Am J Hum Genetics (2023) doi:[10.1016/j.ajhg.2022.12.011](https://doi.org/10.1016/j.ajhg.2022.12.011).
+:::
+  
+## GWAS data {.smaller}
+
+```{r}
+#| label: gwas
+require(topr)
+
+knitr::kable(head(CD_UKBB))
+```
+
+:::{.notes}
+The output of a GWAS contains information about the variant:
+
+- CHROM: chromosome
+- POS: basepair position
+- ID: variant identifier (usually rsID)
+- REF: reference allele
+- ALT: alternative allele
+- AF: allele frequency
+
+and information from the association:
+
+- OR: effect size (in this case, odds ratio)
+- P: p-value of the association, from a Chi-Squared test
+:::
+
+## Plotting GWAS results
+
+```{r}
+#| label: gwasp
+require(topr)
+gwas_null <- rbind(CD_UKBB, CD_UKBB, CD_UKBB, CD_UKBB, CD_UKBB) |>
+  mutate(P = runif(length(P), 0, 1))
+g <- manhattan(gwas_null, log_trans_p = FALSE, sign_thresh = NULL, downsample_cutoff = 0, ymin = 0, ymax = 1) + scale_y_continuous("P")
+g
+```
+
+:::{.notes}
+Plotting the P-value for each position along each chromosome is not very informative
+:::
+
+## Plotting GWAS results
+
+```{r}
+#| label: manhattan
+require(topr)
+manhattan(CD_UKBB)
+```
+
+:::{.notes}
+Instead, a $-\log_{10}$ transformation is applied to each p-value. This transofrmation makes large (non-significant) p-values very small and small (more signficant) p-values very large. Typically, a significant threshold of $p < 5 \time 10^{-8}$ is applied, which corrects for multiple testing based on the number of independent regions in the genome.
 :::
