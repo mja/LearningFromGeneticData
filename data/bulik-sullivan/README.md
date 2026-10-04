@@ -1,0 +1,1 @@
+Data from Bulik-Sullivan, B., Finucane, H., Anttila, V. et al. An atlas of genetic correlations across human diseases and traits. Nat Genet 47, 1236–1241 (2015). doi:[10.1038/ng.3406](https://doi.org/10.1038/ng.3406)

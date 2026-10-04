@@ -1,0 +1,2 @@
+Choi, K. W. et al. An Exposure-Wide and Mendelian Randomization Approach to Identifying Modifiable Factors for the Prevention of Depression. Am J Psychiat appi.ajp.2020.1 (2020) doi:10.1176/appi.ajp.2020.19111158.
+  

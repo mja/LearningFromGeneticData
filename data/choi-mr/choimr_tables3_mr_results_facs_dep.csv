@@ -1,0 +1,79 @@
+﻿method,expb,cilo,ciup,pval,nsnp,desc
+Inverse variance weighted,0.995,0.8886,1.1141,0.931,17,any heavy DIY
+Weighted median,0.9616,0.8358,1.1064,0.584,17,any heavy DIY
+MR Egger,1.4294,0.6453,3.1666,0.393,17,any heavy DIY
+Inverse variance weighted,0.9016,0.8198,0.9915,0.0327,18,any other exercise
+Weighted median,0.9121,0.801,1.0385,0.165,18,any other exercise
+MR Egger,1.0879,0.7036,1.6821,0.71,18,any other exercise
+Inverse variance weighted,1.0154,0.9184,1.1227,0.765,13,any walking for pleasure
+Weighted median,1.039,0.9021,1.1967,0.596,13,any walking for pleasure
+MR Egger,0.957,0.3937,2.3264,0.925,13,any walking for pleasure
+Inverse variance weighted,0.9654,0.913,1.0207,0.216,25,attends pub/club
+Weighted median,0.9965,0.9247,1.0739,0.927,25,attends pub/club
+MR Egger,0.9909,0.9033,1.087,0.848,25,attends pub/club
+Inverse variance weighted,1.1577,0.9852,1.3605,0.0753,13,cell phone use
+Weighted median,1.2406,0.9973,1.5432,0.0529,13,cell phone use
+MR Egger,1.77,0.9049,3.4619,0.123,13,cell phone use
+Inverse variance weighted,0.9832,0.9433,1.0248,0.423,44,cereal intake
+Weighted median,0.9781,0.9198,1.0401,0.48,44,cereal intake
+MR Egger,0.9746,0.8219,1.1557,0.769,44,cereal intake
+Inverse variance weighted,1.0707,0.8507,1.3476,0.56,46,computer games use
+Weighted median,1.1763,0.8535,1.6211,0.321,46,computer games use
+MR Egger,1.2567,0.4265,3.7029,0.681,46,computer games use
+Inverse variance weighted,1.0199,0.9625,1.0806,0.505,55,computer use
+Weighted median,1.0187,0.9358,1.109,0.668,55,computer use
+MR Egger,0.9981,0.9243,1.0778,0.962,55,computer use
+Inverse variance weighted,1.336,1.1702,1.5252,1.82E-05,91,daytime napping
+Weighted median,1.3175,1.0815,1.6049,0.00618,91,daytime napping
+MR Egger,1.6958,0.9692,2.9671,0.0676,91,daytime napping
+Inverse variance weighted,0.7611,0.6703,0.8642,2.53E-05,10,frequency of confiding in others
+Weighted median,0.7212,0.6056,0.8589,0.000247,10,frequency of confiding in others
+MR Egger,0.8153,0.5019,1.3244,0.433,10,frequency of confiding in others
+Inverse variance weighted,0.7882,0.6471,0.96,0.018,11,frequency of family/friends visit
+Weighted median,0.7604,0.5841,0.99,0.0419,11,frequency of family/friends visit
+MR Egger,0.5052,0.1489,1.7139,0.302,11,frequency of family/friends visit
+Inverse variance weighted,1.0235,0.8494,1.2335,0.807,22,frequency of walking
+Weighted median,1.2769,0.9689,1.6827,0.0826,22,frequency of walking
+MR Egger,1.1396,0.7644,1.6991,0.528,22,frequency of walking
+Inverse variance weighted,1.0375,0.9337,1.1528,0.494,54,hours of sleep
+Weighted median,0.9927,0.8587,1.1476,0.921,54,hours of sleep
+MR Egger,0.9607,0.6026,1.5314,0.867,54,hours of sleep
+Inverse variance weighted,1.1496,0.8659,1.5262,0.335,23,inconsistent diet
+Weighted median,1.4012,0.9399,2.0887,0.0978,23,inconsistent diet
+MR Egger,1.5379,0.5195,4.5531,0.446,23,inconsistent diet
+Inverse variance weighted,1.1694,0.9485,1.4418,0.143,25,lamb intake
+Weighted median,1.1165,0.8228,1.515,0.479,25,lamb intake
+MR Egger,0.9766,0.5919,1.6112,0.927,25,lamb intake
+Inverse variance weighted,1.2781,1.1109,1.4705,0.000604,6,multivitamin
+Weighted median,1.3556,1.1372,1.6159,0.000689,6,multivitamin
+MR Egger,0.5231,0.0244,11.234,0.7,6,multivitamin
+Inverse variance weighted,0.9101,0.7836,1.0571,0.217,6,part of gym/club
+Weighted median,0.8963,0.7491,1.0724,0.231,6,part of gym/club
+MR Egger,1.4398,0.5406,3.835,0.506,6,part of gym/club
+Inverse variance weighted,1.0598,0.9277,1.2106,0.393,10,part of other group activity
+Weighted median,1.0794,0.936,1.2447,0.294,10,part of other group activity
+MR Egger,1.2384,0.8521,1.7999,0.295,10,part of other group activity
+Inverse variance weighted,1.0076,0.9696,1.047,0.7,51,part of religious group
+Weighted median,1.0109,0.9579,1.0668,0.694,51,part of religious group
+MR Egger,1.0507,0.9367,1.1786,0.403,51,part of religious group
+Inverse variance weighted,1.0964,1.0067,1.194,0.0345,98,salt intake
+Weighted median,1.1606,1.0226,1.3172,0.0211,98,salt intake
+MR Egger,1.3124,0.9523,1.8088,0.1,98,salt intake
+Inverse variance weighted,0.9491,0.9096,0.9904,0.0163,37,tea intake
+Weighted median,0.9363,0.8813,0.9947,0.0329,37,tea intake
+MR Egger,1.0832,0.9301,1.2616,0.311,37,tea intake
+Inverse variance weighted,0.9829,0.8699,1.1106,0.782,11,transport by walking
+Weighted median,0.9422,0.7988,1.1114,0.48,11,transport by walking
+MR Egger,1.531,0.8689,2.6975,0.175,11,transport by walking
+Inverse variance weighted,1.0904,1.0501,1.1323,6.81E-06,145,TV use
+Weighted median,1.093,1.0342,1.1552,0.00162,145,TV use
+MR Egger,1.0509,0.9499,1.1626,0.337,145,TV use
+Inverse variance weighted,1.0624,0.9707,1.1627,0.189,53,use of sun protection
+Weighted median,1.0991,0.9587,1.2601,0.175,53,use of sun protection
+MR Egger,1.0561,0.9006,1.2385,0.505,53,use of sun protection
+Inverse variance weighted,1.0377,0.8771,1.2277,0.666,59,usual walking pace
+Weighted median,1.057,0.8254,1.3537,0.66,59,usual walking pace
+MR Egger,0.634,0.3187,1.261,0.199,59,usual walking pace
+Inverse variance weighted,1.0022,0.9527,1.0543,0.932,16,vitamin B supplements
+Weighted median,1.0267,0.9535,1.1054,0.485,16,vitamin B supplements
+MR Egger,1.1299,1.0034,1.2724,0.0634,16,vitamin B supplements
